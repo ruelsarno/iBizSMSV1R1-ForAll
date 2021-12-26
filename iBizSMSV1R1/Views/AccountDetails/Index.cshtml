@@ -1,0 +1,95 @@
+﻿@model IEnumerable<iBizSMSV1R1.ModelsAccounting.AccountDetail>
+
+@{
+    ViewData["Title"] = "Account Details";
+    Layout = "~/Views/Shared/_LayoutAccountingAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-small" asp-controller="AccountDetails" asp-action="Create">Add New</a>
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.idno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.schoolyear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.discountcode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.modeofpayment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.feecategory)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.feedescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.feeamount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.amountofdiscount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.totalpayment)
+                </th>
+                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idno)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.schoolyear)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.discountcode)
+                    </td>                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.discount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.modeofpayment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.feecategory)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.feedescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.feeamount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.amountofdiscount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.totalpayment)
+                    </td>
+                   
+                    <td>
+                        <a class="btn btn-warning button-small" asp-action="Edit" asp-route-id="@item.accountdetailrecno">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

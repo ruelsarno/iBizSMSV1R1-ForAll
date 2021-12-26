@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutWebPages.cshtml";
+    var message = ViewBag.Message;
+}
+
+<!-- teachers details-->
+<section class="section">
+    <partial name="_TeacherDetails" />
+</section>
+<!-- /teachers details-->
+<!-- footer -->
+<footer>
+    <!-- newsletter -->
+    <partial name="_NewsLetter" />
+    <!-- newsletter end-->
+    <!-- footer content -->
+    <partial name="_FooterContent" />
+    <!-- footer content end-->
+    <!-- copyright -->
+    <partial name="_CopyRight" />
+    <!-- copyright end-->
+</footer>
+<!-- /footer end-->

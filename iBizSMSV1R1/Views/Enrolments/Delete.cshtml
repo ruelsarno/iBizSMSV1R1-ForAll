@@ -1,0 +1,122 @@
+﻿@model iBizSMSV1R1.Models.Enrolment
+
+@{
+    ViewData["Title"] = "Remove Enrolment";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+     var message = ViewBag.Message;
+}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <partial name="_AdmissionMenu" />
+            </div>
+            <div class="col-sm-12 text-center">
+                @*<h6>@ViewData["Title"]</h6>*@
+                @{
+                    if (@message != null)
+                    {
+                        if (@message != "")
+                        {
+                            <span>"@message"</span>
+                        }
+                    }
+
+                }
+            </div>
+        </div>
+    </div>
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"] : </h6>
+</div>
+<hr />
+<span class="remove-item">Are you sure you want to delete this?</span>
+<div class="Form-Body">
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.idno)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.idno)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.schoolyear)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.schoolyear)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.registrationno)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.registrationno)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.registrationdate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.registrationdate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.studenttype)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.studenttype)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.studentlevel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.studentlevel)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.trackcode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.trackcode)
+        </dd>
+      
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.gradeyear)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.gradeyear)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.section)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.section)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.discountcode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.discountcode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.modeofpayment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.modeofpayment)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.schoollastattended)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.schoollastattended)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.schooltype)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.schooltype)
+        </dd>
+    </dl>
+
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="recno" />
+        <input type="submit" value="Delete" class="btn btn-danger button-small" /> |
+        <a asp-action="Index" class="btn btn-warning button-small" asp-route-SearchString="@Model.recno">Cancel</a>
+    </form>
+</div>

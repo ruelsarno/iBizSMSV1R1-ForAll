@@ -1,0 +1,142 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.Reservation>
+@*@model ReflectionIT.Mvc.Paging.PagingList<iBizSMSV1R1.Models.Reservation>
+    @using ReflectionIT.Mvc.Paging
+    @addTagHelper *, ReflectionIT.Mvc.Paging*@
+
+@{
+    ViewData["Title"] = "Reservations";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    var idno = ViewBag.IDNO;
+    var id = ViewBag.ID;
+    var @message = ViewBag.Message;
+
+    
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12  text-center" style="color:red">
+            @{
+                if (@message != null)
+                {
+                    if (@message != "")
+                    {
+                        <span>"@message"</span>
+                    }
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function senMail() {     
+        var r = confirm("Send Notification to Student/Parent!");       
+    }
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+            @*<a class="btn btn-primary button-medium" asp-controller="AdminReservations" asp-action="Create">Add New</a>*@
+        </div>
+        <div class="col-sm-4 text-end">
+            @*<form asp-controller="AdminReservations" asp-action="Index" method="get">
+                    <input type="text" name="SearchString" class="" style="border-radius:5px; margin-bottom:2px" />
+                    <input type="submit" value="Search" class="btn  btn-primary button-medium" style="padding-left:15px;padding-right:15px">
+                </form>*@
+        </div>
+
+    </div>
+</div>
+
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.studenttype)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.datereserve)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.idno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.schoolyear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.studentlevel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.gradeyear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.paymentstatus)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.confirm)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.confirmedby)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.notified)
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.studenttype)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.datereserve)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.schoolyear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.studentlevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gradeyear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paymentstatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.confirm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.confirmedby)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.notified)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-referenceno="@item.referenceno" asp-route-id="@item.id"  class="btn btn-warning button-small">Edit</a>
+                </td>
+                <td>
+                    <form asp-action="SendeMail" asp-route-referenceno="@item.referenceno" asp-route-id="@item.id" method="post">
+                        @*<input type="hidden" value="@item.referenceno" />
+                <input type="hidden" value="@item.id" />*@
+                        <input type="submit" value="Send Confirmation" class="btn btn-danger button-small" onclick="senMail()" />
+                    </form>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

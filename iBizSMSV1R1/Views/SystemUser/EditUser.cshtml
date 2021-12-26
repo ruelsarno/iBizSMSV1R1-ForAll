@@ -1,0 +1,90 @@
+﻿@model iBizSMSV1R1.ViewModels.EditUserViewModel
+
+@{
+        ViewData["Title"] = "Edit User Account";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        var username = ViewData["UserName"];
+        var email = ViewData["EMail"];
+        var phonenumber = ViewData["PhoneNumber"];
+        var idno = ViewData["IdNo"];
+        var name = ViewData["Name"];
+        var cardid = ViewData["CardID"];
+        var EmailConfirmed = ViewData["EmailConfirmed"];
+
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="EditUser" asp-route-search_data="@ViewBag.SearchData" >
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" readonly="readonly" />
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="UserName" class="control-label"></label>
+                            <input asp-for="UserName" class="form-control input-text" readonly="readonly" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EMail" class="control-label"></label>
+                            <input asp-for="EMail" class="form-control input-text" />
+                            <span asp-validation-for="EMail" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber" class="control-label"></label>
+                            <input asp-for="PhoneNumber" class="form-control input-text" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EmailConfirmed" class="control-label"></label>
+                            <input type="checkbox" name="EmailConfirmed" asp-for="EmailConfirmed" class="input-text" />
+                            <span asp-validation-for="EmailConfirmed" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="idno" class="control-label"></label>
+                            <input asp-for="idno" class="form-control input-text" />
+                            <span asp-validation-for="idno" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="name" class="control-label"></label>
+                            <input asp-for="name" class="form-control input-text" />
+                            <span asp-validation-for="name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group text-left">
+                            <label asp-for="cardid" class="control-label"></label>
+                            <input asp-for="cardid" class="form-control input-text" />
+                            <span asp-validation-for="cardid" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            
+                        </div>
+                    </div>
+                </div>
+               
+                
+                        
+                <div class="row">
+                    <div class="form-group  col-sm-6">
+                        <input type="submit" value="SAVE" class="btn btn-info button-small" />
+                    </div>
+                    <div class="col-sm-6 text-end">
+                        @*<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger button-small">DELETE</a>*@
+                        <a asp-action="UserList" asp-route-search_data="@ViewBag.SearchData" class="btn btn-warning button-small">CANCEL</a>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

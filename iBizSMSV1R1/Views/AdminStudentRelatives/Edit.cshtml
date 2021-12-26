@@ -1,0 +1,70 @@
+﻿@model iBizSMSV1R1.Models.StudentRelative
+
+@{
+    ViewData["Title"] = "Edit Student Relatives";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    var id = ViewBag.ID;
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="recno" />
+                <input type="hidden" asp-for="id" />
+                <div class="row">
+                    <div class="form-group col-sm-3 required">
+                        <label asp-for="fullname" class="control-label"></label>
+                        <input asp-for="fullname" class="form-control input-text-sm" required="required" />
+                        <span asp-validation-for="fullname" class="text-danger  input-text-sm"></span>
+                    </div>
+                    <div class="form-group col-sm-3 required">
+                        <label asp-for="relation" class="control-label"></label>
+                        <input asp-for="relation" class="form-control input-text-sm" required="required" />
+                        <span asp-validation-for="relation" class="text-danger  input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-6 required">
+                        <label asp-for="address" class="control-label"></label>
+                        <input asp-for="address" class="form-control input-text-sm" required="required" />
+                        <span asp-validation-for="address" class="text-danger input-text-sm"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="occupation" class="control-label"></label>
+                        <input asp-for="occupation" class="form-control input-text-sm" />
+                        <span asp-validation-for="occupation" class="text-danger input-text-sm"></span>
+                    </div>
+                    <div class="form-group col-sm-3 required">
+                        <label asp-for="phonenumber" class="control-label"></label>
+                        <input asp-for="phonenumber" class="form-control input-text-sm" required="required" />
+                        <span asp-validation-for="phonenumber" class="text-danger  input-text-sm"></span>
+                    </div>
+                    <div class="form-group col-sm-3 required">
+                        <label asp-for="email" class="control-label"></label>
+                        <input type="email" asp-for="email" class="form-control input-text-sm" />
+                        <span asp-validation-for="email" class="text-danger  input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-warning  button-small" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Delete" asp-route-recno="@Model.recno" asp-route-id="@Model.id" class="btn btn-danger button-small" disable>Delete</a>
+                <a asp-action="Index" class="btn btn-primary button-small" asp-route-id="@Model.id">Cancel</a>
+            </div>
+        </div>
+    </div>
+
+</div>

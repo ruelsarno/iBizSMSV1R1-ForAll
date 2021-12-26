@@ -1,0 +1,83 @@
+﻿@model iBizSMSV1R1.Models.WebPageContact
+
+@{
+    ViewData["Title"] = "Add Contact";
+    Layout = "~/Views/Shared/_LayoutWebpage.cshtml";
+}
+
+<div class="container">
+    <h6 id="module-views" class="container">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger input-text"></div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="fullname" class="control-label"></label>
+                        <input asp-for="fullname" class="form-control input-text" />
+                        <span asp-validation-for="fullname" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-9">
+                        <label asp-for="address" class="control-label"></label>
+                        <input asp-for="address" class="form-control input-text" />
+                        <span asp-validation-for="address" class="text-danger input-text"></span>
+                    </div>
+                   
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="cellphoneno" class="control-label"></label>
+                        <input asp-for="cellphoneno" class="form-control input-text" />
+                        <span asp-validation-for="cellphoneno" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3">
+                        <label asp-for="landlineno" class="control-label"></label>
+                        <input asp-for="landlineno" class="form-control input-text" />
+                        <span asp-validation-for="landlineno" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3">
+                        <label asp-for="emailadd" class="control-label"></label>
+                        <input asp-for="emailadd" class="form-control input-text" />
+                        <span asp-validation-for="emailadd" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3">
+                        <label asp-for="website" class="control-label"></label>
+                        <input asp-for="website" class="form-control  input-text" input-text />
+                        <span asp-validation-for="website" class="text-danger input-text"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="longitude" class="control-label"></label>
+                        <input asp-for="longitude" class="form-control  input-text" input-text />
+                        <span asp-validation-for="longitude" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3">
+                        <label asp-for="latitude" class="control-label"></label>
+                        <input asp-for="latitude" class="form-control  input-text" input-text />
+                        <span asp-validation-for="latitude" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3">
+                        
+                    </div>
+                    <div class="form-group  col-sm-3">
+                        
+                    </div>
+                </div>               
+                <div class="form-group">
+                    <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                </div>
+
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

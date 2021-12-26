@@ -1,0 +1,61 @@
+﻿
+@*<div class="modal fade" id="UploadImageModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content rounded-0 border-0 p-4">
+            <div class="modal-header border-0">
+                <h4>Upload/Change Picture</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="account" asp-controller="AdminStudentImages" asp-action="UploadImage" method="post" class="row" enctype="multipart/form-data">
+                    <div class="col-12">
+                        <input type="file" id="files" class="input-text" name="files" multiple="multiple">
+                    </div>
+                    <hr />
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+
+
+<!-- The Modal -->
+<div class="modal fade" id="UploadImageModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Upload/Change Picture</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="login">
+                    <form id="account" asp-controller="AdminStudentImages" asp-action="UploadImage" method="post" class="row" enctype="multipart/form-data">
+                        <div class="col-12">
+                            <input type="file" id="files" class="input-text" name="files" multiple="multiple">
+                        </div>
+                        <hr />
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer bg-success">
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>

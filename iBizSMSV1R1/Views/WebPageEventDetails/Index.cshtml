@@ -1,0 +1,76 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.WebPageEventDetail>
+
+@{
+    ViewData["Title"] = "Event Details";
+    Layout = "~/Views/Shared/_LayoutWebPage.cshtml";
+    var recno = ViewBag.RecNo;
+    var eventtitle = ViewBag.EventTitle;
+    var base64 = "";
+    var imgSrc = "";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"] of <u>@eventtitle</u></span>
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-small" asp-controller="WebPageEventDetails" asp-action="Create" asp-route-recno="@recno" asp-route-eventtitle="@eventtitle">Add New</a>
+            <a class="btn btn-primary button-small" asp-controller="WebPageEvents" asp-action="Index">Back to Events List</a>
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.recno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.speakername)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.eventdate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.venue)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.imagedetails)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.recno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.speakername)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.eventdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.venue)
+                </td>
+                <td>
+                    @if (item.imagedetails != null)
+                    {
+                        base64 = Convert.ToBase64String(item.imagedetails);
+                        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        <img class="thumbnail" src="@imgSrc" style="height:50px;width:50px" />
+                    }
+                </td>
+                <td>
+                    <a class="btn btn-warning button-small" asp-action="Edit" asp-route-id="@item.recordno" asp-route-recno="@item.recno" asp-route-eventtitle="@eventtitle">Edit</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

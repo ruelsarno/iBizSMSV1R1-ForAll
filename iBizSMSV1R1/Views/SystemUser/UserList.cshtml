@@ -1,0 +1,233 @@
+﻿@*@model IEnumerable<iBizSMSV1R1.ViewModels.SystemUser>*@
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<iBizSMSV1R1.Data.ApplicationUser> SignInManager
+@inject UserManager<iBizSMSV1R1.Data.ApplicationUser> UserManager
+
+@model ReflectionIT.Mvc.Paging.PagingList<iBizSMSV1R1.ViewModels.SystemUser>
+@using ReflectionIT.Mvc.Paging
+@addTagHelper *, ReflectionIT.Mvc.Paging
+@{
+    ViewData["Title"] = "User Accounts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var pagedivider = 50;
+    var pageno = ViewBag.Page;
+    var pagemin = 1;
+    var recordcount = ViewBag.RecordCount;
+    var remainder = recordcount % pagedivider;
+    var pagemax = (recordcount / pagedivider) + remainder;
+    var pagenext = pagemax;
+    var pageprev = 1;
+
+    if (pageno == pagemax)
+    {
+        pagenext = pagemax;
+    }
+    else
+    {
+        pagenext = ViewBag.Page + 1; ;
+    }
+
+    if (pageno == pagemin)
+    {
+        pageprev = pagemin;
+    }
+    else
+    {
+        pageprev = ViewBag.Page - 1; ;
+    }
+    int pagecount = 0;
+
+    var message = ViewBag.Message;
+}
+<div class="container">
+    @{
+        if (@message != null)
+        {
+            if (@message != "")
+            {
+                <div class="alert alert-info alert-dismissible fade show">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>MESSAGE!!! </strong> "@message"
+                </div>
+            }
+        }
+    }
+</div>
+
+@{
+    ViewData["Title"] = "User Accounts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h6 id="headers" class="container Headers-Reverse">@ViewData["Title"]</h6>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">          
+            @*<a class="btn btn-primary button-small" asp-area="Identity" asp-page="/Account/RegisterAdmin">Register New User</a>*@
+            <a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block btn btn-primary button-small" href="#" data-toggle="modal" data-target="#signupModal">Register New User</a>
+        </div>
+        <div class="col-sm-4 text-center">         
+            <form controller="SystemUser" action="UserList">  
+                <div class="row">     
+                    <div class="col-sm-5">
+
+                    </div>
+                    <div class="col-sm-2">
+                        <label class="control-label" for="record10"> 10 </label>
+                        <input type="radio" id="record10" name="search_data" value="10">
+                    </div>
+                    <div class="col-sm-2">
+                        <label class="control-label" for="record20"> 20 </label>
+                        <input type="radio" id="record20" name="search_data" value="20">
+                    </div>
+                    <div class="col-sm-2">                      
+                        <input type="submit" class="btn btn-warning button-small" value="Show Last">
+                    </div>   
+                    <div class="col-sm-1">
+
+                    </div>
+                </div> 
+            </form>
+        </div>
+        <div class="col-sm-4  text-end">
+            <form asp-controller="SystemUser" asp-action="UserList" method="get">
+                <div class="row">
+                    <div class="col-sm-8 text-end">
+                        <input id="search_data" name="search_data" class="form-control input-text" placeholder="Enter Username or E-Mail" /> 
+                    </div>
+                    <div class="col-sm-4 text-left">
+                        <input type="submit" value="Show Records" class="btn  btn-primary button-small" style="padding-left:15px;padding-right:15px">
+                    </div>                   
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-6">
+
+        </div>
+        <div class="col-sm-6">
+
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CardId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailConfirmed)
+                </th>
+                <th colspan="4" class="text-center">Actions</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CardId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailConfirmed)
+                </td>
+                <td>
+                    <a asp-action="EditUser" asp-route-id="@item.Id" asp-route-username="@item.UserName" asp-route-email="@item.Email" asp-route-phonenumber="@item.PhoneNumber" asp-route-idno="@item.IdNo" asp-route-name="@item.Name" asp-route-cardid="@item.CardId" asp-route-EmailConfirmed="@item.EmailConfirmed" asp-route-search_data="@ViewBag.SearchData" class="btn btn-warning button-small"> Edit Account </a>
+                </td>
+                <td>
+                    <a asp-action="AddRoleToUser" asp-route-id="@item.Id" asp-route-username="@item.UserName" asp-route-email="@item.Email" asp-route-phonenumber="@item.PhoneNumber" asp-route-idno="@item.IdNo" asp-route-name="@item.Name" asp-route-cardid="@item.CardId"  asp-route-EmailConfirmed="@item.EmailConfirmed" asp-route-search_data="@ViewBag.SearchData" class="btn btn-primary button-small"> Add/View Roles </a>
+                </td>
+                <td>
+                    <a asp-action="RemoveRoleToUser" asp-route-id="@item.Id" asp-route-username="@item.UserName" asp-route-email="@item.Email" asp-route-phonenumber="@item.PhoneNumber" asp-route-idno="@item.IdNo" asp-route-name="@item.Name" asp-route-cardid="@item.CardId"  asp-route-EmailConfirmed="@item.EmailConfirmed" asp-route-search_data="@ViewBag.SearchData" class="btn btn-info button-small"> Remove/View Role </a>
+                </td>
+                <td>
+                    <a asp-controller="SystemUser" asp-action="ResetUserPassword" asp-route-id="@item.Id" asp-route-username="@item.UserName" asp-route-email="@item.Email" asp-route-phonenumber="@item.PhoneNumber" asp-route-idno="@item.IdNo" asp-route-name="@item.Name" asp-route-cardid="@item.CardId"  asp-route-EmailConfirmed="@item.EmailConfirmed" asp-route-search_data="@ViewBag.SearchData" class="btn btn-warning button-small"> Reset Password </a>
+                </td>
+                <td>
+                    <a asp-controller="SystemUser" asp-action="DeleteUser" asp-route-id="@item.Id" asp-route-username="@item.UserName" asp-route-email="@item.Email" asp-route-phonenumber="@item.PhoneNumber" asp-route-idno="@item.IdNo" asp-route-name="@item.Name" asp-route-cardid="@item.CardId"  asp-route-EmailConfirmed="@item.EmailConfirmed" asp-route-search_data="@ViewBag.SearchData" class="btn btn-danger button-small"> DELETE User </a>
+                </td>
+                <td>
+                    <a asp-controller="SystemUser" asp-action="ManageUserClaims" asp-route-id="@item.Id" asp-route-username="@item.UserName" asp-route-email="@item.Email" asp-route-phonenumber="@item.PhoneNumber" asp-route-idno="@item.IdNo" asp-route-name="@item.Name" asp-route-cardid="@item.CardId"  asp-route-EmailConfirmed="@item.EmailConfirmed" asp-route-search_data="@ViewBag.SearchData" class="btn btn-danger button-small"> Manage Claims </a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    @if (User.IsInRole("Admin"))
+    {
+        <div>
+            <ul class="pagination" style="margin-top:10px">
+                <li id="nav-first" class="page-item"><a class="page-link" href="~/SystemUser/UserList?page=@pagemin&pagedivider=@pagedivider&search_data=@ViewBag.search_data">First</a></li>
+                <li id="nav-previous" class="page-item"><a class="page-link" href="~/SystemUser/UserList?page=@pageprev&pagedivider=@pagedivider&search_data=@ViewBag.search_data">Previous</a></li>
+
+
+                @{
+                    pagecount = recordcount / pagedivider;
+                    if (remainder > 0)
+                    {
+                        pagecount = pagecount + 1;
+                    }
+
+                    for (int i = 1; 0 < pagecount; i++)
+                    {
+                        <li class="page-item"><a class="page-link" href="~/SystemUser/UserList?page=@i&pagedivider=@pagedivider&search_data=@ViewBag.search_data">@i</a></li>
+                        pagecount--;
+                    }
+                }
+                <li id="nav-Next" class="page-item"><a class="page-link" href="~/SystemUser/UserList?page=@pagenext&pagedivider=@pagedivider&search_data=@ViewBag.search_data">Next</a></li>
+                <li id="nav-last" class="page-item"><a class="page-link" href="~/SystemUser/UserList?page=@pagemax&pagedivider=@pagedivider&search_data=@ViewBag.search_data">Last</a></li>
+            </ul>
+        </div>
+
+    }
+}
+
+
+<partial name="_SignUpModalAdmin" />

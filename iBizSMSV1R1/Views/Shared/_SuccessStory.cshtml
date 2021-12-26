@@ -1,0 +1,54 @@
+﻿@using iBizSMSV1R1.Controllers
+
+@{
+    var webpages = HomeController.getWebPageSuccessStory();
+    var counter = 0;
+    var base64 = "";
+    var imgSrc = "";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in webpages)
+        {
+            if (item.image != null)
+            {
+                base64 = Convert.ToBase64String(item.image);
+            }
+            imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+
+
+            <div class="col-sm-7">
+                <div class="bg-white p-5">
+                    <h2 class="section-title"> @Html.Raw(item.subtitle)</h2>
+                    @Html.Raw(item.paragraph1)                  
+                </div>
+            </div>
+            <div class="col-sm-5 position-relative success-video">
+                <img class="img-fluid w-100 mb-4" src="@imgSrc" alt="about image">
+            </div>
+        }
+    </div>
+</div>
+
+ @*success story 
+<section class="section bg-cover" data-background="images/backgrounds/success-story.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-4 position-relative success-video">
+                <a class="play-btn venobox" href="https://www.youtube.com/watch?v=dutx3FUEa8U&t=99s" data-vbtype="video">
+                    <i class="ti-control-play"></i>
+                </a>
+            </div>
+            <div class="col-lg-6 col-sm-8">
+                <div class="bg-white p-5">
+                    <h2 class="section-title">Success Stories</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ /success story*@ 

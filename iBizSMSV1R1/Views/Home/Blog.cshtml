@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutWebPages.cshtml";
+    var message = ViewBag.Message;
+}
+<!-- page title -->
+<section class="page-title-section overlay" data-background="~/images/backgrounds/page-title.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="list-inline custom-breadcrumb">
+                    <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="@@page-link">Our Blog</a></li>
+                    <li class="list-inline-item text-white h3 font-secondary @@nasted"></li>
+                </ul>
+                <p class="text-lighten">Our courses offer a good compromise between the continuous assessment favoured by some universities and the emphasis placed on final exams by others.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /page title -->
+<!-- blogs -->
+<section class="section">
+    <partial name="_Blogs" />
+</section>
+<!-- /blogs -->
+<!-- footer -->
+<footer>
+    <!-- newsletter -->
+    <partial name="_NewsLetter" />
+    <!-- newsletter end-->
+    <!-- footer content -->
+    <partial name="_FooterContent" />
+    <!-- footer content end-->
+    <!-- copyright -->
+    <partial name="_CopyRight" />
+    <!-- copyright end-->
+</footer>
+<!-- /footer end-->

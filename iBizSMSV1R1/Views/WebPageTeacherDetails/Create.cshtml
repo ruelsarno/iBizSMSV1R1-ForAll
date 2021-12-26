@@ -1,0 +1,61 @@
+﻿@model iBizSMSV1R1.Models.WebPageTeacherDetail
+
+@{
+    ViewData["Title"] = "Add Teacher Details";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";
+    var recno = ViewBag.RecNo;
+    var name = ViewBag.Name;
+}
+
+<div class="container">
+    <h6 id="module-views" class="container">@ViewData["Title"] of <u>@name</u> </h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create"  asp-route-name="@name">
+                <div asp-validation-summary="ModelOnly" class="text-danger input-text"></div>
+                <input type="hidden" asp-for="recno" class="form-control input-text" value="@recno" readonly="readonly" />
+                <div class="row">
+                    <div class="form-group  col-sm-12 required">
+                        <label asp-for="jobdescription" class="control-label"></label>
+                        <textarea asp-for="jobdescription" class="form-control input-text" ></textarea>                        
+                        <span asp-validation-for="jobdescription" class="text-dangerinput-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-12 required">
+                        <label asp-for="biography" class="control-label"></label>
+                        <textarea asp-for="biography" class="form-control input-text"></textarea>
+                        <span asp-validation-for="biography" class="text-dangerinput-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-12 required">
+                        <label asp-for="hobbiesinterest" class="control-label"></label>
+                        <textarea asp-for="hobbiesinterest" class="form-control input-text"></textarea>
+                        <span asp-validation-for="hobbiesinterest" class="text-dangerinput-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-12 required">
+                        <label asp-for="contactinfo" class="control-label"></label>
+                        <textarea asp-for="contactinfo" class="form-control input-text"></textarea>
+                        <span asp-validation-for="contactinfo" class="text-dangerinput-text"></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                </div>
+
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Index" asp-route-name="@name" asp-route-recno="@recno" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

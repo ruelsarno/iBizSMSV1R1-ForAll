@@ -1,0 +1,117 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.StudentInfo>
+
+
+@{
+    ViewData["Title"] = "Student Profile";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";    
+    var message = ViewBag.Message;
+    var id = ViewBag.ID;
+}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <partial name="_StudentProfileMenu" />
+            </div>
+            <div class="col-sm-12">
+                <partial name="_MessageAlert" />
+            </div>
+        </div>
+    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h6>@ViewData["Title"]</h6>            
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-medium" asp-controller="StudentInfoes" asp-action="Create" asp-route-id="@id">Add Basic Info</a>
+        </div>
+
+    </div>
+</div>
+
+<hr />
+
+<div class="Form-Body">
+    @if (Model == null)
+    { 
+        <p>Please enter your information here! Click "ADD NEW" to continue.</p>
+    }
+    @foreach (var item in Model)
+    {
+    <div class="row">
+        <div class="form-group col-sm-2">
+            <label class="control-label">ID No.</label>
+            <input class="form-control input-text" value="@item.idno" style="height:38px" placeholder="Optional" />
+        </div>
+        <div class="form-group  col-sm-2">
+            <label class="control-label">LRN</label>
+            <input class="form-control input-text" value="@item.lrn" style="height:38px" />
+
+        </div>
+        <div class="form-group  col-sm-3">
+            <label class="control-label">Surname</label>
+            <input class="form-control input-text" value="@item.surname" style="height:38px" />
+
+        </div>
+        <div class="form-group  col-sm-3">
+            <label class="control-label">Firstname</label>
+            <input class="form-control input-text" value="@item.firstname" style="height:38px" />
+        </div>
+        <div class="form-group  col-sm-2">
+            <label class="control-label">Middle Name</label>
+            <input class="form-control input-text" value="@item.middlename" style="height:38px" />
+        </div>
+    </div>
+        <div class="row">
+            <div class="form-group col-sm-3">
+                <label class="control-label">Extension</label>
+                <input class="form-control input-text" value="@item.extension" style="height:38px" />
+            </div>
+            <div class="form-group  col-sm-3">
+                <label class="control-label">Birthday</label>
+                <input class="form-control input-text" value="@item.birthday" style="height:38px" />
+
+            </div>
+            <div class="form-group  col-sm-3">
+                <label class="control-label">Birthplace</label>
+                <input class="form-control input-text" value="@item.birthplace" style="height:38px" />
+            </div>
+            <div class="form-group  col-sm-3">
+                <label class="control-label">Nationality</label>
+                <input class="form-control input-text" value="@item.nationality" style="height:38px" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-3">
+                <label class="control-label">Civil Status</label>
+                <input class="form-control input-text" value="@item.civilstatus" style="height:38px" />
+            </div>
+            <div class="form-group  col-sm-3">
+                <label class="control-label">Gender</label>
+                <input class="form-control input-text" value="@item.gender" style="height:38px" />
+
+            </div>
+            <div class="form-group  col-sm-3">
+                <label class="control-label">Active</label>
+                <input type="checkbox" class="form-control form-check-input input-text" value="@item.active" style="height:38px" />
+            </div>
+            <div class="form-group  col-sm-3">
+              
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3  form-group">
+                
+            </div>
+            <div class="col-sm-9 form-group text-end">
+                <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-warning button-small">Edit</a>
+                @*<a class="btn btn-primary button-small" asp-controller="People" asp-action="Index" asp-route-idno="@item.idno">201</a> |*@
+            </div>
+        </div>
+
+        break;
+    }
+</div>
+

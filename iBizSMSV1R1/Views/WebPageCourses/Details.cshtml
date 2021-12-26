@@ -1,0 +1,61 @@
+﻿@model iBizSMSV1R1.Models.WebPageCourse
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutWebPages.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>WebPageCourse</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tagline)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tagline)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.category)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.coursetitle)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.coursetitle)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.controller)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.controller)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.action)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.action)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.recno">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

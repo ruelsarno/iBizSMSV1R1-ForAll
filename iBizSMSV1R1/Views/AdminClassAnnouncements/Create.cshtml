@@ -1,0 +1,111 @@
+﻿@model iBizSMSV1R1.ModelsClassroom.ClassAnnouncement
+
+@{
+    ViewData["Title"] = "ADd Class Announcement";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";
+    <script>       
+
+        $(document).ready(function () {
+            $("#SubjectCode").change(function () {
+                var strSubjectCode = $("#SubjectCode").val();
+                if ($("#SubjectCode").val() != "Select") {
+                    var Options = {};
+                    Options.url = "/AdminClassAnnouncements/getSubjectName?subjectcode=" + strSubjectCode;
+                    Options.type = "POST";
+                    Options.data = JSON.stringify({});
+                    Options.datatype = "json";
+                    Options.contentType = "application/json";
+                    Options.success = function (result) {
+                        $("#SubjectName").empty();
+                        for (var i = 0; i < result.length; i++) {
+                            $("#SubjectName").append("<option>" + result[i] + "</option>");
+                        }
+                    };
+                    $.ajax(Options);
+                }
+                else {
+                    $("#SubjectName").empty();
+                }
+            });
+        });
+    </script>
+}
+
+<div class="container">
+    <h6 id="module-views" class="container">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger input-text"></div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="schoolyear" class="control-label"></label>
+                        <select asp-for="schoolyear" asp-items="@ViewBag.SchoolYear" class="form-control input-text">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="schoolyear" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="subjectcode" class="control-label"></label>
+                        <select asp-for="subjectcode" asp-items="@ViewBag.SubjectCode" class="form-control input-text" id="SubjectCode">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="subjectcode" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="subjectname" class="control-label"></label>
+                        <select asp-for="subjectname" asp-items="@ViewBag.SubjectName" class="form-control input-text" id="SubjectName">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="subjectname" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="proctor" class="control-label"></label>
+                        <select asp-for="proctor" asp-items="@ViewBag.Teacher" class="form-control input-text" id="Teacher">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="proctor" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="announcementtitle" class="control-label"></label>
+                        <input asp-for="announcementtitle" class="form-control input-text" />
+                        <span asp-validation-for="announcementtitle" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="datestart" class="control-label"></label>
+                        <input asp-for="datestart" class="form-control input-text" />
+                        <span asp-validation-for="datestart" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="dateend" class="control-label"></label>
+                        <input asp-for="dateend" class="form-control input-text" />
+                        <span asp-validation-for="dateend" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="imagedata" class="control-label"></label>
+                        <input type="file" id="files" asp-for="imagedata" class="input-text" name="files" multiple>
+                        <span asp-validation-for="imagedata" class="text-danger"></span>
+                    </div>                    
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-12 required">
+                        <label asp-for="description" class="control-label"></label>
+                        <textarea asp-for="description" class="form-control input-text"></textarea>
+                        <span asp-validation-for="description" class="text-danger input-text"></span>
+                    </div>                   
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+

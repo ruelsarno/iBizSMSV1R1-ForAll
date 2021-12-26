@@ -1,0 +1,164 @@
+﻿@model iBizSMSV1R1.Models.Reservation
+
+@{
+    ViewData["Title"] = "Add Reservation";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    var id = ViewBag.ID;
+    <script>
+
+
+        $(document).ready(function () {
+            $("#StudentLevel").change(function () {
+                var strStudentLevel = $("#StudentLevel").val();
+                if ($("#StudentLevel").val() != "Select") {
+                    var Options = {};
+                    Options.url = "/Reservations/getGradeYear?studentlevel=" + strStudentLevel;
+                    Options.type = "POST";
+                    Options.data = JSON.stringify({});
+                    Options.datatype = "json";
+                    Options.contentType = "application/json";
+                    Options.success = function (result) {
+                        $("#GradeYear").empty();
+                        for (var i = 0; i < result.length; i++) {
+                            $("#GradeYear").append("<option>" + result[i] + "</option>");
+
+                        }
+                    };
+                    $.ajax(Options);
+                }
+                else {
+                    $("#GradeYear").empty();
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $("#GradeYear").change(function () {
+                var strStudentLevel = $("#StudentLevel").val();
+                if ($("#StudentLevel").val() != "Select") {
+                    var Options = {};
+                    Options.url = "/Reservations/geTrackCode?studentlevel=" + strStudentLevel;
+                    Options.type = "POST";
+                    Options.data = JSON.stringify({});
+                    Options.datatype = "json";
+                    Options.contentType = "application/json";
+                    Options.success = function (result) {
+                        $("#TrackCode").empty();
+                        for (var i = 0; i < result.length; i++) {
+                            $("#TrackCode").append("<option>" + result[i] + "</option>");
+
+                        }
+                    };
+                    $.ajax(Options);
+                }
+                else {
+                    $("#TrackCode").empty();
+                }
+            });
+        });
+
+
+    </script>
+}
+
+<div class="container">
+    <h6 id="module-views" class="container">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger input-text-sm"></div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="studenttype" class="control-label"></label>
+                        <input asp-for="studenttype" class="form-control input-text-sm" />
+                        <span asp-validation-for="studenttype" class="text-danger input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="datereserve" class="control-label"></label>
+                        <input asp-for="datereserve" class="form-control input-text-sm" />
+                        <span asp-validation-for="datereserve" class="text-danger input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="idno" class="control-label"></label>
+                        <input asp-for="idno" class="form-control input-text-sm" />
+                        <span asp-validation-for="idno" class="text-danger input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="schoolyear" class="control-label"></label>
+                        <select asp-for="schoolyear" asp-items="@ViewBag.SchoolYear" class="form-control input-text-sm">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="schoolyear" class="text-danger input-text-sm"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="studentlevel" class="control-label"></label>
+                        <select asp-for="studentlevel" asp-items="@ViewBag.StudentLevel" class="form-control input-text-sm" id="StudentLevel">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="studentlevel" class="text-danger input-text-sm"></span>
+                    </div>
+                    <div class="form-group col-sm-3 required">
+                        <label asp-for="gradeyear" class="control-label"></label>
+                        @*<select asp-for="gradeyear" class="form-control input-text-sm" id="GradeYear"></select>*@
+                        <select asp-for="gradeyear" asp-items="@ViewBag.GradeYear" class="form-control input-text-sm" id="GradeYear">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="gradeyear" class="text-danger  input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="trackcode" class="control-label"></label>
+                        @*<select asp-for="trackcode" class="form-control input-text-sm" id="TrackCode"></select>*@
+                        <select asp-for="trackcode" asp-items="@ViewBag.TrackCode" class="form-control input-text-sm" id="TrackCode">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="trackcode" class="text-danger input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="schoollastattended" class="control-label"></label>
+                        <input asp-for="schoollastattended" class="form-control input-text-sm" />
+                        <span asp-validation-for="schoollastattended" class="text-danger input-text-sm"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="schooltype" class="control-label"></label>
+                        <select asp-for="schooltype" asp-items="@ViewBag.SchoolType" class="form-control input-text-sm" id="TrackCode">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="schooltype" class="text-danger input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="paymentstatus" class="control-label"></label>
+                        <select asp-for="paymentstatus" asp-items="@ViewBag.PaymentStatus" class="form-control input-text-sm" required="required">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="paymentstatus" class="text-danger input-text-sm"></span>
+                    </div>
+                    <div class="col-sm-3 form-group form-check">
+                        <label asp-for="confirm" class="control-label"></label>
+                        <input asp-for="confirm" class="form-control form-check-input input-text-sm" required="required" />
+                        <span asp-validation-for="confirm" class="text-danger input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="confirmedby" class="control-label"></label>
+                        <input asp-for="confirmedby" class="form-control input-text-sm" value="@ViewBag.LoginID" required="required" readonly="readonly" />
+                        <span asp-validation-for="confirmedby" class="text-danger input-text-sm required"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Index" class="btn btn-primary button-small" asp-route-id="@Model.id">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

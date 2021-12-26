@@ -1,0 +1,86 @@
+﻿@model iBizSMSV1R1.Models.BillToPay
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>BillToPay</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="referenceno" class="control-label"></label>
+                <input asp-for="referenceno" class="form-control" />
+                <span asp-validation-for="referenceno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="schoolyear" class="control-label"></label>
+                <input asp-for="schoolyear" class="form-control" />
+                <span asp-validation-for="schoolyear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="billnames" class="control-label"></label>
+                <input asp-for="billnames" class="form-control" />
+                <span asp-validation-for="billnames" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="billdate" class="control-label"></label>
+                <input asp-for="billdate" class="form-control" />
+                <span asp-validation-for="billdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="amount" class="control-label"></label>
+                <input asp-for="amount" class="form-control" />
+                <span asp-validation-for="amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="duedate" class="control-label"></label>
+                <input asp-for="duedate" class="form-control" />
+                <span asp-validation-for="duedate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="payment" /> @Html.DisplayNameFor(model => model.payment)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="proofofpayment" class="control-label"></label>
+                <input asp-for="proofofpayment" class="form-control" />
+                <span asp-validation-for="proofofpayment" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="confirm" /> @Html.DisplayNameFor(model => model.confirm)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="confirmedby" class="control-label"></label>
+                <input asp-for="confirmedby" class="form-control" />
+                <span asp-validation-for="confirmedby" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="notified" /> @Html.DisplayNameFor(model => model.notified)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

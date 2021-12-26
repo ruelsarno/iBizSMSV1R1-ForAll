@@ -1,0 +1,42 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.SubjectCategory>
+
+@{
+    ViewData["Title"] = "Subject Categories";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-small" asp-controller="AdminSubjectCategories" asp-action="Create">Add New</a>
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.category)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.category)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning button-small" asp-action="Edit" asp-route-id="@item.recno">Edit</a>
+                    </td>                   
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

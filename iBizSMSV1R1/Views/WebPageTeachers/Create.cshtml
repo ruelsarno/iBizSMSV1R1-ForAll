@@ -1,0 +1,79 @@
+﻿@model iBizSMSV1R1.Models.WebPageTeacher
+
+@{
+    ViewData["Title"] = "Add  Teacher info";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";    
+}
+
+<div class="container">
+    <h6 id="module-views" class="container">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="link" class="form-control input-text" />
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="title" class="control-label"></label>
+                        <select asp-for="title" class="form-control input-text">
+                            <option>Teacher</option>
+                        </select>
+                        <spa asp-validation-for="title" class="text-danger input-text"></spa>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="fullname" class="control-label"></label>
+                        <input asp-for="fullname" class="form-control input-text" />
+                        <span asp-validation-for="fullname" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3">
+                        <label asp-for="specialization" class="control-label"></label>
+                        <input asp-for="specialization" class="form-control input-text" />
+                        <span asp-validation-for="specialization" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3">
+                        <label asp-for="tagline" class="control-label"></label>
+                        <input asp-for="tagline" class="form-control input-text" />
+                        <span asp-validation-for="tagline" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="category" class="control-label"></label>
+                        <select asp-for="category" class="form-control input-text">
+                            <option>Faculty Member</option>
+                        </select>
+                        <span asp-validation-for="category" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3">
+                        <label asp-for="image" class="control-label"></label>
+                        <input type="file" id="files" asp-for="image" class="input-text" name="files" multiple>
+                        <span asp-validation-for="image" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        @*<label asp-for="controller" class="control-label"></label>
+                        <input asp-for="controller" class="form-control input-text" />
+                        <span asp-validation-for="controller" class="text-danger input-text"></span>*@
+                    </div>
+                    <div class="form-group  col-sm-3">
+                        @*<label asp-for="action" class="control-label"></label>
+                        <input asp-for="action" class="form-control input-text" />
+                        <span asp-validation-for="action" class="text-danger input-text"></span>*@
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                </div>
+
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

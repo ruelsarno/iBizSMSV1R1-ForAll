@@ -1,0 +1,40 @@
+﻿
+@using iBizSMSV1R1.Controllers
+
+@{
+    var requirement = HomeController.getAdmissionRequirement();
+    var procedure = HomeController.getAdmissionProcedure();
+    var counter = 0;
+    var base64 = "";
+    var imgSrc = "";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12" style="margin-bottom:20px">
+            <h4><u>ADMISSION PREPARATION</u></h4>
+        </div>        
+        <div class="col-sm-6">
+            @foreach (var item in requirement)
+            {
+                <div class="row">
+                    <div class="col-12">
+                        <h6 class="mb-0 text-nowrap mr-3"> @item.title </h6>
+                        <p>@Html.Raw(item.requirement)</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-sm-6">
+            @foreach (var item in procedure)
+            {
+                <div class="row">
+                    <div class="col-12">
+                        <h6 class="mb-0 text-nowrap mr-3"> @item.title </h6>
+                        <p>@Html.Raw(item.procedure)</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>

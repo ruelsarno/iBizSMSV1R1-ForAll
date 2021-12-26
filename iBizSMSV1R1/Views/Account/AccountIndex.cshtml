@@ -1,0 +1,58 @@
+﻿@model iBizSMSV1R1.ViewModels.Profile
+@using iBizSMSV1R1.Controllers.Account
+@{
+    ViewData["Title"] = "How to...";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+    var message = ViewBag.Message;
+    var UserName = ViewBag.UserName;
+  
+    var Profile = AccountController.getProcessIntro("Profile");
+    var Password = AccountController.getProcessIntro("Password");
+    var EMail = AccountController.getProcessIntro("Change EMail");  
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <partial name="_AccountSystemSettings" />
+        </div>
+        <div class="col-sm-12">
+            <h6>@ViewData["Title"]</h6>
+            @{
+                if (@message != null)
+                {
+                    if (@message != "")
+                    {
+                        <span>"@message"</span>
+                    }
+                }
+            }
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" style="background-color:orange;border-radius:5px;box-shadow:inset;margin-bottom:10px;z-index:5;color:white">
+                    @foreach (var item in Profile)
+                    {
+                        <h6>@item.subtitle</h6>
+                        @Html.Raw(item.description)
+                    }
+                </div>
+                <div class="col-sm-12" style="background-color:powderblue;border-radius:5px;box-shadow:inset;margin-bottom:10px;z-index:5;color:dimgray">
+                    @foreach (var item in Password)
+                    {
+                        <h6>@item.subtitle</h6>
+                        @Html.Raw(item.description)
+                    }
+                </div>
+                <div class="col-sm-12" style="background-color:orange;border-radius:5px;box-shadow:inset;margin-bottom:10px;z-index:5;color:white">
+                    @foreach (var item in EMail)
+                    {
+                        <h6>@item.subtitle</h6>
+                        @Html.Raw(item.description)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

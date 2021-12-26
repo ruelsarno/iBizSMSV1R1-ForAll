@@ -1,0 +1,99 @@
+﻿@model iBizSMSV1R1.Models.Reservation
+
+@{
+    ViewData["Title"] = "Cancel Reservation";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    var id = ViewBag.ID;
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"] : </h6>
+</div>
+<hr />
+<span class="remove-item">Are you sure you want to delete this?</span>
+<div class="Form-Body">
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.studenttype)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.studenttype)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.datereserve)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.datereserve)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.idno)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.idno)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.schoolyear)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.schoolyear)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.studentlevel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.studentlevel)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.gradeyear)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.gradeyear)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.trackcode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.trackcode)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.schoollastattended)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.schoollastattended)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.schooltype)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.schooltype)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.paymentstatus)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.paymentstatus)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.confirm)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.confirm)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.confirmedby)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.confirmedby)
+        </dd>
+    </dl>
+
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="idno" />
+        <input type="submit" value="Delete" class="btn btn-danger button-small" /> |
+        <a asp-action="Index" class="btn btn-warning button-small" asp-route-idno="@Model.idno" asp-route-id="@Model.id">Cancel</a>
+    </form>
+</div>

@@ -1,0 +1,53 @@
+﻿
+
+@using iBizSMSV1R1.Controllers
+
+@{
+    var webpages = HomeController.getWebPages("Blogs");
+    var subwebpages = HomeController.getBlogs();
+    var counter = 0;
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in webpages)
+        {
+            <div class="col-12">
+                <h2 class="section-title">@item.tagline</h2>
+            </div>
+        }
+
+    </div>
+    <div class="row justify-content-center">
+        @foreach (var item in subwebpages)
+        {
+            counter++;
+            //var imagename = "post-" + counter.ToString() + ".jpg";
+            <!-- blog post -->
+            <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+                <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+                    <img class="card-img-top rounded-0" src="~/images/blog/@item.link" alt="Post thumb">
+                    <div class="card-body">
+                        <!-- post meta -->
+                        <ul class="list-inline mb-3">
+                            <!-- post date -->
+                            <li class="list-inline-item mr-3 ml-0">@item.postdate</li>
+                            <!-- author -->
+                            <li class="list-inline-item mr-3 ml-0">By @item.author</li>
+                        </ul>
+                        <a href="blog-single.html">
+                            <h4 class="card-title">@item.tagline</h4>
+                        </a>
+                        <p class="card-text">@Html.Raw(item.description)</p>
+                        <a asp-controller="@item.controller" asp-action="@item.action" class="btn btn-primary btn-sm">read more</a>
+                    </div>
+                </div>
+            </article>
+            <!-- blog post -->
+            if (counter == 3)
+            {
+                break;
+            }
+        }       
+    </div>
+</div>

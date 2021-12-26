@@ -1,0 +1,110 @@
+﻿@model iBizSMSV1R1.Models.StudentInfo
+
+@{
+    ViewData["Title"] = "Edit Student Information";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    var idno = ViewBag.IDNO;
+    var id = ViewBag.ID;    
+
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Edit" asp-route-id="@Model.id">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="id" />
+                <div class="row">
+                    <div class="form-group col-sm-2 required">
+                        <label asp-for="idno" class="control-label"></label>
+                        <input asp-for="idno" class="form-control input-text-sm"/>
+                        <span asp-validation-for="idno" class="text-danger  input-text-sm"></span>
+                    </div>
+                    <div class="form-group col-sm-2 required">
+                        <label asp-for="lrn" class="control-label"></label>
+                        <input asp-for="lrn" class="form-control input-text-sm"/>
+                        <span asp-validation-for="lrn" class="text-danger  input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="surname" class="control-label"></label>
+                        <input asp-for="surname" class="form-control input-text-sm" required="required" />
+                        <span asp-validation-for="surname" class="text-danger input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="firstname" class="control-label"></label>
+                        <input asp-for="firstname" class="form-control input-text-sm" required="required" />
+                        <span asp-validation-for="firstname" class="text-danger input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-2 required">
+                        <label asp-for="middlename" class="control-label"></label>
+                        <input asp-for="middlename" class="form-control input-text-sm" required="required" />
+                        <span asp-validation-for="middlename" class="text-danger input-text-sm"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-3 required">
+                        <label asp-for="extension" class="control-label"></label>
+                        <input asp-for="extension" class="form-control input-text-sm" />
+                        <span asp-validation-for="extension" class="text-danger  input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="birthday" class="control-label"></label>
+                        <input asp-for="birthday" class="form-control input-text-sm" required="required" />
+                        <span asp-validation-for="birthday" class="text-danger input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="birthplace" class="control-label"></label>
+                        <input asp-for="birthplace" class="form-control input-text-sm" required="required" />
+                        <span asp-validation-for="birthplace" class="text-danger input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="nationality" class="control-label"></label>
+                        <select asp-for="nationality" asp-items="@ViewBag.Nationality" class="form-control input-text-sm">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="nationality" class="text-danger input-text-sm"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-3 required">
+                        <label asp-for="civilstatus" class="control-label"></label>
+                        <select asp-for="civilstatus" asp-items="@ViewBag.CivilStatus" class="form-control input-text-sm" id="TrackCode">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="civilstatus" class="text-danger  input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="gender" class="control-label"></label>
+                        <select asp-for="gender" asp-items="@ViewBag.Gender" class="form-control input-text-sm" id="TrackCode">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="gender" class="text-danger input-text-sm"></span>
+                    </div>
+                    <div class="col-sm-3 form-group form-check">
+                        <label asp-for="active" class="control-label"></label><br />                       
+                        <input type="checkbox" asp-for="active" />
+                        <span asp-validation-for="active" class="text-danger input-text-sm"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-warning  button-small" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Delete" asp-route-idno="@Model.idno"  asp-route-id="@Model.id" class="btn btn-danger button-small" disable>Delete</a>
+                <a asp-action="Index" class="btn btn-primary button-small" asp-route-idno="@Model.idno" asp-route-id="@Model.id">Cancel</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+

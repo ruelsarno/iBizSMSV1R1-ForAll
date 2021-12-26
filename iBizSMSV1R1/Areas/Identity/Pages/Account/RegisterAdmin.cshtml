@@ -1,0 +1,53 @@
+﻿@page
+@model RegisterModelAdmin
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";  
+}
+
+@*<h1>@ViewData["Title"]</h1>*@
+
+<div class="row">
+    <div class="col-sm-4" >
+        <section>
+        </section>
+    </div>
+    <div class="col-sm-4 " style="border-radius:10px;background-color:cadetblue;margin:20px;padding:10px;z-index:5;color:whitesmoke">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h4>Create a new account.</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.UserName" class="control-label"></label>
+                <input asp-for="Input.UserName" class="form-control input-text" />
+                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Email" class="control-label"></label>
+                <input asp-for="Input.Email" class="form-control input-text" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password" class="control-label"></label>
+                <input asp-for="Input.Password" class="form-control input-text" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.ConfirmPassword" class="control-label"></label>
+                <input asp-for="Input.ConfirmPassword" class="form-control input-text" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary input-text">Register</button>
+        </form>
+    </div>
+    <div class="col-sm-4">
+        <section>
+        </section>
+    </div>
+</div>
+
+@*@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}*@
+
+<partial name="_SignUpModal" />

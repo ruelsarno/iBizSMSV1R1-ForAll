@@ -1,0 +1,41 @@
+﻿@model iBizSMSV1R1.ModelsAccounting.FeeDescription
+
+@{
+    ViewData["Title"] = "Add Fee Description";
+    Layout = "~/Views/Shared/_LayoutAccountingAdmin.cshtml";
+}
+
+<div class="container">
+    <h6 id="module-views" class="container">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger input-text"></div>
+                <div class="form-group">
+                    <label asp-for="feecategory" class="control-label"></label>
+                    <select asp-for="feecategory" asp-items="@ViewBag.FeeCategory" class="form-control input-text" id="FeeCategory">
+                        <option></option>
+                    </select>
+                    <span asp-validation-for="feecategory" class="text-danger input-text"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="feename" class="control-label"></label>
+                    <input asp-for="feename" class="form-control input-text" />
+                    <span asp-validation-for="feename" class="text-danger input-text"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                </div>
+
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

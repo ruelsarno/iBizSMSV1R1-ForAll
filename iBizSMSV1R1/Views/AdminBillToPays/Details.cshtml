@@ -1,0 +1,91 @@
+﻿@model iBizSMSV1R1.Models.BillToPay
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>BillToPay</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.referenceno)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.referenceno)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.schoolyear)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.schoolyear)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.billnames)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.billnames)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.billdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.billdate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.amount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.amount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.duedate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.duedate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.payment)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.payment)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.proofofpayment)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.proofofpayment)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.confirm)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.confirm)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.confirmedby)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.confirmedby)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.notified)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.notified)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.recno">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

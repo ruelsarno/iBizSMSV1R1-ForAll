@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutClassroom.cshtml";
+    var message = ViewBag.Message;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <partial name="_ClassroomMenu" />
+        </div>
+        <div class="col-sm-12 text-center">
+            @{
+                if (@message != null)
+                {
+                    if (@message != "")
+                    {
+                        <span>"@message"</span>
+                    }
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+
+

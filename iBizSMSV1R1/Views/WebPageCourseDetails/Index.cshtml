@@ -1,0 +1,81 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.WebPageCourseDetail>
+
+@{
+    ViewData["Title"] = "Course Details";
+    Layout = "~/Views/Shared/_LayoutWebPage.cshtml";
+    var recno = ViewBag.RecNo;
+    var coursetitle = ViewBag.CourseTitle;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"] of <u>@coursetitle</u></span>
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-small" asp-controller="WebPageCourseDetails" asp-action="Create" asp-route-recno="@recno" asp-route-coursetitle="@coursetitle">Add New</a>
+            <a class="btn btn-primary button-small" asp-controller="WebPageCourses" asp-action="Index">Back to Course List</a>
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.recno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.aboutthecourse)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.requirement)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.howtoenroll)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fees)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.image)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.imagelink)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.recno)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.aboutthecourse)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.requirement)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.howtoenroll)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fees)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.image)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.imagelink)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning button-small" asp-action="Edit" asp-route-id="@item.recordno" asp-route-recno="@item.recno" asp-route-coursetitle="@coursetitle">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

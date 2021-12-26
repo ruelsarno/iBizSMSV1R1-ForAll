@@ -1,0 +1,114 @@
+﻿@model iBizSMSV1R1.Models.ClassSchedule
+
+@{
+    ViewData["Title"] = "Edit Class Schedule";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="recno" />
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="schoolyear" class="control-label"></label>
+                        <select asp-for="schoolyear" asp-items="@ViewBag.SchoolYear" class="form-control input-text">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="schoolyear" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="studentgradeyear" class="control-label"></label>
+                        <select asp-for="studentgradeyear" asp-items="@ViewBag.GradeYear" class="form-control input-text" id="GradeYear">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="studentgradeyear" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="section" class="control-label"></label>
+                        <select asp-for="section" asp-items="@ViewBag.Section" class="form-control input-text" id="Section">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="section" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="teacher" class="control-label"></label>
+                        <select asp-for="teacher" asp-items="@ViewBag.Teacher" class="form-control input-text" id="Teacher">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="teacher" class="text-danger input-text"></span>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="subjectcode" class="control-label"></label>
+                        <select asp-for="subjectcode" asp-items="@ViewBag.SubjectCode" class="form-control input-text" id="SubjectCode">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="subjectcode" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="subjectname" class="control-label"></label>
+                        <select asp-for="subjectname" asp-items="@ViewBag.SubjectName" class="form-control input-text" id="SubjectName">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="subjectname" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="weekday" class="control-label"></label>
+                        <select asp-for="weekday" asp-items="@ViewBag.WeekDay" class="form-control input-text" id="weekday">
+                            <option>Monday</option>
+                            <option>Tuesday</option>
+                            <option>Wednesday</option>
+                            <option>Thursday</option>
+                            <option>Friday</option>
+                            <option>Saturday</option>
+                            <option>Sunday</option>
+                        </select>
+                        <span asp-validation-for="weekday" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="roomno" class="control-label"></label>
+                        <input asp-for="roomno" class="form-control input-text" />
+                        <span asp-validation-for="roomno" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="starttime" class="control-label"></label>
+                        <input asp-for="starttime" class="form-control input-text" />
+                        <span asp-validation-for="starttime" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="endtime" class="control-label"></label>
+                        <input asp-for="endtime" class="form-control input-text" />
+                        <span asp-validation-for="endtime" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-warning  button-small" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Delete" asp-route-id="@Model.recno" class="btn btn-danger button-small">Delete</a>
+                <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

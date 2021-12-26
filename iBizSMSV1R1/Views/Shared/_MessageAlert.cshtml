@@ -1,0 +1,16 @@
+﻿
+
+<div class="container">
+    @{
+        if (@ViewBag.Message != null)
+        {
+            if (@ViewBag.Message != "")
+            {
+                <div class="alert alert-info alert-dismissible fade show">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>MESSAGE!!! </strong> "@ViewBag.Message"
+                </div>
+            }
+        }
+    }
+</div>

@@ -1,0 +1,53 @@
+﻿@model iBizSMSV1R1.ViewModels.LoginModel
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutWebpages.cshtml";
+    var message = ViewBag.Message;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <h4 class="Header-Main"><u>ANNOUNCEMENT HERE!</u></h4>
+        </div>
+        <div class="col-sm-4">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title"> Login </h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="login">
+                            <form id="account" asp-controller="Home" asp-action="Login" method="post" class="row">
+                                <div class="col-12">
+                                    <input type="email" class="form-control mb-3" id="loginName" name="UserName" placeholder="Name" value="">
+                                </div>
+                                <div class="col-12">
+                                    <input type="password" id="loginPassword" class="form-control mb-3" name="Password" placeholder="Password" value="">
+                                    <input type="checkbox" onclick="myLoginFunction()">  Show Password
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary input-text">LOGIN</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer bg-success">
+                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/site.js" asp-append-version="true"></script>

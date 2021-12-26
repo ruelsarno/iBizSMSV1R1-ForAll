@@ -1,0 +1,56 @@
+﻿@model iBizSMSV1R1.Models.Payment
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Payment</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.referenceno)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.referenceno)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.paymentdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.paymentdate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.paymenttypes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.paymenttypes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.paymentoffices)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.paymentoffices)
+        </dd>
+        
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.amountpaid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.amountpaid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.paymentpostdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.paymentpostdate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.recno">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

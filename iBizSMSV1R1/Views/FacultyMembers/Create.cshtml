@@ -1,0 +1,71 @@
+﻿@model iBizSMSV1R1.Models.WebPageTeacher
+
+@{
+    ViewData["Title"] = "Add Faculty Member";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>WebPageTeacher</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="title" class="control-label"></label>
+                <input asp-for="title" class="form-control" />
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tagline" class="control-label"></label>
+                <input asp-for="tagline" class="form-control" />
+                <span asp-validation-for="tagline" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="category" class="control-label"></label>
+                <input asp-for="category" class="form-control" />
+                <span asp-validation-for="category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="specialization" class="control-label"></label>
+                <input asp-for="specialization" class="form-control" />
+                <span asp-validation-for="specialization" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fullname" class="control-label"></label>
+                <input asp-for="fullname" class="form-control" />
+                <span asp-validation-for="fullname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="controller" class="control-label"></label>
+                <input asp-for="controller" class="form-control" />
+                <span asp-validation-for="controller" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="action" class="control-label"></label>
+                <input asp-for="action" class="form-control" />
+                <span asp-validation-for="action" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="image" class="control-label"></label>
+                <input asp-for="image" class="form-control" />
+                <span asp-validation-for="image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="link" class="control-label"></label>
+                <input asp-for="link" class="form-control" />
+                <span asp-validation-for="link" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

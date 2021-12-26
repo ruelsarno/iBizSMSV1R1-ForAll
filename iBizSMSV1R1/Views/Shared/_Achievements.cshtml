@@ -1,0 +1,108 @@
+﻿
+@using iBizSMSV1R1.Controllers
+
+@{
+    var achievements = HomeController.getAchievements();   
+    var counter = 0;
+    var base64 = "";
+    var imgSrc = "";
+}
+<div class="container">
+    @foreach (var item in achievements)
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex align-items-center section-title justify-content-between">
+                    <h2 class="mb-0 text-nowrap mr-3">Our @item.title</h2>
+                    <div class="border-top w-100 border-primary d-none d-sm-block"></div>
+                    <div>
+                        <a asp-controller="@item.controller" asp-action="@item.action" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">See All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        break;
+    }
+
+    <!-- course list -->
+    <div class="row justify-content-center">
+
+        @*<div class="col-sm-12">
+            <h2>Our Achievements</h2>
+        </div>*@
+        @foreach (var item in achievements)
+        {
+            counter++;
+            
+            if(counter == 1)
+            {
+            base64 = Convert.ToBase64String(item.image);
+            imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+            <div class="col-sm-12 mb-5">
+                <div class="card p-0 border-primary rounded-0 hover-shadow">
+                    <img class="card-img-top rounded-0" src="@imgSrc" alt="course thumb">
+                    <div class="card-body">
+                        <ul class="list-inline mb-2">
+                            <li class="list-inline-item"><i class="@item.icon mr-1 text-color"></i>@item.postdate</li>
+                            <li class="list-inline-item"><a class="text-color" href="#" style="color:dodgerblue">@item.tagline</a></li>
+                            @*<li class="list-inline-item"><a class="text-color" asp-controller="Home" asp-action="CourseDetails" asp-route-recno="@item.recno">@item.coursetitle</a></li>*@
+                        </ul>
+                        <a asp-controller="Home" asp-action="Achievements" asp-route-recno="@item.recno" asp-route-actionroute="@ViewBag.Action">
+                            <h4 class="card-title">@item.achievementname</h4>
+                        </a>
+                        @*<a href="course-single.html">
+                                <h4 class="card-title">@item.tagline</h4>
+                            </a>*@
+                        <p class="card-text mb-4">
+                            @Html.Raw(item.description)
+                        </p>
+                        @*<a asp-controller="@item.controller" asp-action="@item.action" class="btn btn-primary btn-sm">Learn More</a>*@
+                    </div>
+                </div>
+            </div>
+            }
+        else
+        {
+            base64 = Convert.ToBase64String(item.image);
+            imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+            <div class="col-sm-6 mb-5">
+                <div class="card p-0 border-primary rounded-0 hover-shadow">
+                    <img class="card-img-top rounded-0" src="@imgSrc" alt="course thumb">
+                    <div class="card-body">
+                        <ul class="list-inline mb-2">
+                            <li class="list-inline-item"><i class="@item.icon mr-1 text-color"></i>@item.postdate</li>
+                            <li class="list-inline-item"><a class="text-color" href="#" style="color:dodgerblue">@item.tagline</a></li>
+                            @*<li class="list-inline-item"><a class="text-color" asp-controller="Home" asp-action="CourseDetails" asp-route-recno="@item.recno">@item.coursetitle</a></li>*@
+                        </ul>
+                        <a asp-controller="Home" asp-action="Achievements" asp-route-recno="@item.recno" asp-route-actionroute="@ViewBag.Action">
+                            <h4 class="card-title">@item.achievementname</h4>
+                        </a>
+                        @*<a href="course-single.html">
+                                <h4 class="card-title">@item.tagline</h4>
+                            </a>*@
+                        <p class="card-text mb-4">
+                            @Html.Raw(item.description)
+                        </p>
+                        @*<a asp-controller="@item.controller" asp-action="@item.action" class="btn btn-primary btn-sm">Learn More</a>*@
+                    </div>
+                </div>
+            </div>
+        }
+            
+            <!-- course item -->
+            if (counter == 6)
+            {
+                break;
+            }
+        }
+    </div>
+    <!-- /course list -->
+    <!-- mobile see all button -->
+    <div class="row">
+        <div class="col-12 text-center">
+            <a href="courses.html" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">See all</a>
+        </div>
+    </div>
+</div>

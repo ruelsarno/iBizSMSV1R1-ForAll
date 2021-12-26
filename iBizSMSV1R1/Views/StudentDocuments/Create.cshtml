@@ -1,0 +1,55 @@
+﻿@model iBizSMSV1R1.Models.StudentDocument
+
+@{
+    ViewData["Title"] = "Upload New Document";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+    var message = ViewBag.Message;
+    var id = ViewBag.ID;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <partial name="_StudentProfileMenu" />
+        </div>
+        <div class="col-sm-12">
+            <h6>@ViewData["Title"]</h6>           
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="id" class="form-control" />
+                @*<div class="form-group">
+                    <label asp-for="id" class="control-label"></label>
+                    <input asp-for="id" class="form-control" />
+                    <span asp-validation-for="id" class="text-danger"></span>
+                </div>*@
+                <div class="form-group">
+                    <label asp-for="documentname" class="control-label"></label>
+                    <input asp-for="documentname" class="form-control input-text" required />
+                    <span asp-validation-for="documentname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="imagedata" class="control-label"></label>
+                    <input type="file" id="files" asp-for="imagedata" class="input-text" name="files" multiple="multiple">
+                    <span asp-validation-for="imagedata" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3  form-group">
+                        <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                    </div>
+                    <div class="col-sm-9 form-group text-end">
+                        <a asp-action="Index" class="btn btn-primary button-small" asp-route-id="@id">Cancel</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<iBizSMSV1R1.ModelsClassroom.ClassAnnouncement>
+
+@{
+    ViewData["Title"] = "Class Announcement";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-small" asp-controller="AdminClassAnnouncements" asp-action="Create">Add New</a>
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.schoolyear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.subjectcode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.subjectname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.proctor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.announcementtitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.datestart)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.dateend)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.description)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.schoolyear)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.subjectcode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.subjectname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.proctor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.announcementtitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.datestart)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dateend)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.description)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning button-small" asp-action="Edit" asp-route-id="@item.recno">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,187 @@
+﻿@*@model IEnumerable<iBizSMSV1R1.Models.StudentInfo>*@
+@model ReflectionIT.Mvc.Paging.PagingList<iBizSMSV1R1.Models.StudentInfo>
+@using ReflectionIT.Mvc.Paging
+@addTagHelper *, ReflectionIT.Mvc.Paging
+
+@{
+    ViewData["Title"] = "Students";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var SearchString = ViewBag.SearchString;
+    var idno = ViewBag.IdNo;
+    var pagedivider = 20;
+    var pageno = ViewBag.Page;
+    var pagemin = 1;
+    var recordcount = ViewBag.RecordCount;
+    var remainder = recordcount % pagedivider;
+    var pagemax = (recordcount / pagedivider) + remainder;
+    var pagenext = pagemax;
+    var pageprev = 1;
+
+    if (pageno == pagemax)
+    {
+        pagenext = pagemax;
+    }
+    else
+    {
+        pagenext = ViewBag.Page + 1; ;
+    }
+
+    if (pageno == pagemin)
+    {
+        pageprev = pagemin;
+    }
+    else
+    {
+        pageprev = ViewBag.Page - 1; ;
+    }
+    int pagecount = 0;
+
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+            @*CAN'T BE CREATED ON ADMIN MODE DUE ID CREATED IN ASPNETUSERS TABLE'*@
+            @*<a class="btn btn-primary button-medium" asp-controller="AdminStudentInfoes" asp-action="Create">Add New</a>*@
+        </div>
+        <div class="col-sm-4  text-end">
+            <form asp-controller="AdminStudents" asp-action="Index" method="get">
+
+                <div class="row">
+                    <div class="col-sm-6">
+
+                    </div>
+                    <div class="col-sm-2">
+                        <label class="control-label" for="record10"> 10 </label>
+                        <input type="radio" id="record10" name="SearchString" value="10">
+                    </div>
+                    <div class="col-sm-2">
+                        <label class="control-label" for="record20"> 20 </label>
+                        <input type="radio" id="record20" name="SearchString" value="20">
+                    </div>                    
+                    <div class="col-sm-2">
+                        <input type="submit" class="btn btn-warning button-small" value="Show Last">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-4 text-end">
+            <form asp-controller="AdminStudents" asp-action="Index" method="get">
+                <input type="text" name="SearchString" class="input-text-sm" style="border-radius:5px; margin-bottom:2px" />
+                <input type="submit" value="Search" class="btn  btn-primary button-medium" style="padding-left:15px;padding-right:15px">
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.surname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.firstname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.middlename)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.extension)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.birthday)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.birthplace)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nationality)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.civilstatus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.active)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.surname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.firstname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.middlename)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.extension)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.birthday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.birthplace)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nationality)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.civilstatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.active)
+                    </td>
+                    <td>
+                        <a asp-controller="AdminStudentInfoes" asp-action="Index" asp-route-id="@item.id" asp-route-idno="@item.idno" class="btn btn-warning button-small">More on Students</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    @if (User.IsInRole("Admin"))
+    {
+        <div>
+            <ul class="pagination" style="margin-top:10px">
+                <li id="nav-first" class="page-item"><a class="page-link" href="~/AdminStudents/Index?page=@pagemin&pagedivider=@pagedivider&SearchString=@SearchString">First</a></li>
+                <li id="nav-previous" class="page-item"><a class="page-link" href="~/AdminStudents/Index?page=@pageprev&pagedivider=@pagedivider&SearchString=@SearchString">Previous</a></li>
+
+
+                @{
+                    pagecount = recordcount / pagedivider;
+                    if (remainder > 0)
+                    {
+                        pagecount = pagecount + 1;
+                    }
+
+                    for (int i = 1; 0 < pagecount; i++)
+                    {
+                        <li class="page-item"><a class="page-link" href="~/AdminStudents/Index?page=@i&pagedivider=@pagedivider&SearchString=@SearchString">@i</a></li>
+                        pagecount--;
+                    }
+                }
+                <li id="nav-Next" class="page-item"><a class="page-link" href="~/AdminStudents/Index?page=@pagenext&pagedivider=@pagedivider&SearchString=@SearchString">Next</a></li>
+                <li id="nav-last" class="page-item"><a class="page-link" href="~/AdminStudents/Index?page=@pagemax&pagedivider=@pagedivider&SearchString=@SearchString">Last</a></li>
+            </ul>
+        </div>
+
+    }
+}

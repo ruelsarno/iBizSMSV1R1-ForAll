@@ -1,0 +1,41 @@
+﻿@model iBizSMSV1R1.Models.GradeYear
+
+@{
+    ViewData["Title"] = "Add Grade Year";
+    Layout = "~/Views/Shared/_LayoutOtherEntryRegistrar.cshtml";
+}
+
+<div class="container">
+    <h6 id="module-views" class="container">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger input-text"></div>
+                <div class="form-group">
+                    <label asp-for="studentlevels" class="control-label"></label>
+                    <select asp-for="studentlevels" asp-items="@ViewBag.StudentLevel" class="form-control input-text" required>
+                        <option></option>
+                    </select>
+                    <span asp-validation-for="studentlevels" class="text-danger input-text"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="gradeyears" class="control-label"></label>
+                    <input asp-for="gradeyears" class="form-control input-text" required/>
+                    <span asp-validation-for="gradeyears" class="text-danger input-text"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                </div>
+
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

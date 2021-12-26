@@ -1,0 +1,76 @@
+﻿@model iBizSMSV1R1.Models.WebPages
+
+@{
+    ViewData["Title"] = "Details of WebPage Information";
+    Layout = "~/Views/Shared/_LayoutWebpage.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-small" asp-controller="StudentTypes" asp-action="Create">Add New</a>
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.subtitle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.subtitle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.tagline)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.tagline)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.icon)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.icon)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.link)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.link)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.controller)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.controller)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.action)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.action)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a class="btn btn-warning button-small" asp-action="Edit" asp-route-id="@Model.recno">Edit</a> |
+    <a asp-action="Index">Back to List</a><a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+</div>
+
+

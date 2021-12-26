@@ -1,0 +1,98 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.WebPages>
+
+@{
+    ViewData["Title"] = " WebPages Information";
+    Layout = "~/Views/Shared/_LayoutWebpage.cshtml";
+    var base64 = "";
+    var imgSrc = "";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-small" asp-controller="WebPages" asp-action="Create">Add New</a>
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.subtitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tagline)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.icon)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.link)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.controller)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.action)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.active)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.subtitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tagline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.icon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.link)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.controller)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.action)
+                </td>
+                <td>
+                    @if (item.image != null)
+                    {
+                        base64 = Convert.ToBase64String(item.image);
+                        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        <img class="thumbnail" src="@imgSrc" style="height:50px;width:50px" />
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.active)
+                </td>
+                <td>
+                    <a class="btn btn-warning button-small" asp-action="Edit" asp-route-id="@item.recno">Edit</a>
+                    <a class="btn btn-warning button-small" asp-action="Details" asp-route-id="@item.recno">Details</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

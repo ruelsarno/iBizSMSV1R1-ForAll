@@ -1,0 +1,57 @@
+﻿@model iBizSMSV1R1.Models.SchoolYear
+
+@{
+    ViewData["Title"] = "Add School Year";
+    Layout = "~/Views/Shared/_LayoutOtherEntryRegistrar.cshtml";
+}
+
+<div class="container">
+    <h6 id="module-views" class="container">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="col-sm-3 form-group">
+                        <label asp-for="schoolyears" class="control-label"></label>
+                        <input asp-for="schoolyears" class="form-control  input-text" required />
+                        <span asp-validation-for="schoolyears" class="text-danger input-text"></span>
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <label asp-for="active" class="form-check-label"></label>
+                        <input type="checkbox" asp-for="active" class="form-control form-check-input" />
+                        <span asp-validation-for="active" class="text-danger input-text"></span>
+                    </div>
+                    <div class="col-sm-3 form-group form-check">
+
+                    </div>
+                    <div class="col-sm-3 form-group form-check">
+
+                    </div>
+                </div>                
+                <div class="row">
+                    <div class="col-sm-3 form-group">
+                        <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                    </div>
+                    <div class="col-sm-3 form-group">
+
+                    </div>
+                    <div class="col-sm-3 form-group">
+
+                    </div>
+                    <div class="col-sm-3 form-group">
+
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-6  text-end">
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

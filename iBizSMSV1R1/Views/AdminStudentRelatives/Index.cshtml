@@ -1,0 +1,93 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.StudentRelative>
+
+@{
+    ViewData["Title"] = "Student Relatives";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    var id = ViewBag.ID;
+    var message = ViewBag.Message;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 text-center" style="color:red">
+            @{
+                if (@message != null)
+                {
+                    if (@message != "")
+                    {
+                        <span>"@message"</span>
+                    }
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+        </div>
+        <div class="col-sm-6 text-end">
+            @*<a class="btn btn-primary button-medium" asp-controller="AdminStudentRelatives" asp-action="Create"  asp-route-idno="@idno" asp-route-id="@id">Add New</a>*@
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+              
+                <th>
+                    @Html.DisplayNameFor(model => model.fullname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.relation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.occupation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.phonenumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fullname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.relation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.occupation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phonenumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning button-small" asp-action="Edit" asp-route-recno="@item.recno" asp-route-id="@item.id">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

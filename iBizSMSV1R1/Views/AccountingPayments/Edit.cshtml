@@ -1,0 +1,96 @@
+﻿@model iBizSMSV1R1.Models.Payment
+
+@{
+    ViewData["Title"] = "Payment Details";
+    Layout = "~/Views/Shared/_LayoutAccountingAdmin.cshtml";
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="recordno" />
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="recno" class="control-label"></label>
+                        <input asp-for="recno" class="form-control input-text" readonly="readonly"/>
+                        <span asp-validation-for="schoolyear" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="id" class="control-label"></label>
+                        <input asp-for="id" class="form-control input-text" readonly="readonly"/>
+                        <span asp-validation-for="id" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="referenceno" class="control-label"></label>
+                        <input asp-for="referenceno" class="form-control input-text" readonly="readonly"/>
+                        <span asp-validation-for="referenceno" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="schoolyear" class="control-label"></label>
+                        <input asp-for="schoolyear" class="form-control input-text" readonly="readonly"/>
+                        <span asp-validation-for="schoolyear" class="text-danger input-text"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="billnames" class="control-label"></label>
+                        <input asp-for="billnames" class="form-control input-text" readonly="readonly"/>
+                        <span asp-validation-for="billnames" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="billdate" class="control-label"></label>
+                        <input asp-for="billdate" class="form-control input-text" readonly="readonly"/>
+                        <span asp-validation-for="billdate" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="paymentdate" class="control-label"></label>
+                        <input asp-for="paymentdate" class="form-control input-text" readonly="readonly"/>
+                        <span asp-validation-for="paymentdate" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="paymenttypes" class="control-label"></label>
+                        <input asp-for="paymenttypes" class="form-control input-text" readonly="readonly"/>
+                        <span asp-validation-for="paymenttypes" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="paymentoffices" class="control-label"></label>
+                        <input asp-for="paymentoffices" class="form-control input-text" readonly="readonly"/>
+                        <span asp-validation-for="paymentoffices" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="amountpaid" class="control-label"></label>
+                        <input asp-for="amountpaid" class="form-control input-text" readonly="readonly"/>
+                        <span asp-validation-for="amountpaid" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="paymentpostdate" class="control-label"></label>
+                        <input asp-for="paymentpostdate" class="form-control input-text" readonly="readonly"/>
+                        <span asp-validation-for="paymentpostdate" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    @*<input type="submit" value="Save" class="btn btn-warning  button-small" />*@
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                @*<a asp-action="Delete" asp-route-id="@Model.recno" class="btn btn-danger button-small">Delete</a>*@
+                <a asp-action="Index" class="btn btn-primary button-small">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

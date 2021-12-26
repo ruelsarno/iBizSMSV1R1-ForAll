@@ -1,0 +1,173 @@
+﻿@*@model IEnumerable<iBizSMSV1R1.Models.WebPageTeacher>*@
+@model ReflectionIT.Mvc.Paging.PagingList<iBizSMSV1R1.Models.WebPageTeacher>
+@using ReflectionIT.Mvc.Paging
+@addTagHelper *, ReflectionIT.Mvc.Paging
+
+@{
+    ViewData["Title"] = " Teacher's Info";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";
+    var base64 = "";
+    var imgSrc = "";
+    var message = ViewBag.Message;
+    var SearchString = ViewBag.SearchString;
+    var idno = ViewBag.IdNo;
+    var pagedivider = 40;
+    var pageno = ViewBag.Page;
+    var pagemin = 1;
+    var recordcount = ViewBag.RecordCount;
+    var remainder = recordcount % pagedivider;
+    var pagemax = (recordcount / pagedivider) + remainder;
+    var pagenext = pagemax;
+    var pageprev = 1;
+
+    if (pageno == pagemax)
+    {
+        pagenext = pagemax;
+    }
+    else
+    {
+        pagenext = ViewBag.Page + 1; ;
+    }
+
+    if (pageno == pagemin)
+    {
+        pageprev = pagemin;
+    }
+    else
+    {
+        pageprev = ViewBag.Page - 1; ;
+    }
+    int pagecount = 0;
+
+}
+@{
+   
+}
+
+<div class="container">
+    @{
+        if (@message != null)
+        {
+            if (@message != "")
+            {
+                <div class="alert alert-info alert-dismissible fade show">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>MESSAGE!!! </strong> "@message"
+                </div>
+            }
+        }
+    }
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+        </div>
+        <div class="col-sm-2 text-left">
+            <a class="btn btn-primary button-small" asp-controller="WebPageTeachers" asp-action="Create">Add New</a>
+
+        </div>
+        <div class="col-sm-8 text-end">
+            <form asp-controller="WebPageTeachers" asp-action="Index" method="get">
+                <input type="text" name="SearchString" class="" style="border-radius:2px; margin-bottom:2px" />
+                <input type="submit" value="Search" class="btn  btn-primary button-medium input-text-sm" style="padding-left:15px;padding-right:15px">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tagline)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.specialization)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fullname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.image)
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tagline)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.specialization)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fullname)
+                    </td>
+                    <td>
+                        @if (item.image != null)
+                        {
+                            base64 = Convert.ToBase64String(item.image);
+                            imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                            <img class="thumbnail" src="@imgSrc" style="height:50px;width:50px" />
+                        }
+
+                    </td>
+                    <td>
+                        <a class="btn btn-warning button-small" asp-action="Edit" asp-route-id="@item.recno">Edit</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary button-small" asp-controller="WebPageTeacherDetails" asp-action="Index" asp-route-recno="@item.recno" asp-route-name="@item.fullname">Teacher Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@if (User.Identity.IsAuthenticated)
+{
+    @if (User.IsInRole("Admin"))
+    {
+        <div>
+            <ul class="pagination" style="margin-top:10px">
+                <li id="nav-first" class="page-item"><a class="page-link" href="~/WebPageTeachers/Index?page=@pagemin&pagedivider=@pagedivider&SearchString=@SearchString">First</a></li>
+                <li id="nav-previous" class="page-item"><a class="page-link" href="~/WebPageTeachers/Index?page=@pageprev&pagedivider=@pagedivider&SearchString=@SearchString">Previous</a></li>
+
+
+                @{
+                    pagecount = recordcount / pagedivider;
+                    if (remainder > 0)
+                    {
+                        pagecount = pagecount + 1;
+                    }
+
+                    for (int i = 1; 0 < pagecount; i++)
+                    {
+                        <li class="page-item"><a class="page-link" href="~/WebPageTeachers/Index?page=@i&pagedivider=@pagedivider&SearchString=@SearchString">@i</a></li>
+                        pagecount--;
+                    }
+                }
+                <li id="nav-Next" class="page-item"><a class="page-link" href="~/WebPageTeachers/Index?page=@pagenext&pagedivider=@pagedivider&SearchString=@SearchString">Next</a></li>
+                <li id="nav-last" class="page-item"><a class="page-link" href="~/WebPageTeachers/Index?page=@pagemax&pagedivider=@pagedivider&SearchString=@SearchString">Last</a></li>
+            </ul>
+        </div>
+
+    }
+}

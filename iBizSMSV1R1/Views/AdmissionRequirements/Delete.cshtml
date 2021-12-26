@@ -1,0 +1,40 @@
+﻿@model iBizSMSV1R1.ModelsAdmission.AdmissionRequirement
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutWebPage.cshtml";
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"]</h6>
+</div>
+<hr />
+<span class="remove-item">Are you sure you want to delete this?</span>
+<div class="Form-Body">
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.schoolyear)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.schoolyear)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.requirement)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.requirement)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="recno" />
+        <input type="submit" value="Delete" class="btn btn-danger button-small" /> |
+        <a asp-action="Index" asp-route-recno="@Model.recno" class="btn btn-primary button-small">Cancel</a>
+    </form>
+</div>

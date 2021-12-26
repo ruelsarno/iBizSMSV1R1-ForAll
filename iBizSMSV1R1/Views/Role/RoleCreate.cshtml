@@ -1,0 +1,35 @@
+﻿@model iBizSMSV1R1.ViewModels.CreateRoleViewModel
+
+@{
+    ViewData["Title"] = "Add Role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"] : </h6>
+</div>
+
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="RoleCreate">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="rolename" class="control-label"></label>
+                    <input asp-for="rolename" class="form-control input-text" />
+                    <span asp-validation-for="rolename" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3">
+                        <input type="submit" value="ADD" class="btn btn-primary button-small" />
+                    </div>
+                </div>
+            </form>
+            <div class="form-group text-end">
+                <a asp-action="RoleList" class="btn btn-warning button-small">CANCEL</a>
+            </div>
+        </div>
+    </div>
+</div>
+

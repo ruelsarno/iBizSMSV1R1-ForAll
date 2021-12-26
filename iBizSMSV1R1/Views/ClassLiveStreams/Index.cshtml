@@ -1,0 +1,86 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.ClassLiveStream>
+
+@{
+    ViewData["Title"] = "Class Live Stream Links";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+    var message = ViewBag.Message;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <partial name="_ClassroomMenu" />
+        </div>
+        <div class="col-sm-12 text-center">
+            @{
+                if (@message != null)
+                {
+                    if (@message != "")
+                    {
+                        <span>"@message"</span>
+                    }
+                }
+            }
+
+        </div>
+    </div>
+</div>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h6>@ViewData["Title"]</h6>
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-small" asp-controller="ClassSchedules" asp-action="Index">Class Schedules</a>
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+    @foreach (var item in Model)
+    {
+        <div class="row" style="margin-bottom:5px">
+            @*<span id="@item.subjectname" onclick="getVideoLink">@item.subjectname <u> Table of Contents </u></span>*@
+        </div>
+        break;
+    }
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row container-fluid" style="margin:5px">
+                <div class="col-sm-2 text-end">
+                    @Html.DisplayNameFor(model => model.lessonno)
+                </div>
+                <div class="col-sm-2 text-left">
+                    @Html.DisplayNameFor(model => model.active)
+                </div>
+                <div class="col-sm-8 text-left">
+                    @Html.DisplayNameFor(model => model.lessontitle)
+                </div>
+            </div>
+        </div>      
+    </div>
+        
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row container-fluid" style="margin:5px">
+                    <div class="col-sm-2 text-end">
+                        @Html.DisplayFor(modelItem => item.lessonno)
+                    </div>
+                    <div class="col-sm-2 text-left">
+                        @Html.DisplayFor(modelItem => item.active)
+                    </div>
+                    <div class="col-sm-8 text-left">
+                        <a id="@item.lessontitle" href="@item.videolink" target="_blank" class="btn btn-danger button-small">@item.lessontitle</a>
+                    </div>
+                </div>
+
+            </div>            
+
+        </div>
+    }
+
+</div>

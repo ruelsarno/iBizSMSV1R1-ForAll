@@ -1,0 +1,52 @@
+﻿@model iBizSMSV1R1.ModelsAccounting.BankAccount
+
+@{
+    ViewData["Title"] = "Add Bank Account";
+    Layout = "~/Views/Shared/_LayoutAccountingAdmin.cshtml";
+}
+
+<div class="container">
+    <h6 id="module-views" class="container">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger input-text"></div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="bankname" class="control-label"></label>
+                        <input asp-for="bankname" class="form-control input-text" />
+                        <span asp-validation-for="bankname" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="branch" class="control-label"></label>
+                        <input asp-for="branch" class="form-control input-text" />
+                        <span asp-validation-for="branch" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="accounttype" class="control-label"></label>
+                        <input asp-for="accounttype" class="form-control input-text" placehoder="Savings or Check" />
+                        <span asp-validation-for="accounttype" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="accountno" class="control-label"></label>
+                        <input asp-for="accountno" class="form-control input-text" />
+                        <span asp-validation-for="accountno" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                </div>
+
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

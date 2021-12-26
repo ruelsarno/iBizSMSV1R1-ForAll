@@ -1,0 +1,132 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.Enrolment>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAccounting.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.schoolyear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.registrationno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.registrationdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.studenttype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.studentlevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.trackcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gradeyear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.section)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discountcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.modeofpayment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.schoollastattended)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.schooltype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.confirmed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.confirmedby)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.notified)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.schoolyear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.registrationno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.registrationdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.studenttype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.studentlevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.trackcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gradeyear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.section)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discountcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modeofpayment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.schoollastattended)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.schooltype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.confirmed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.confirmedby)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.notified)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.recno">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.recno">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.recno">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

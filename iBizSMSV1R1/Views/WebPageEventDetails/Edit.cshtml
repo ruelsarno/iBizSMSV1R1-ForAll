@@ -1,0 +1,68 @@
+﻿@model iBizSMSV1R1.Models.WebPageEventDetail
+
+@{
+    ViewData["Title"] = "Edit Event Details";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";
+    var recno = ViewBag.RecNo;
+    var eventtitle = ViewBag.EventTitle;
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"] of <u>@eventtitle</u></h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Edit" asp-route-eventtitle ="@eventtitle" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="recordno" />
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="recno" class="control-label"></label>
+                        <input asp-for="recno" class="form-control input-text" readonly="readonly" value="@recno" />
+                        <span asp-validation-for="recno" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="eventdate" class="control-label"></label>
+                        <input asp-for="eventdate" class="form-control input-text" />
+                        <span asp-validation-for="eventdate" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="venue" class="control-label"></label>
+                        <input asp-for="venue" class="form-control input-text" />
+                        <span asp-validation-for="venue" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3">
+                        <label asp-for="imagedetails" class="control-label"></label>
+                        <input type="file" id="files" asp-for="imagedetails" class="input-text" name="files" multiple>
+                        <span asp-validation-for="imagedetails" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-12 required">
+                        <label asp-for="speakername" class="control-label"></label>
+                        <textarea asp-for="speakername" class="form-control input-text"></textarea>
+                        <span asp-validation-for="speakername" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-12 required">
+                        <label asp-for="eventdetails" class="control-label"></label>
+                        <textarea asp-for="eventdetails" class="form-control input-text"></textarea>
+                        <span asp-validation-for="eventdetails" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-warning  button-small" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Delete" asp-route-id="@Model.recordno" asp-route-recno="@Model.recno" asp-route-eventtitle="@eventtitle"  class="btn btn-danger button-small">Delete</a>
+                <a asp-action="Index" asp-route-recno="@Model.recno" asp-route-eventtitle="@eventtitle" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

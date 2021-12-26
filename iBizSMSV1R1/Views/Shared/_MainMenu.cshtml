@@ -1,0 +1,41 @@
+﻿<nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <ul class="navbar-nav me-auto">
+        <li class="nav-item menu-space">
+            <a class="btn btn-outline-success button-medium" asp-area="" asp-controller="Admin" asp-action="Index"> <i class="fa fa-home "></i> Home</a>
+        </li>
+        <li class="nav-item dropdown menu-space ">
+            <a class="nav-link dropdown-toggle btn btn-outline-success button-medium" data-bs-toggle="dropdown" href="#"><i class="fa fa-fire "></i> Security</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" asp-controller="Role" asp-action="RoleList">Roles</a></li>
+                @*<li><a class="dropdown-item" asp-controller="UserClaims" asp-action="ClaimList">Claims</a></li>*@
+                <li><a class="dropdown-item" asp-controller="SystemUser" asp-action="UserList">System Users</a></li>
+            </ul>
+        </li>
+        <li class="nav-item menu-space">
+            <a class="btn btn-outline-success button-medium" asp-controller="AdminClassroom" asp-action="Index"><i class="fa fa-book "></i> Classroom</a>
+        </li>
+        <li class="nav-item dropdown menu-space ">
+            <a class="nav-link dropdown-toggle btn btn-outline-success button-medium" data-bs-toggle="dropdown" href="#"><i class="fa fa-th-list "></i> Admission</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" asp-controller="AdminStudents" asp-action="Index">Students</a></li>
+            </ul>
+        </li>
+        <li class="nav-item menu-space">
+
+            <a class="btn btn-outline-success button-medium" asp-controller="AdminAccounting" asp-action="Index"><i class="fa fa-bitcoin "></i> Accounting</a>
+        </li>
+        @*<li class="nav-item menu-space">
+            <a class="btn btn-outline-primary button-medium" asp-controller="HomeWebPages" asp-action="Index">WebPages</a>
+        </li>*@
+        <li class="nav-item menu-space">
+            <a class="btn btn-outline-success button-medium" asp-controller="HomeOtherEntry" asp-action="IndexRegistrar"><i class="fa fa-list "></i> Registrar Utils</a>
+        </li>
+        <li class="nav-item menu-space">
+            <a class="btn btn-outline-success button-medium" asp-controller="HomeOtherEntry" asp-action="IndexAccounting"><i class="fa fa-money "></i> Accounting Utils </a>
+        </li>
+        <li class="nav-item menu-space">
+            <a class="btn btn-outline-success button-medium" asp-controller="HomeOtherEntry" asp-action="IndexOther"><i class="fa fa-money "></i> Process</a>
+        </li>
+    </ul>
+
+</nav>

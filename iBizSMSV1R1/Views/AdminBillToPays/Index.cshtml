@@ -1,0 +1,210 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.BillToPay>
+@*@model ReflectionIT.Mvc.Paging.PagingList<iBizSMSV1R1.Models.BillToPay>
+@using ReflectionIT.Mvc.Paging
+@addTagHelper *, ReflectionIT.Mvc.Paging*@
+@{
+    ViewData["Title"] = "Bills To Pay";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    var message = ViewBag.Message;
+    var id = ViewBag.ID;
+    var SearchString = ViewBag.SearchString;
+    //var pagedivider = 6;
+    //var pageno = ViewBag.Page;
+    //var pagemin = 1;
+    //var recordcount = ViewBag.RecordCount;
+    //var remainder = recordcount % pagedivider;
+    //var pagemax = (recordcount / pagedivider) + remainder;
+    //var pagenext = pagemax;
+    //var pageprev = 1;
+
+    //if (pageno == pagemax)
+    //{
+    //    pagenext = pagemax;
+    //}
+    //else
+    //{
+    //    pagenext = ViewBag.Page + 1; ;
+    //}
+
+    //if (pageno == pagemin)
+    //{
+    //    pageprev = pagemin;
+    //}
+    //else
+    //{
+    //    pageprev = ViewBag.Page - 1; ;
+    //}
+    //int pagecount = 0;
+}
+
+<div class="container">    
+            @{
+                if (@message != null)
+                {
+                    if (@message != "")
+                    {
+                        <div class="alert alert-info alert-dismissible fade show">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <strong>MESSAGE!!! </strong> "@message"
+                        </div>                        
+                    }
+                }
+            }      
+</div>
+
+<script>
+    function senMail() {
+        var r = confirm("Send Notification to Student/Parent!");
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var message = ""
+            if ('@ViewBag.Message' != null) {
+                if ('@ViewBag.Message' != "") {
+                    var message = '@ViewBag.Message';
+                    if (message == "Message/Notification SUCCESSFULLY Sent!")
+                        $("#MessageModalCorrect").modal('show');
+                    else if (message == "Message/Either Notification ALREADY Sent or Payment NOT yet CONFIRMED!")
+                        $("#MessageModalWrong").modal('show');
+                    else { }
+                }
+            }
+        });
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h6>@ViewData["Title"]</h6>
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-medium" asp-controller="Reservations" asp-action="Create" asp-route-id="@id">Add New</a>
+        </div>
+    </div>
+</div>
+
+<div class="Form-Body">    
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.referenceno)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.schoolyear)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.billnames)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.billdate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.amount)
+                    </th>
+                    @*<th>
+            @Html.DisplayNameFor(model => model.duedate)
+        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.payment)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.confirm)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.notified)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.referenceno)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.schoolyear)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.billnames)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.billdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.amount)
+                    </td>
+                    @*<td>
+            @Html.DisplayFor(modelItem => item.duedate)
+        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.payment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.confirm)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.notified)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-recno="@item.recno" asp-route-id="@item.id"  class="btn btn-warning button-small">Update</a>
+                    </td>
+                    <td>
+                        <a asp-action="DownLoadFile" asp-route-id="@item.recno" class="btn btn-primary button-small">Proof of Payment</a>
+                    </td>
+                    <td>
+                        <form asp-action="SendeMail" 
+                              asp-route-referenceno="@item.referenceno"
+                              asp-route-recno="@item.recno" 
+                              asp-route-id="@item.id" 
+                              asp-route-schoolyear="@item.schoolyear" 
+                              asp-route-billname="@item.billnames" 
+                              asp-route-billdate="@item.billdate" 
+                              method="post">
+                            <input type="submit" value="Send Confirmation" class="btn btn-danger button-small" onclick="senMail()" />
+                        </form>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+</div>
+
+<partial name="_MessageModalCorrect" />
+<partial name="_MessageModalWrong" />
+
+@*@if (User.Identity.IsAuthenticated)
+{
+    @if (User.IsInRole("Admin"))
+    {
+        <div>
+            <ul class="pagination" style="margin-top:10px">
+                <li id="nav-first" class="page-item"><a class="page-link" href="~/BillToPays/Index?page=@pagemin&pagedivider=@pagedivider&SearchString=@SearchString">First</a></li>
+                <li id="nav-previous" class="page-item"><a class="page-link" href="~/BillToPays/Index?page=@pageprev&pagedivider=@pagedivider&SearchString=@SearchString">Previous</a></li>
+
+
+                @{
+                    pagecount = recordcount / pagedivider;
+                    if (remainder > 0)
+                    {
+                        pagecount = pagecount + 1;
+                    }
+
+                    for (int i = 1; 0 < pagecount; i++)
+                    {
+                        <li class="page-item"><a class="page-link" href="~/BillToPays/Index?page=@i&pagedivider=@pagedivider&SearchString=@SearchString">@i</a></li>
+                        pagecount--;
+                    }
+                }
+                <li id="nav-Next" class="page-item"><a class="page-link" href="~/BillToPays/Index?page=@pagenext&pagedivider=@pagedivider&SearchString=@SearchString">Next</a></li>
+                <li id="nav-last" class="page-item"><a class="page-link" href="~/BillToPays/Index?page=@pagemax&pagedivider=@pagedivider&SearchString=@SearchString">Last</a></li>
+            </ul>
+        </div>
+
+    }
+}*@
+

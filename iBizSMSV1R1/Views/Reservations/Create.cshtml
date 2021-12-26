@@ -1,0 +1,180 @@
+﻿@model iBizSMSV1R1.Models.Reservation
+
+@{
+    ViewData["Title"] = "Add Reservation";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+    var id = ViewBag.ID;
+    var message = ViewBag.Message;
+
+    <script>
+
+        $(document).ready(function () {
+            $("#StudentLevel").change(function () {
+                var strStudentLevel = $("#StudentLevel").val();
+                if ($("#StudentLevel").val() != "Select") {
+                    var Options = {};
+                    Options.url = "/Reservations/getGradeYear?studentlevel=" + strStudentLevel;
+                    Options.type = "POST";
+                    Options.data = JSON.stringify({});
+                    Options.datatype = "json";
+                    Options.contentType = "application/json";
+                    Options.success = function (result) {
+                        $("#GradeYear").empty();
+                        for (var i = 0; i < result.length; i++) {
+                            $("#GradeYear").append("<option>" + result[i] + "</option>");
+
+                        }
+                    };
+                    $.ajax(Options);
+                }
+                else {
+                    $("#GradeYear").empty();
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $("#GradeYear").change(function () {
+                var strStudentLevel = $("#StudentLevel").val();
+                if ($("#StudentLevel").val() != "Select") {
+                    var Options = {};
+                    Options.url = "/Reservations/geTrackCode?studentlevel=" + strStudentLevel;
+                    Options.type = "POST";
+                    Options.data = JSON.stringify({});
+                    Options.datatype = "json";
+                    Options.contentType = "application/json";
+                    Options.success = function (result) {
+                        $("#TrackCode").empty();
+                        for (var i = 0; i < result.length; i++) {
+                            $("#TrackCode").append("<option>" + result[i] + "</option>");
+
+                        }
+                    };
+                    $.ajax(Options);
+                }
+                else {
+                    $("#TrackCode").empty();
+                }
+            });
+        });
+
+
+    </script>    
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <partial name="_AdmissionMenu" />
+        </div>
+        <div class="col-sm-12 text-center">
+            @*<h6>@ViewData["Title"]</h6>*@
+            @{
+                if (@message != null)
+                {
+                    if (@message != "")
+                    {
+                        <span>"@message"</span>
+                    }
+                }
+
+            }
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h6 id="module-views" class="container">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger input-text"></div>
+                <input type="hidden" asp-for="id" value="@id" />
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="studenttype" class="control-label"></label>
+                        <select asp-for="studenttype" asp-items="@ViewBag.StudentType" class="form-control input-text" id="StudentType">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="studenttype" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="datereserve" class="control-label"></label>
+                        <input asp-for="datereserve" class="form-control input-text"  style="height:38px"/>
+                        <span asp-validation-for="datereserve" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="idno" class="control-label"></label>
+                        <input asp-for="idno" class="form-control input-text"  style="height:38px" value="@ViewBag.IDNO" readonly="readonly"  placeholder="For Old Students Only"/>
+                        <span asp-validation-for="idno" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="schoolyear" class="control-label"></label>
+                        <select asp-for="schoolyear" asp-items="@ViewBag.SchoolYear" class="form-control input-text">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="schoolyear" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="studentlevel" class="control-label"></label>
+                        <select asp-for="studentlevel" asp-items="@ViewBag.StudentLevel" class="form-control input-text" id="StudentLevel">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="studentlevel" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group col-sm-3 required">
+                        <label asp-for="gradeyear" class="control-label"></label>
+                        @*<select asp-for="gradeyear" class="form-control input-text" id="GradeYear"></select>*@
+                        <select asp-for="gradeyear" asp-items="@ViewBag.GradeYear" class="form-control input-text" id="GradeYear">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="gradeyear" class="text-danger  input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="trackcode" class="control-label"></label>
+                        @*<select asp-for="trackcode" class="form-control input-text" id="TrackCode"></select>*@
+                        <select asp-for="trackcode" asp-items="@ViewBag.TrackCode" class="form-control input-text" id="TrackCode">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="trackcode" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="schoollastattended" class="control-label"></label>
+                        <input asp-for="schoollastattended" class="form-control input-text"  style="height:38px"/>
+                        <span asp-validation-for="schoollastattended" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="schooltype" class="control-label"></label>
+                        <select asp-for="schooltype" asp-items="@ViewBag.SchoolType" class="form-control input-text" id="TrackCode">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="schooltype" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+
+                    </div>
+                </div>
+                <div class="row" style="margin-top:40px">
+                    <div class="col-sm-3  form-group">
+                        <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                    </div>
+                    <div class="col-sm-9 form-group text-end">
+                        <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+       
+    </div>
+</div>

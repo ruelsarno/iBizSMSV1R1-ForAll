@@ -1,0 +1,118 @@
+﻿
+@using iBizSMSV1R1.Controllers
+
+@{
+    var coursedetails = ViewBag.CourseDetails;
+    var course = ViewBag.Course;
+    var title = "";
+    var coursetitle = "";
+    var description = "";
+    var base64 = "";
+    var imgSrc = "";
+
+}
+
+@foreach (var item in course)
+{
+    if (item.image != null)
+    {
+        base64 = Convert.ToBase64String(item.image);
+    }
+
+    imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+    title = item.title;
+    coursetitle = item.coursetitle;
+    description = item.description;
+    @*<img src='@imgSrc' style="max-width:300px;" alt="Upload Photo" title="Change Profile Photo" />*@
+
+
+    <!-- page title -->
+    <section class="page-title-section overlay" data-background="@imgSrc">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+
+                    <ul class="list-inline custom-breadcrumb">
+                        <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="events.html">@title</a></li>
+                        <li class="list-inline-item text-white h3 font-secondary nasted">@coursetitle</li>
+                    </ul>
+                    <p class="text-lighten">@Html.Raw(description)</p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /page title -->
+
+    break;
+}
+
+
+@foreach (var item in coursedetails)
+{
+    if (item.image != null)
+    {
+        base64 = Convert.ToBase64String(item.image);
+    }
+
+    imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+    <!-- section -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <!-- course thumb -->
+                    <img src="@imgSrc" class="img-fluid w-100">
+                </div>
+            </div>
+            <!-- course info -->
+            <div class="row align-items-center mb-5">
+                <div class="col-xl-3 order-1 col-sm-6 mb-4 mb-xl-0">
+                    <h5>Course Name: @coursetitle</h5>
+                </div>
+                <div class="col-xl-3 text-sm-right text-left order-sm-2 order-3 order-xl-3 col-sm-6 mb-4 mb-xl-0">
+                    <a href="#" class="btn btn-primary">JOIN US</a>
+                </div>
+                <!-- border -->
+                <div class="col-12 mt-4 order-4">
+                    <div class="border-bottom border-primary"></div>
+                </div>
+            </div>
+            <!-- course details -->
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <h3>About The Course</h3>
+                    <p class="text-lighten">@Html.Raw(@item.aboutthecourse)</p>
+                </div>
+                <div class="col-12 mb-4">
+                    <h3 class="mb-3">Requirements</h3>
+                    <div class="col-12 px-0">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="text-lighten">@Html.Raw(@item.requirement)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <h3 class="mb-3">How to Enroll</h3>
+                    <p class="text-lighten">@Html.Raw(@item.howtoenroll)</p>
+                </div>
+                <div class="col-12 mb-5">
+                    <h3>Fees and Funding</h3>
+                    <p class="text-lighten">@Html.Raw(@item.fees)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /section -->
+    break;
+
+}
+
+<!-- _Courses -->
+<section class="section-sm">
+    <partial name="_Courses" />
+</section>
+<!-- /_Courses -->

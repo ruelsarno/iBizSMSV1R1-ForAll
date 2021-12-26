@@ -1,0 +1,97 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.WebPageSubs>
+
+@{
+    ViewData["Title"] = " WebPage Contents";
+    Layout = "~/Views/Shared/_LayoutWebpage.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-small" asp-controller="WebPageSubs" asp-action="Create">Add New</a>
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.subtitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.subsubtitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tagline)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.personname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.when)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.icon)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.link)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.controller)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.action)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.subtitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.subsubtitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tagline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.personname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.when)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.icon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.link)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.controller)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.action)
+                </td>
+                <td>
+                    <a class="btn btn-warning button-small" asp-action="Edit" asp-route-id="@item.recno">Edit</a>
+                    <a class="btn btn-warning button-small" asp-action="Details" asp-route-id="@item.recno">Details</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

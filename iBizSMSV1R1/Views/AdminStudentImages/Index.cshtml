@@ -1,0 +1,80 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.StudentImage>
+
+@{
+    ViewData["Title"] = "Student Image";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    var idno = ViewBag.IDNO;
+    var id = ViewBag.ID;
+    var message = ViewBag.Message;
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 text-center" style="color:red">
+            @{
+                if (@message != null)
+                {
+                    if (@message != "")
+                    {
+                        <span>"@message"</span>
+                    }
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+        </div>
+        <div class="col-sm-6 text-end">
+            @*<a class="btn btn-primary button-medium" asp-controller="AdminStudentImages" asp-action="Create"  asp-route-idno="@idno" asp-route-id="@id">Add New</a>*@            
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.link)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.image)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.link)
+                        </td>
+                        <td>
+                            @{
+                                var base64 = Convert.ToBase64String(item.image);
+                                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);    //For QRCODE
+                            }
+                         
+                            <img src='@imgSrc' style="max-width:50px;"  title="Click to Download"/>
+                        
+                        </td>
+                        <td>
+                            <a class="btn btn-warning button-small" asp-action="Edit" asp-route-recno="@item.recno"  asp-route-id="@id" >Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

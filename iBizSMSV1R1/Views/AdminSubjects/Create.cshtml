@@ -1,0 +1,107 @@
+﻿@model iBizSMSV1R1.Models.Subject
+
+@{
+    ViewData["Title"] = "Add Subject";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";
+
+    <script>
+        $(document).ready(function () {
+            $("#StudentLevel").change(function () {
+                var strStudentLevel = $("#StudentLevel").val();
+                if ($("#StudentLevel").val() != "Select") {
+                    var Options = {};
+                    Options.url = "/AdminSubjects/getGradeYear?studentlevel=" + strStudentLevel;
+                    Options.type = "POST";
+                    Options.data = JSON.stringify({});
+                    Options.datatype = "json";
+                    Options.contentType = "application/json";
+                    Options.success = function (result) {
+                        $("#GradeYear").empty();
+                        for (var i = 0; i < result.length; i++) {
+                            $("#GradeYear").append("<option>" + result[i] + "</option>");
+
+                        }
+                    };
+                    $.ajax(Options);
+                }
+                else {
+                    $("#GradeYear").empty();
+                }
+            });
+        });
+    </script>
+}
+
+<div class="container">
+    <h6 id="module-views" class="container">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="studentlevel" class="control-label"></label>
+                        <select asp-for="studentlevel" asp-items="@ViewBag.StudentLevel" class="form-control input-text" id="StudentLevel"  required>
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="studentlevel" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="gradeyear" class="control-label"></label>
+                        <select asp-for="gradeyear" asp-items="@ViewBag.GradeYear" class="form-control input-text" id="GradeYear"  required>
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="gradeyear" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="category" class="control-label"></label>
+                        <select asp-for="category" asp-items="@ViewBag.Category" class="form-control input-text" id="GradeYear"  required>
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="category" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="subjectcode" class="control-label"></label>
+                        <input asp-for="subjectcode" class="form-control input-text"  required/>
+                        <span asp-validation-for="subjectcode" class="text-danger input-text"></span>
+                    </div>
+                    
+                    
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="semester" class="control-label"></label>
+                        <select asp-for="semester" class="form-control input-text" id="GradeYear">
+                            <option></option>
+                            <option>1st Semester</option>
+                            <option>2nd Semester</option>
+                        </select>
+                        <span asp-validation-for="semester" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-sm-6 required">
+                        <label asp-for="subjectname" class="control-label"></label>
+                        <input asp-for="subjectname" class="form-control input-text" required />
+                        <span asp-validation-for="subjectname" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="noofhours" class="control-label"></label>
+                        <input asp-for="noofhours" class="form-control input-text" />
+                        <span asp-validation-for="noofhours" class="text-danger input-text"></span>
+                    </div>
+                </div> 
+
+                <div class="form-group">
+                    <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

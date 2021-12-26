@@ -1,0 +1,124 @@
+﻿@model iBizSMSV1R1.ModelsAccounting.AccountDetail
+
+@{
+    ViewData["Title"] = "Edit Account Detail";
+    Layout = "~/Views/Shared/_LayoutAccountingAdmin.cshtml";
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="accountdetailrecno" />
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="idno" class="control-label"></label>
+                        <input asp-for="idno" class="form-control" />
+                        <span asp-validation-for="idno" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="schoolyear" class="control-label"></label>
+                        <select asp-for="schoolyear" asp-items="@ViewBag.SchoolYear" class="form-control input-text" id="SchoolYear">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="schoolyear" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="discountcode" class="control-label"></label>
+                        <select asp-for="discountcode" asp-items="@ViewBag.DiscountCode" class="form-control input-text" id="DiscountCode">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="discountcode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="discountname" class="control-label"></label>
+                        <input asp-for="discountname" class="form-control" id="DiscountName" />
+                        <span asp-validation-for="discountname" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="discount" class="control-label"></label>
+                        <input asp-for="discount" class="form-control" id="Discount" />
+                        <span asp-validation-for="discount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="modeofpayment" class="control-label"></label>
+                        <select asp-for="modeofpayment" asp-items="@ViewBag.PaymentMode" class="form-control input-text" id="PaymentMode">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="modeofpayment" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="feecategory" class="control-label"></label>
+                        <select asp-for="feecategory" asp-items="@ViewBag.FeeCategory" class="form-control input-text" id="PaymentMode">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="feecategory" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="feedescription" class="control-label"></label>
+                        <input asp-for="feedescription" class="form-control" id="FeeDescription" />
+                        <span asp-validation-for="feedescription" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="feeamount" class="control-label"></label>
+                        <input asp-for="feeamount" class="form-control" />
+                        <span asp-validation-for="feeamount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="amountofdiscount" class="control-label"></label>
+                        <input asp-for="amountofdiscount" class="form-control" />
+                        <span asp-validation-for="amountofdiscount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="totalpayment" class="control-label"></label>
+                        <input asp-for="totalpayment" class="form-control" />
+                        <span asp-validation-for="totalpayment" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="rebate" class="control-label"></label>
+                        <input asp-for="rebate" class="form-control" />
+                        <span asp-validation-for="rebate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="balance" class="control-label"></label>
+                        <input asp-for="balance" class="form-control" />
+                        <span asp-validation-for="balance" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="status" class="control-label"></label>
+                        <input asp-for="status" class="form-control" />
+                        <span asp-validation-for="status" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="remarks" class="control-label"></label>
+                        <input asp-for="remarks" class="form-control" />
+                        <span asp-validation-for="remarks" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                       
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-warning  button-small" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Delete" asp-route-id="@Model.accountdetailrecno" class="btn btn-danger button-small">Delete</a>
+                <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

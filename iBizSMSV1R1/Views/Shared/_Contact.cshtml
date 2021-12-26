@@ -1,0 +1,75 @@
+﻿@using iBizSMSV1R1.Controllers
+
+@{
+    var contact = HomeController.getWebPageContact();
+    var counter = 0;
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="section-title">Contact Us</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-7 mb-4 mb-lg-0">
+            <form action="#">
+                <input type="text" class="form-control mb-3" id="name" name="name" placeholder="Your Name">
+                <input type="email" class="form-control mb-3" id="mail" name="mail" placeholder="Your Email">
+                <input type="text" class="form-control mb-3" id="subject" name="subject" placeholder="Subject">
+                <textarea name="message" id="message" class="form-control mb-3" placeholder="Your Message"></textarea>
+                <button type="submit" value="send" class="btn btn-primary">SEND MESSAGE</button>
+            </form>
+        </div>
+        <div class="col-lg-5">
+            @foreach (var item in contact)
+            {
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>WEBSITE:</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>@item.website</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>Phone Number:</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>@item.cellphoneno</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>Phone Number:</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>@item.emailadd</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>Address:</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>@item.address</p>
+                    </div>
+                </div>
+                @*<p class="mb-5">WEBSITE: @item.website</p>
+                <p class="mb-5">Phone Number: @item.website</p>
+                <a href="tel:+8802057843248" class="text-color h5 d-block">@item.cellphoneno</a>
+                <a href="" class="mb-5 text-color h5 d-block">@item.emailadd</a>
+                <p>@item.address</p>*@
+                break;
+            }
+        </div>
+    </div>
+</div>
+
+<!-- contact -->
+<section class="section bg-gray">
+</section>
+<!-- /contact -->

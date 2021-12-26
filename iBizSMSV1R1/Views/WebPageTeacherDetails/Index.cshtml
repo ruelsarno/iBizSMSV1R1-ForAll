@@ -1,0 +1,69 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.WebPageTeacherDetail>
+
+@{
+    ViewData["Title"] = "Teacher Details";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";
+    var recno = ViewBag.RecNo;
+    var name = ViewBag.Name;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"] of <u>@name</u></span>
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-small" asp-controller="WebPageTeacherDetails" asp-action="Create" asp-route-recno="@recno" asp-route-name="@name">Add New</a>
+            <a class="btn btn-primary button-small" asp-controller="WebPageTeachers" asp-action="Index">Back to Teachers List</a>
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.recno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jobdescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.biography)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.hobbiesinterest)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.contactinfo)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.recno)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jobdescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.biography)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hobbiesinterest)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.contactinfo)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning button-small" asp-action="Edit" asp-route-id="@item.recordno">Edit</a>
+                    </td>                   
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

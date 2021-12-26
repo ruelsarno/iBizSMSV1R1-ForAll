@@ -1,0 +1,26 @@
+﻿
+@using iBizSMSV1R1.Controllers
+
+@{
+    var webpages = HomeController.getWebPages("Vision");
+    string imagelink = "";
+    foreach (var item in webpages)
+    {
+        imagelink = item.link;
+    }
+}
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in webpages)
+        {
+            <div class="col-12">
+                <img class="img-fluid w-100 mb-4" src="~/images/about/about-page.jpg" alt="about image">
+                <h2 class="section-title">@item.tagline</h2>
+                <p>@Html.Raw(item.description) </p>                
+            </div>
+        }
+
+    </div>
+</div>,

@@ -1,0 +1,77 @@
+﻿@using iBizSMSV1R1.Controllers
+@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/Shared/_LayoutWebPages.cshtml";
+    var message = ViewBag.Message;
+    var webpages = HomeController.getWebPageTitles("About Us");
+    var title = "";
+    var description = "";
+    var base64 = "";
+    var imgSrc = "";
+    foreach (var item in webpages)
+    {
+        if (item.image != null)
+        {
+            base64 = Convert.ToBase64String(item.image);
+        }
+        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+        title = item.title;
+        description = item.description;
+        @*<img src='@imgSrc' style="max-width:300px;" alt="Upload Photo" title="Change Profile Photo" />*@
+        break;
+    }
+}
+
+<!-- page title -->
+<section class="page-title-section overlay" data-background="@imgSrc">
+
+    @*@foreach (var item in webpages)
+        {*@
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="list-inline custom-breadcrumb">
+                    <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="@@page-link">@title</a></li>
+                    <li class="list-inline-item text-white h3 font-secondary @@nasted"></li>
+                </ul>
+                <p class="text-lighten">@Html.Raw(description)</p>
+            </div>
+        </div>
+    </div>
+    @*  *@}
+
+</section>
+<!-- /page title end-->
+<!-- about Company-->
+<section class="section">
+    <partial name="_AboutCompany" />
+</section>
+<!-- about Companyend-->
+<!-- funfacts -->
+@*<section class="section-sm bg-primary">
+        <partial name="_FunFacts" />
+    </section>*@
+<!-- /funfacts -->
+<!-- success story -->
+<section class="section bg-cover" data-background="images/backgrounds/success-story.jpg">
+    <partial name="_SuccessStory" />
+</section>
+<!-- /success story -->
+<!-- teachers -->
+<section class="section">
+    <partial name="_Teachers" />
+</section>
+<!-- /teachers -->
+<!-- footer -->
+<footer>
+    <!-- newsletter -->
+    @*<partial name="_NewsLetter" />*@
+    <!-- newsletter end-->
+    <!-- footer content -->
+    <partial name="_FooterContent" />
+    <!-- footer content end-->
+    <!-- copyright -->
+    <partial name="_CopyRight" />
+    <!-- copyright end-->
+</footer>
+<!-- /footer end-->

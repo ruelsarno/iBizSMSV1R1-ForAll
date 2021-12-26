@@ -1,0 +1,54 @@
+﻿@model iBizSMSV1R1.ModelsAdmission.EnrollmentProdecure
+
+@{
+    ViewData["Title"] = "Edit Enrollment Prodecure";
+    Layout = "~/Views/Shared/_LayoutWebPage.cshtml";
+    var name = ViewBag.Name;
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"] of <u>@name</u></h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="recno" />
+                <div class="row">
+                    <div class="form-group  col-sm-6 required">
+                        <label asp-for="schoolyear" class="control-label"></label>
+                        <select asp-for="schoolyear" asp-items="@ViewBag.SchoolYear" class="form-control input-text">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="schoolyear" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-6 required">
+                        <label asp-for="title" class="control-label"></label>
+                        <input asp-for="title" class="form-control input-text" required/>
+                        <span asp-validation-for="title" class="text-danger input-text"></span>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                   
+                    <div class="form-group  col-sm-12 required">
+                        <label asp-for="procedure" class="control-label"></label>
+                        <textarea asp-for="procedure" class="form-control input-text"></textarea>                        
+                        <span asp-validation-for="procedure" class="text-danger input-text"></span>
+                    </div>                  
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-warning  button-small" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Delete" asp-route-id="@Model.recno" class="btn btn-danger button-small">Delete</a>
+                <a asp-action="Index" asp-route-recno="@Model.recno" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

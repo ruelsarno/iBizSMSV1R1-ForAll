@@ -1,0 +1,84 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.WebPageBlog>
+
+@{
+    ViewData["Title"] = "Blogs";
+    Layout = "~/Views/Shared/_LayoutWebPage.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-small" asp-controller="WebPageBlogs" asp-action="Create">Add New</a>
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tagline)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.blogtitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.author)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.postdate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.controller)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.action)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tagline)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.blogtitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.postdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.controller)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.action)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning button-small" asp-action="Edit" asp-route-id="@item.recno">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

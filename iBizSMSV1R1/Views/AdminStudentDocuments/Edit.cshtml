@@ -1,0 +1,45 @@
+﻿@model iBizSMSV1R1.Models.StudentDocument
+
+@{
+    ViewData["Title"] = "Edit Student Document";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    var id = ViewBag.ID;
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Edit"  enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="recno" />
+                <input type="hidden" asp-for="id" />              
+                <div class="form-group">
+                    <label asp-for="documentname" class="control-label"></label>
+                    <input asp-for="documentname" class="form-control input-text-sm" />
+                    <span asp-validation-for="documentname" class="text-danger input-text-sm"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="imagedata" class="control-label"></label>
+                    <input type="file" id="files" asp-for="imagedata" class="input-text-sm" name="files" multiple="multiple">
+                    <span asp-validation-for="imagedata" class="text-danger input-text-sm"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-warning  button-small" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Delete" asp-route-id="@Model.id" asp-route-recno="@Model.recno" class="btn btn-danger button-small" disable>Delete</a>
+                <a asp-action="Index" class="btn btn-primary button-small" asp-route-id="@Model.id">Cancel</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+

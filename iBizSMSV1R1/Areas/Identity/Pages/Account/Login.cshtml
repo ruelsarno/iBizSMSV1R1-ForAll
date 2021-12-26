@@ -1,0 +1,83 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Secure Login";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-sm-8 col-sm-offset-2">
+        <section>
+            <h5 id="module-views" class="text-success">Use another service provider to log in.</h5>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div class="input-text">
+                        <p>
+                            There are no external authentication services configured.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+    <div class="col-sm-4">
+        <section>
+            <div class="card">
+                <div class="card-header bg-success"><h6 id="module-views" class="text-white">@ViewData["Title"] : </h6></div>
+                <div class="card-body" style="background-color:#C1F5C5">
+                    <form id="account" method="post">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Input.Email"></label>
+                            <input asp-for="Input.Email" class="form-control input-text" />
+                            <span asp-validation-for="Input.Email" class="text-danger  input-text"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.Password"></label>
+                            <input asp-for="Input.Password" class="form-control input-text" />
+                            <span asp-validation-for="Input.Password" class="text-danger input-text"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label asp-for="Input.RememberMe">
+                                    <input asp-for="Input.RememberMe" />
+                                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-sm">Log in</button>
+                        </div>
+                        <div class="form-group">
+                            <p class="">
+                                <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer bg-success"></div>
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,87 @@
+﻿@model iBizSMSV1R1.Models.BillToPay
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>BillToPay</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="form-group  col-sm-3 required">
+                    <label asp-for="referenceno" class="control-label"></label>
+                    <input asp-for="referenceno" class="form-controlinput-text-sm" />
+                    <span asp-validation-for="referenceno" class="text-danger input-text-sm"></span>
+                </div>
+                <div class="form-group  col-sm-3 required">
+                    <label asp-for="schoolyear" class="control-label"></label>
+                    <input asp-for="schoolyear" class="form-controlinput-text-sm" />
+                    <span asp-validation-for="schoolyear" class="text-danger input-text-sm"></span>
+                </div>
+                <div class="form-group  col-sm-3 required">
+                    <label asp-for="billnames" class="control-label"></label>
+                    <input asp-for="billnames" class="form-controlinput-text-sm" />
+                    <span asp-validation-for="billnames" class="text-danger input-text-sm"></span>
+                </div>
+                <div class="form-group  col-sm-3 required">
+                    <label asp-for="billdate" class="control-label"></label>
+                    <input asp-for="billdate" class="form-controlinput-text-sm" />
+                    <span asp-validation-for="billdate" class="text-danger input-text-sm"></span>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="form-group  col-sm-3 required">
+                    <label asp-for="amount" class="control-label"></label>
+                    <input asp-for="amount" class="form-controlinput-text-sm" />
+                    <span asp-validation-for="amount" class="text-danger input-text-sm"></span>
+                </div>
+                <div class="form-group  col-sm-3 required">
+                    <label asp-for="duedate" class="control-label"></label>
+                    <input asp-for="duedate" class="form-controlinput-text-sm" />
+                    <span asp-validation-for="duedate" class="text-danger input-text-sm"></span>
+                </div>
+                <div class="form-group  col-sm-3 required">
+                    <label asp-for="payment" class="control-label"></label>
+                    <input class="form-control form-check-inputinput-text-sm" asp-for="payment" />
+                    <span asp-validation-for="payment" class="text-danger input-text-sm"></span>
+                </div>
+                <div class="form-group  col-sm-3 required">
+                    <label asp-for="confirm" class="control-label"></label>
+                    <input class="form-control form-check-inputinput-text-sm" asp-for="confirm" />
+                    <span asp-validation-for="confirm" class="text-danger input-text-sm"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group  col-sm-3 required">
+                    <label asp-for="confirmedby" class="control-label"></label>
+                    <input type="hidden" class="form-control form-check-input input-text-sm" asp-for="confirmedby" value="@ViewBag.LoginID" readonly="readonly" />
+                    <span asp-validation-for="confirmedby" class="text-danger input-text-sm"></span>
+                </div>
+                <div class="form-group  col-sm-3 required">
+
+                </div>
+                <div class="form-group  col-sm-3 required">
+
+                </div>
+                <div class="form-group  col-sm-3 required">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary button-small" asp-route-id="@Model.id">Cancel</a>
+</div>
+

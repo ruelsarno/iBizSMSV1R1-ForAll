@@ -1,0 +1,118 @@
+﻿@model iBizSMSV1R1.Models.BillToPay
+
+@{
+    ViewData["Title"] = "Edit Bill To Pay";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+     var message = ViewBag.Message;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <partial name="_AccountingMenu" />
+        </div>
+        <div class="col-sm-12">
+            @*<h6>@ViewData["Title"]</h6>*@
+            @{
+                if (@message != null)
+                {
+                    if (@message != "")
+                    {
+                        <span>"@message"</span>
+                    }
+                }
+
+            }
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Edit" enctype="multipart/form-data" method="post" asp-route-recordno="@ViewBag.RecordNo">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="recno" />
+                <input type="hidden" asp-for="id" />
+                <input type="hidden" class="form-control form-check-input" asp-for="confirm" readonly="readonly" />
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="referenceno" class="control-label"></label>
+                        <input asp-for="referenceno" class="form-control input-text" readonly="readonly" />
+                        <span asp-validation-for="referenceno" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="schoolyear" class="control-label"></label>
+                        <input asp-for="schoolyear" class="form-control input-text" readonly="readonly" />
+                        <span asp-validation-for="schoolyear" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="billnames" class="control-label"></label>
+                        <input asp-for="billnames" class="form-control input-text" readonly="readonly" />
+                        <span asp-validation-for="billnames" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="billdate" class="control-label"></label>
+                        <input asp-for="billdate" class="form-control input-text" readonly="readonly" />
+                        <span asp-validation-for="billdate" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="paymenttype" class="control-label"></label>
+                        <select asp-for="paymenttype" asp-items="@ViewBag.PaymentType" class="form-control input-text">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="paymenttype" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="paymentoffice" class="control-label"></label>
+                        <select asp-for="paymentoffice" asp-items="@ViewBag.PaymentOffice" class="form-control input-text">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="paymentoffice" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="amount" class="control-label"></label>
+                        <input asp-for="amount" class="form-control input-text" readonly="readonly" />
+                        <span asp-validation-for="amount" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="payment" class="control-label"></label>
+                        <input class="form-control form-check-input" asp-for="payment" />
+                        <span asp-validation-for="payment" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="form-group  col-sm-6 required">
+                        <label asp-for="proofofpayment" class="control-label  label-text"></label>
+                        <input type="file" id="files" asp-for="proofofpayment" class="input-text" name="files" multiple="multiple" required>
+                        <span asp-validation-for="proofofpayment" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-6 required">
+                       
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3">
+                        <input type="submit" value="Save" class="btn btn-warning button-small" />
+                    </div>
+                    <div class="form-group col-sm-3 ">
+
+                    </div>
+                    <div class="form-group col-sm-3 ">
+
+                    </div>
+                    <div class="form-group col-sm-3 text-end">
+                        <a asp-action="Index" class="btn btn-primary button-small" asp-route-referenceno="@Model.referenceno">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

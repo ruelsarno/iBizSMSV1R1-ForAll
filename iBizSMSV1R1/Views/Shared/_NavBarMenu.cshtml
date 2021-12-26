@@ -1,0 +1,101 @@
+﻿@using iBizSMSV1R1.Controllers
+
+@{
+    var webpagetitles = HomeController.getWebPageTitles();
+    var counter = 0;
+}
+
+<div class="navigation w-100">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark p-0">
+            <a class="navbar-brand" href="index.html">
+                @*<img src="images/logo.png" alt="logo"*@
+                <img src="~/images/TriumphantLogo256WithName.png" alt="logo" style="height:100px";width="1000px">
+            </a>
+            <button class="navbar-toggler rounded-0" type="button" data-toggle="collapse" data-target="#navigation"
+                    aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navigation" style="background-color:dodgerblue">
+                <ul class="navbar-nav ml-auto text-center">
+
+                    @foreach (var item in webpagetitles)
+                    {
+                        
+                        if (item.action.ToLower() == "index" ||
+                            item.action.ToLower() == "about" ||
+                            item.action.ToLower() == "courses" ||
+                            item.action.ToLower() == "events" ||
+                            item.action.ToLower() == "achievements" || 
+                            item.action.ToLower() == "contact"
+                            )
+                        {
+                            var strToLowerString = item.action.ToLower();
+                            if (item.action.ToLower() == "index")
+                            {
+                                <li class="nav-item active">
+                                    <a class="nav-link" asp-controller="@item.controller" asp-action="@item.action">@item.title</a>
+                                </li>
+                                counter++;
+                            }
+                            else if (item.action.ToLower() == "about" ||
+                               item.action.ToLower() == "courses" ||
+                               item.action.ToLower() == "events" ||
+                               item.action.ToLower() == "achievements" ||
+                               item.action.ToLower() == "contact"
+                               )
+                                {
+                                <li class="nav-item @@about">
+                                    <a class="nav-link" asp-controller="@item.controller" asp-action="@item.action">@item.title</a>
+                                </li>
+                                counter++;
+                            }
+                        }
+
+                        if (counter == 6)
+                        {
+                            break;
+                        }
+
+                    }
+                    @*<li class="nav-item active">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item @@about">
+                            <a class="nav-link" asp-controller="Home" asp-action="About">About</a>
+                        </li>
+                        <li class="nav-item @@courses">
+                            <a class="nav-link" asp-controller="Home" asp-action="Courses">COURSES</a>
+                        </li>
+                        <li class="nav-item @@events">
+                            <a class="nav-link" asp-controller="Home" asp-action="Events">EVENTS</a>
+                        </li>
+                        <li class="nav-item @@blog">
+                            <a class="nav-link" asp-controller="Home" asp-action="Blog">BLOG</a>
+                        </li>
+                    <li class="nav-item dropdown view">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Pages
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" asp-controller="Home" asp-action="Teacher">Teacher</a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="TeacherDetails">Teacher Single</a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="Notice">Notice</a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="NoticeDetails">Notice Details</a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="Research">Research</a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="Scholarship">Scholarship</a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="CourseDetails">Course Details</a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="Events">Event Details</a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="BlogDetails">Blog Details</a>
+                        </div>
+                    </li>
+                    <li class="nav-item @@contact">
+                        <a class="nav-link" asp-controller="Home" asp-action="Contact">CONTACT</a>
+                    </li>*@
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>

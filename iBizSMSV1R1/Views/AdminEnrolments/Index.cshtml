@@ -1,0 +1,163 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.Enrolment>
+@*@model ReflectionIT.Mvc.Paging.PagingList<iBizSMSV1R1.Models.Enrolment>
+    @using ReflectionIT.Mvc.Paging
+    @addTagHelper *, ReflectionIT.Mvc.Paging*@
+
+@{
+    ViewData["Title"] = "Enrolments";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    var message = ViewBag.Message;
+    var idno = ViewBag.IDNO;
+    var id = ViewBag.ID;
+    
+}
+
+<div class="container">
+    @{
+        if (@message != null)
+        {
+            if (@message != "")
+            {
+                <div class="alert alert-info alert-dismissible fade show">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>MESSAGE!!! </strong> "@message"
+                </div>
+            }
+        }
+    }
+</div>
+<script>
+    function senMail() {
+        var r = confirm("Send Notification to Student/Parent!");
+    }
+</script>
+<script type="text/javascript">
+        $(document).ready(function(){
+            if ('@ViewBag.Message' != null) {
+                if ('@ViewBag.Message' != "") {
+                    $("#MessageModalCorrect").modal('show');
+                }
+            }
+        });
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+            @*<a class="btn btn-primary button-medium" asp-controller="AdminEnrolments" asp-action="Create">Add New</a>*@
+        </div>
+        <div class="col-sm-4 text-end">
+            @*<form asp-controller="AdminEnrolments" asp-action="Index" method="get">
+                    <input type="text" name="SearchString" class="" style="border-radius:5px; margin-bottom:2px" />
+                    <input type="submit" value="Search" class="btn  btn-primary button-medium" style="padding-left:15px;padding-right:15px">
+                </form>*@
+        </div>
+
+    </div>
+</div>
+
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.idno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.schoolyear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.registrationno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.registrationdate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.studenttype)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.studentlevel)
+                </th>         
+
+                <th>
+                    @Html.DisplayNameFor(model => model.gradeyear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.section)
+                </th>              
+                <th>
+                    @Html.DisplayNameFor(model => model.modeofpayment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.confirmed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.confirmedby)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.notified)
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.schoolyear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.registrationno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.registrationdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.studenttype)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.studentlevel)
+                </td>          
+                <td>
+                    @Html.DisplayFor(modelItem => item.gradeyear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.section)
+                </td>           
+                <td>
+                    @Html.DisplayFor(modelItem => item.modeofpayment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.confirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.confirmedby)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.notified)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-recno="@item.recno" asp-route-id="@item.id" asp-route-idno="@item.idno" class="btn btn-warning button-small">Edit</a>
+                </td>
+                <td>
+                    <form asp-action="SendeMail" asp-route-recno="@item.recno" asp-route-id="@item.id" asp-route-idno="@item.idno" method="post">
+                        @*<input type="hidden" value="@item.recno" />
+                <input type="hidden" value="@item.id" />
+                <input type="hidden" value="@item.idno" />*@
+                        <input type="submit" value="Send Confirmation" class="btn btn-danger button-small" onclick="sendMail()" />
+                    </form>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<partial name="_MessageModalCorrect" />
+<partial name="_MessageModalCorrect" />
+

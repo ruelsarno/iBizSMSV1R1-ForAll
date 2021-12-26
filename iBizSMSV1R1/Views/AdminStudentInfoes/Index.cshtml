@@ -1,0 +1,125 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.StudentInfo>
+
+@{
+    ViewData["Title"] = "Student Information";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    var idno = ViewBag.IDNO;
+    var id = ViewBag.ID;
+    var message = ViewBag.Message;
+}
+
+<div class="container-fluid">
+    <div class="row">        
+        <div class="col-sm-12 text-center" style="color:red">
+            @{
+                if (@message != null)
+                {
+                    if (@message != "")
+                    {
+                        <span>"@message"</span>
+                    }
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+            @*<a class="btn btn-primary button-medium" asp-controller="AdminStudentInfoes" asp-action="Create"  asp-route-idno="@idno" asp-route-id="@id">Add New</a>*@
+        </div>
+        <div class="col-sm-8 text-end">
+            <form asp-controller="FeeTables" asp-action="Index" method="get">
+                <input type="text" name="schoolyear" class="" style="border-radius:5px; margin-bottom:2px" />
+                @*<select asp-items="@ViewBag.SchoolYear" name="schoolyear" class="form-control input-text" id="SchoolYear">
+                    <option></option>
+                </select>
+                <select asp-items="@ViewBag.SchoolLevel" name="studentlevel" class="form-control input-text" id="SchoolYear">
+                    <option></option>
+                </select>*@
+                <input type="submit" value="Search" class="btn  btn-primary button-medium" style="padding-left:15px;padding-right:15px">
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="Form-Body">
+    @foreach (var item in Model)
+    {
+    <div class="row">
+        <div class="form-group col-sm-2">
+            <label class="control-label">ID No.</label>
+            <input class="form-control input-text-sm" value="@item.idno" style="height:38px" />
+        </div>
+        <div class="form-group col-sm-2">
+            <label class="control-label">LRN</label>
+            <input class="form-control input-text-sm" value="@item.lrn" style="height:38px" />
+        </div>
+        <div class="form-group  col-sm-3">
+            <label class="control-label">Surname</label>
+            <input class="form-control input-text-sm" value="@item.surname" style="height:38px" />
+
+        </div>
+        <div class="form-group  col-sm-3">
+            <label class="control-label">Firstname</label>
+            <input class="form-control input-text-sm" value="@item.firstname" style="height:38px" />
+        </div>
+        <div class="form-group  col-sm-2">
+            <label class="control-label">Middle Name</label>
+            <input class="form-control input-text-sm" value="@item.middlename" style="height:38px" />
+        </div>
+    </div>
+        <div class="row">
+            <div class="form-group col-sm-3">
+                <label class="control-label">Extension</label>
+                <input class="form-control input-text-sm" value="@item.extension" style="height:38px" />
+            </div>
+            <div class="form-group  col-sm-3">
+                <label class="control-label">Birthday</label>
+                <input class="form-control input-text-sm" value="@item.birthday" style="height:38px" />
+
+            </div>
+            <div class="form-group  col-sm-3">
+                <label class="control-label">Birthplace</label>
+                <input class="form-control input-text-sm" value="@item.birthplace" style="height:38px" />
+            </div>
+            <div class="form-group  col-sm-3">
+                <label class="control-label">Nationality</label>
+                <input class="form-control input-text-sm" value="@item.nationality" style="height:38px" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-3">
+                <label class="control-label">Civil Status</label>
+                <input class="form-control input-text-sm" value="@item.civilstatus" style="height:38px" />
+            </div>
+            <div class="form-group  col-sm-3">
+                <label class="control-label">Gender</label>
+                <input class="form-control input-text-sm" value="@item.gender" style="height:38px" />
+
+            </div>
+            <div class="form-group  col-sm-3">
+                <label class="control-label">Active</label>
+                <input type="checkbox" class="form-control form-check-input input-text-sm" checked="@item.active" style="height:38px" />
+            </div>
+            <div class="form-group  col-sm-3">
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3  form-group">
+
+            </div>
+            <div class="col-sm-9 form-group text-end">
+                <a asp-action="Edit" asp-route-idno="@item.idno" asp-route-id="@item.id" class="btn btn-warning button-small">Edit</a>
+            </div>
+        </div>
+
+        break;
+    }
+</div>

@@ -1,0 +1,44 @@
+﻿@model iBizSMSV1R1.Models.StudentImage
+
+@{
+    ViewData["Title"] = "ADD Student Image";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";   
+    var id = ViewBag.ID;
+}
+
+<div class="container">
+    <h6 id="module-views" class="container">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="id" class="control-label"></label>
+                    <input asp-for="id" class="form-control input-text-sm" />
+                    <span asp-validation-for="id" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="link" class="control-label"></label>
+                    <input asp-for="link" class="form-control input-text-sm" />
+                    <span asp-validation-for="link" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="image" class="control-label"></label>
+                    <input type="file" id="files" asp-for="image" class="input-text" name="files" multiple="multiple">
+                    <span asp-validation-for="image" class="text-danger input-text-sm"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Index" asp-route-id="@id" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

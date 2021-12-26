@@ -1,0 +1,35 @@
+﻿@using iBizSMSV1R1.Controllers
+
+@{
+    var webpages = HomeController.getWebPages("BannerFeature");   
+    var base64 = "";
+    var imgSrc = "";
+    foreach (var item in webpages)
+    {
+        base64 = Convert.ToBase64String(item.image);
+        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+    }
+}
+
+
+
+<div class="container">
+    <div class="row">   
+        <div class="col-sm-12">
+            <img class="img-fluid" src="@imgSrc" alt="banner-feature">
+        </div>     
+           
+            @foreach (var item in webpages)
+            { 
+                <div class="col-sm-12 text-center text-sm-left">
+                    <i class="@item.icon mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
+                    <h3 class="mb-xl-4 mb-lg-3 mb-4">@item.tagline</h3>
+                    <p>
+                        @Html.Raw(item.description)
+                    </p>
+                </div>
+            }              
+           
+       
+    </div>
+</div>

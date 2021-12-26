@@ -1,0 +1,77 @@
+﻿@model iBizSMSV1R1.Models.StudentRelative
+
+@{
+    ViewData["Title"] = "Add Immediate Family";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+    var message = ViewBag.Message;
+    var id = ViewBag.ID;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <partial name="_StudentProfileMenu" />
+        </div>
+        <div class="col-sm-12">
+            <h6>@ViewData["Title"]</h6>           
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger input-text"></div>
+                <input type="hidden" asp-for="id" value="@id" />
+                <div class="row">
+                    <div class="form-group  col-sm-4 required">
+                        <label asp-for="fullname" class="control-label"></label>
+                        <input asp-for="fullname" class="form-control input-text" />
+                        <span asp-validation-for="fullname" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-4 required">
+                        <label asp-for="relation" class="control-label"></label>
+                        <input asp-for="relation" class="form-control input-text" />
+                        <span asp-validation-for="relation" class="text-danger input-text"></span>
+                    </div>                   
+                    <div class="form-group col-sm-4 required">
+                        <label asp-for="occupation" class="control-label"></label>
+                        <input asp-for="occupation" class="form-control input-text" />
+                        <span asp-validation-for="occupation" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="phonenumber" class="control-label"></label>
+                        <input asp-for="phonenumber" class="form-control input-text" />
+                        <span asp-validation-for="phonenumber" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="email" class="control-label"></label>
+                        <input type="email" asp-for="email" class="form-control input-text" />
+                        <span asp-validation-for="email" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-6 required">
+                        <label asp-for="address" class="control-label"></label>
+                        <input asp-for="address" class="form-control input-text" />
+                        <span asp-validation-for="address" class="text-danger input-text"></span>
+                    </div>                   
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3  form-group">
+                        <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                    </div>
+                    <div class="col-sm-9 form-group text-end">
+                        <a asp-action="Index" class="btn btn-primary button-small" asp-route-id="@id">Cancel</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+

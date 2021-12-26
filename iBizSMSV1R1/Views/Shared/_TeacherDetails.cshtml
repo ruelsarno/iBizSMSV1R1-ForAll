@@ -1,0 +1,72 @@
+﻿
+@using iBizSMSV1R1.Controllers
+
+@{    
+    var teacherdetails = ViewBag.TeacherDetails;
+}
+
+<!-- page title -->
+<section class="page-title-section overlay" data-background="~/images/backgrounds/page-title.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                @foreach (var item in teacherdetails)
+                {
+                    <ul class="list-inline custom-breadcrumb">
+                        <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="#">Our Teacher</a></li>
+                        <li class="list-inline-item text-white h3 font-secondary nasted">@item.fullname</li>
+                    </ul>
+                    <p class="text-lighten">Our courses offer a good compromise between the continuous assessment favoured by some universities and the emphasis placed on final exams by others.</p>
+                    break;
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /page title -->
+<!-- teacher details -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in teacherdetails)
+            {
+                <div class="col-md-5 mb-5">
+                    <img class="img-fluid w-100" src="~/images/teachers/@item.link" alt="teacher">
+                </div>
+                <div class="col-md-6 mb-5">
+                    <h3>@item.fullname</h3>
+                    <h6 class="text-color">@item.tagline</h6>
+                    <p class="mb-5">
+                        @Html.Raw(item.jobdescription)
+                    </p>
+                    <div class="row">
+                        <div class="col-md-6 mb-5 mb-md-0">
+                            <h4 class="mb-4">CONTACT INFO:</h4>
+                            @Html.Raw(item.contactinfo)
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="mb-4">SUMMARY OF ACTIVITIES/INTERESTS</h4>
+                            @Html.Raw(item.hobbiesinterest)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <h4 class="mb-4">BIOGRAPHY</h4>
+                    <p class="mb-5">
+                        @Html.Raw(item.biography)
+                    </p>
+                </div>
+
+                break;
+            }
+
+        </div>
+    </div>
+</section>
+<!-- /teacher details -->
+<!-- courses -->
+<section class="section-sm">
+    <partial name="_Courses" />
+</section>
+<!-- /courses end-->

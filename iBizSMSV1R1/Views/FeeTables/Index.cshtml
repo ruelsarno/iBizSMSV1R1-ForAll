@@ -1,0 +1,178 @@
+﻿@model IEnumerable<iBizSMSV1R1.ModelsAccounting.FeeTable>
+
+@{
+    ViewData["Title"] = "Fee Table";
+    Layout = "~/Views/Shared/_LayoutAccountingAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+        </div>
+        <div class="col-sm-8 text-end">
+            <form asp-controller="FeeTables" asp-action="Index" method="get">
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"> KR </label>
+                                <input type="radio" id="record10" name="SearchString" value="Kinder">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"> N1 </label>
+                                <input type="radio" id="record10" name="SearchString" value="Nursery 1">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"> N2 </label>
+                                <input type="radio" id="record10" name="SearchString" value="Nursery 2">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"> G1 </label>
+                                <input type="radio" id="record10" name="SearchString" value="Grade 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"> G2 </label>
+                                <input type="radio" id="record10" name="SearchString" value="Grade 2">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"> G3 </label>
+                                <input type="radio" id="record10" name="SearchString" value="Grade 3">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"> G4 </label>
+                                <input type="radio" id="record10" name="SearchString" value="Grade 4">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"> G5 </label>
+                                <input type="radio" id="record10" name="SearchString" value="Grade 5">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"> G6 </label>
+                                <input type="radio" id="record10" name="SearchString" value="Grade 6">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"> G7 </label>
+                                <input type="radio" id="record10" name="SearchString" value="Grade 7">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"> G8 </label>
+                                <input type="radio" id="record10" name="SearchString" value="Grade 8">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"> G9 </label>
+                                <input type="radio" id="record10" name="SearchString" value="Grade 9">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"> G10 </label>
+                                <input type="radio" id="record10" name="SearchString" value="Grade 10">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"> G11 </label>
+                                <input type="radio" id="record10" name="SearchString" value="Grade 11">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"> G12 </label>
+                                <input type="radio" id="record10" name="SearchString" value="Grade 12">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="control-label" for="record10"></label>                               
+                                <input type="submit" id="record10" class="btn btn-warning button-small" value="Filter">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-2 text-end">
+            <a class="btn btn-primary button-small" asp-controller="FeeTables" asp-action="Create">Add New</a>
+        </div>
+    </div>
+</div> 
+<hr />
+<div class="Form-Body">
+    <table class="table table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.schoolyear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.gradeyear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.paymentmode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tuitionfee)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.reservationfee)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.uponenrollment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.installmentcount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.paymentschedule)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.installmentamount)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.schoolyear)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.gradeyear)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.paymentmode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tuitionfee)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.reservationfee)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.uponenrollment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.installmentcount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.paymentschedule)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.installmentamount)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning button-small" asp-action="Edit" asp-route-id="@item.recno">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

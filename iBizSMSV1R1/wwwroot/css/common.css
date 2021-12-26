@@ -1,0 +1,204 @@
+﻿body {
+   /* background-color: aliceblue;*/
+}
+
+@font-face {
+    font-family: 'oswald-regular';
+    src: url('../fonts/oswald-regular.ttf') format('truetype');
+}
+
+#system-title {
+    margin-top: 20px;
+    color: orangered;
+}
+
+#headers {
+    color: dimgray;
+    font-family: 'oswald-regular';
+    /*font-size:medium;*/
+}
+
+/*#header-time {
+    background-color: orangered;
+}*/
+
+.top-menu {
+    color: firebrick;
+    font-family: 'oswald-regular';
+    /*font-size:medium;*/
+}
+
+#module-views, .top-menu {
+    color: firebrick;
+    font-family: 'oswald-regular';
+    /*font-size:medium;*/
+}
+
+.Header-Main{
+    color: green;
+    font-family: 'oswald-regular';
+    /*font-size:medium;*/
+}
+
+.Form-Body {
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+label {
+    font-size: 12px;
+    margin: 1px;
+    color: darkslategray;
+}
+
+.label-text {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.label-text-sm {
+    font-size: 8px;
+    font-weight: bold;
+}
+
+form-control {
+    padding: 2px;
+    font-size: 10px;
+}
+
+.number-double {
+    text-align: right;
+}
+
+th, tr, thead, dt {
+    font-size: small;
+    font-style: normal;
+    color: darkslategray;
+    font-family: 'oswald-regular';
+}
+
+td, dd, a {
+    padding: 1px 0px 1px 0px;
+    font-size: 12px;
+    color: darkslategray;
+    font-family: Tahoma;
+}
+
+.input-text {
+    font-size: 12px;
+    font-weight: normal;
+    margin: 1px 0px 1px 0px;
+    padding-left: 5px;
+}
+
+.input-text-sm {
+    font-size: 10px;
+    font-weight: normal;
+    margin: 1px 0px 1px 0px;
+    padding-left: 5px;
+}
+
+.remove-item {
+    font-size: 16px;
+    color: red;
+}
+
+
+.breadcrumb-small {
+    padding: 2px;
+    font-size: 14px;
+}
+
+.edit-links {
+    color: white;
+}
+
+    .edit-links:hover {
+        color: yellow;
+    }
+
+.form-border {
+    border: 1px solid black;
+    border-color: black;
+}
+
+.social-media-logo {
+    height: 60px;
+    width: 60px;
+}
+
+message {
+    text-align: center;
+    color: red;
+    font-size: 12px;
+}
+
+.button-extrasm {
+    font-size: 8px;
+    padding-top: 2px 5px 2px 5px;
+    border-radius: 10px;
+    background-color: white;
+    color: dodgerblue;
+    border-color: dodgerblue;
+}
+
+.button-small {
+    font-size: 10px;
+    padding: 5px;
+    border-radius: 2px;
+    /*background-color: white;*/
+    /*color: dodgerblue;
+    border-color: dodgerblue;*/
+}
+
+.button-medium {
+    font-size: 12px;
+    padding-top: 3px 3px 3px 3px;
+    border-radius: 2px;
+    margin-left: 2px;
+    /*color: dodgerblue;*/
+    /*border-color: dodgerblue;*/
+}
+
+.button-big {
+    font-size: 14px;
+    padding-top: 5px 5px 5px 5px;
+    border-radius: 2px;
+    background-color: white;
+    color: darkblue;
+    border-color: dodgerblue;
+}
+
+.button-extrabig {
+    padding-top: 5px 5px 5px 0px;
+    margin: 3px;
+    border-radius: 2px;
+    background-color: white;
+    color: dodgerblue;
+    border-color: dodgerblue;
+}
+
+.table-index {
+    border-color: dimgray;
+    border-radius: 5px;
+}
+
+.form-group.required .control-label:after {
+    content: "*";
+    color: red;
+}
+.navbar-nav > li {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.dropdown-menu {
+   /*position: relative;*/
+    z-index: 2;
+   /* display: block;
+    visibility: visible;*/
+}
+
+glyphicon-big {
+    font-size: 75px;
+}

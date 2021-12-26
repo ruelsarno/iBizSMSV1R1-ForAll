@@ -1,0 +1,59 @@
+﻿@using iBizSMSV1R1.Controllers.Admission
+
+@{
+    ViewData["Title"] = "How to...";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+    var message = ViewBag.Message;
+
+    var Profile = AdmissionController.getProcessIntro("Student Profile");
+    var Reservation = AdmissionController.getProcessIntro("Reservation");
+    var Enrollment = AdmissionController.getProcessIntro("Enrollment");
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <partial name="_AdmissionMenu" />
+        </div>
+        <div class="col-sm-12">
+            <h6>@ViewData["Title"]</h6>
+            @{
+                if (@message != null)
+                {
+                    if (@message != "")
+                    {
+                        <span>"@message"</span>
+                    }
+                }
+            }
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" style="background-color:orange;border-radius:5px;box-shadow:inset;margin-bottom:10px;z-index:5">
+                    @foreach (var item in Profile)
+                    {
+                        <h6>@item.subtitle</h6>
+                        @Html.Raw(item.description)
+                    }
+                </div>
+                <div class="col-sm-12" style="background-color:powderblue;border-radius:5px;box-shadow:inset;margin-bottom:10px;z-index:5">
+                    @foreach (var item in Reservation)
+                    {
+                        <h6>@item.subtitle</h6>
+                        @Html.Raw(item.description)
+                    }
+                </div>
+                <div class="col-sm-12" style="background-color:orange;border-radius:5px;box-shadow:inset;margin-bottom:10px;z-index:5">
+                    @foreach (var item in Enrollment)
+                    {
+                        <h6>@item.subtitle</h6>
+                        @Html.Raw(item.description)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

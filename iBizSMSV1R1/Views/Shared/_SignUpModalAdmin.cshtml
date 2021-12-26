@@ -1,0 +1,46 @@
+﻿<!-- The Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Register</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="login">
+                    <form id="account" asp-controller="Home" asp-action="Register" method="post" class="row">
+                        <div class="col-12">
+                            <input type="email" class="form-control mb-3" id="signupName" name="UserName" placeholder="UserName" required>
+                        </div>
+                        <div class="col-12">
+                            <input type="email" class="form-control mb-3" id="signupEmail" name="Email" placeholder="Email" required>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" class="form-control mb-3" id="signupPhone" name="PhoneNumber" placeholder="Phone" required>
+                        </div>
+                        <div class="col-12">
+                            <input type="password" id="signupPassword" class="form-control mb-3" name="Password" placeholder="Password must have at least one Capital, one Special character" required>
+                            @*<input type="password" class="form-control mb-3" id="signupPassword" name="Password" placeholder="Password must have at least one Capital, one Special character">*@
+                            <input id="ShowPassword" type="checkbox" onclick="mySignUpFunction()">  Show Password
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary input-text">SIGN UP</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer bg-success">
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="~/js/site.js" asp-append-version="true"></script>

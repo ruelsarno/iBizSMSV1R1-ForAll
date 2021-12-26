@@ -1,0 +1,112 @@
+﻿@model iBizSMSV1R1.ModelsAccounting.AccountDetail
+
+@{
+    ViewData["Title"] = "Remove Account Detail";
+    Layout = "~/Views/Shared/_LayoutAccountingAdmin.cshtml";
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"] : </h6>
+</div>
+<hr />
+<span class="remove-item">Are you sure you want to delete this?</span>
+<div class="Form-Body">
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.idno)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.idno)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.schoolyear)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.schoolyear)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.discountcode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.discountcode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.discountname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.discountname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.discount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.discount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.modeofpayment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.modeofpayment)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.feecategory)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.feecategory)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.feedescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.feedescription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.feeamount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.feeamount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.amountofdiscount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.amountofdiscount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.totalpayment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.totalpayment)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.rebate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.rebate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.balance)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.balance)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.status)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.remarks)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.remarks)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="accountdetailrecno" />
+        <input type="submit" value="Delete" class="btn btn-danger button-small" /> |
+        <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+    </form>
+</div>

@@ -1,0 +1,67 @@
+﻿@model iBizSMSV1R1.ModelsClassroom.ClassAnnouncement
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ClassAnnouncement</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.schoolyear)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.schoolyear)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.subjectcode)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.subjectcode)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.subjectname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.subjectname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.proctor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.proctor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.announcementtitle)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.announcementtitle)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.datestart)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.datestart)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dateend)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dateend)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.recno">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

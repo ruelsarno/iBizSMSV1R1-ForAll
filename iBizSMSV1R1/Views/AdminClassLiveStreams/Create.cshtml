@@ -1,0 +1,65 @@
+﻿@model iBizSMSV1R1.Models.ClassLiveStream
+
+@{
+    ViewData["Title"] = "Add Class Live Streams";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";
+    var recno = ViewBag.Recno;
+    var subjectname = ViewBag.SubjectName;
+}
+
+<div class="container">
+    <h6 id="module-views" class="container">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="recno" class="control-label"></label>
+                        <input asp-for="recno" class="form-control input-text" readonly="readonly" value="@recno" />
+                        <span asp-validation-for="recno" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="subjectname" class="control-label"></label>
+                        <input asp-for="subjectname" class="form-control input-text" readonly="readonly" value="@subjectname" />
+                        <span asp-validation-for="subjectname" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="lessonno" class="control-label"></label>
+                        <input asp-for="lessonno" class="form-control input-text" />
+                        <span asp-validation-for="lessonno" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="lessontitle" class="control-label"></label>
+                        <input asp-for="lessontitle" class="form-control input-text" />
+                        <span asp-validation-for="lessontitle" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-9 required">
+                        <label asp-for="videolink" class="control-label"></label>
+                        <input asp-for="videolink" class="form-control input-text" />
+                        <span asp-validation-for="videolink" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group col-sm-3 required">
+                        <label asp-for="active" class="control-label"></label>
+                        <input asp-for="active" class="form-control form-check-input input-text" style="height:38px" />
+                        <span asp-validation-for="active" class="text-danger input-text"></span>
+                    </div>
+                </div>               
+                <div class="form-group">
+                    <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                </div>
+
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Index" class="btn btn-primary button-small" asp-route-recno="@recno" asp-route-subjectname="@subjectname">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

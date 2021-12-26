@@ -1,0 +1,35 @@
+﻿@model iBizSMSV1R1.ModelsAccounting.FeeCategory
+
+@{
+    ViewData["Title"] = "Edit  Fee Category";
+    Layout = "~/Views/Shared/_LayoutAccountingAdmin.cshtml";
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger input-text"></div>
+                <input type="hidden" asp-for="recno" />
+                <div class="form-group">
+                    <label asp-for="feecategoryname" class="control-label"></label>
+                    <input asp-for="feecategoryname" class="form-control input-text" />
+                    <span asp-validation-for="feecategoryname" class="text-danger input-text"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-warning  button-small" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Delete" asp-route-id="@Model.recno" class="btn btn-danger button-small">Delete</a>
+                <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

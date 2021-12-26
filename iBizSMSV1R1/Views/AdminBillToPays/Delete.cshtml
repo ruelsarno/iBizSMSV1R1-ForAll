@@ -1,0 +1,94 @@
+﻿@model iBizSMSV1R1.Models.BillToPay
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BillToPay</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.referenceno)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.referenceno)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.schoolyear)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.schoolyear)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.billnames)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.billnames)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.billdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.billdate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.amount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.amount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.duedate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.duedate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.payment)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.payment)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.proofofpayment)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.proofofpayment)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.confirm)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.confirm)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.confirmedby)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.confirmedby)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.notified)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.notified)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="recno" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-primary button-small" asp-route-id="@Model.id">Cancel</a>
+    </form>
+</div>

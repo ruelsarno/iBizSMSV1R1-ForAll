@@ -1,0 +1,60 @@
+﻿@using iBizSMSV1R1.Controllers.Accounting
+
+@{
+    ViewData["Title"] = "How to...";
+    Layout = "~/Views/Shared/_LayoutAccounting.cshtml";
+    var message = ViewBag.Message;
+
+    var billstopay = AccountingController.getProcessIntro("Bills To Pay");
+    var billsummary = AccountingController.getProcessIntro("Bill Summary");
+    var payments = AccountingController.getProcessIntro("Payment Transactions");
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <partial name="_AccountingMenu" />
+        </div>
+        <div class="col-sm-12">
+            <h6>@ViewData["Title"]</h6>
+            @{
+                if (@message != null)
+                {
+                    if (@message != "")
+                    {
+                        <span>"@message"</span>
+                    }
+                }
+
+            }
+
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" style="background-color:orange;border-radius:5px;box-shadow:inset;margin-bottom:10px;z-index:5;color:white">
+                    @foreach (var item in billstopay)
+                    {
+                        <h6>@item.subtitle</h6>
+                        @Html.Raw(item.description)
+                    }
+                </div>
+                <div class="col-sm-12" style="background-color:powderblue;border-radius:5px;box-shadow:inset;margin-bottom:10px;z-index:5;color:dimgray">
+                    @foreach (var item in billsummary)
+                    {
+                        <h6>@item.subtitle</h6>
+                        @Html.Raw(item.description)
+                    }
+                </div>
+                <div class="col-sm-12" style="background-color:orange;border-radius:5px;box-shadow:inset;margin-bottom:10px;z-index:5;color:white">
+                    @foreach (var item in payments)
+                    {
+                        <h6>@item.subtitle</h6>
+                        @Html.Raw(item.description)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

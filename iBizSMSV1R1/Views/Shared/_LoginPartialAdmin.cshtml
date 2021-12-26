@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<iBizSMSV1R1.Data.ApplicationUser> SignInManager
+@inject UserManager<iBizSMSV1R1.Data.ApplicationUser> UserManager
+
+<style>
+    #loginpartial {
+        display: inline;
+    }
+</style>
+
+@if (SignInManager.IsSignedIn(User))
+{
+        @*<div class="col-sm-*">
+            <a class="" asp-controller="StudentInfoes" asp-action="Index" title="Manage my account!"> My Account </a>
+        </div>*@
+        <div class="row">
+            <div class="col-sm-9">
+                <a class=""> Hello @User.Identity.Name! </a>
+            </div>
+            <div class="col-sm-3">
+                <form class="ml-5" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Admin", new { area = "" })">
+                    <button type="submit" class="btn btn-primary btn-sm input-text ml-5"> Logout </button>
+                </form>
+            </div>
+        </div>
+}
+@*else
+    {
+        <li id="loginpartial" class=""><a id="login" class="text-uppercase input-text" href="#" data-toggle="modal" data-target="#loginModal">LOGIN</a></li>
+        <li id="loginpartial" class=""><a id="register"  class="text-uppercase input-text" href="#" data-toggle="modal" data-target="#signupModal">JOIN US</a></li>
+    }*@
+

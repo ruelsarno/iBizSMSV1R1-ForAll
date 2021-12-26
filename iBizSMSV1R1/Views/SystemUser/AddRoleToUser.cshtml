@@ -1,0 +1,82 @@
+﻿@model iBizSMSV1R1.ViewModels.RoleOfUser
+
+@{
+    ViewData["Title"] = "Add Role to User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userid = ViewData["UserId"];
+    var UserRoles = ViewBag.UserRole;
+    var message = ViewBag.Message;
+
+    var userrolelist = "";
+
+    foreach (var item in UserRoles)
+    {
+        userrolelist = userrolelist + " " + item.Value;
+    }
+}
+
+<div class="container">
+    @{
+        if (@message != null)
+        {
+            if (@message != "")
+            {
+                <div class="alert alert-info alert-dismissible fade show">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong>MESSAGE!!! </strong> "@message"
+                </div>
+            }
+        }
+    }
+</div>
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"] : </h6>
+</div>
+
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="AddRoleToUser" asp-route-search_data="@ViewBag.SearchData" >
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="UserId" class="control-label"></label>
+                            <input asp-for="UserId" class="form-control input-text-sm" value="@userid" readonly="readonly" />
+                            <span asp-validation-for="UserId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="RoleId" class="control-label"></label>
+                            <select asp-for="RoleId" asp-items="@ViewBag.RoleID" class="form-control input-text-sm"></select>
+                            <span asp-validation-for="RoleId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label class="control-label">User Roles</label>
+                            <input id="UserRoles" class="form-control input-text-sm" value="@userrolelist" readonly="readonly" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3">
+                        <input type="submit" value="ADD" class="btn btn-primary button-small" />
+                    </div>
+                </div>
+            </form>
+            <div class="form-group text-end">
+                <a asp-action="UserList" asp-route-search_data="@ViewBag.SearchData" class="btn btn-warning button-small">CANCEL</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

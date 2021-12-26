@@ -1,0 +1,169 @@
+﻿@model iBizSMSV1R1.Models.ClassSchedule
+
+@{
+    ViewData["Title"] = "Add ClassSchedule";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";
+    <script>
+
+        $(document).ready(function () {
+            $("#GradeYear").change(function () {
+                var strGradeYear = $("#GradeYear").val();
+                if ($("#GradeYear").val() != "Select") {
+                    var Options = {};
+                    Options.url = "/AdminClassSchedules/getSection?gradeyear=" + strGradeYear;
+                    Options.type = "POST";
+                    Options.data = JSON.stringify({});
+                    Options.datatype = "json";
+                    Options.contentType = "application/json";
+                    Options.success = function (result) {
+                        $("#Section").empty();
+                        for (var i = 0; i < result.length; i++) {
+                            $("#Section").append("<option>" + result[i] + "</option>");
+
+                        }
+                    };
+                    $.ajax(Options);
+                }
+                else {
+                    $("#Section").empty();
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $("#SubjectCode").change(function () {
+                var strSubjectCode = $("#SubjectCode").val();
+                if ($("#SubjectCode").val() != "Select") {
+                    var Options = {};
+                    Options.url = "/AdminClassSchedules/getSubjectName?subjectcode=" + strSubjectCode;
+                    Options.type = "POST";
+                    Options.data = JSON.stringify({});
+                    Options.datatype = "json";
+                    Options.contentType = "application/json";
+                    Options.success = function (result) {
+                        $("#SubjectName").val(result[0]);
+                        for (var i = 0; i < result.length; i++) {
+                            $("#SubjectName").val("English");
+                        }
+                    };
+                    $.ajax(Options);
+                }
+                else {
+                    $("#SubjectName").empty();
+                }
+            });
+        });
+     </script>
+}
+
+<div class="container">
+    <h6 id="module-views" class="container">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger input-text"></div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="schoolyear" class="control-label"></label>
+                        <select asp-for="schoolyear" asp-items="@ViewBag.SchoolYear" class="form-control input-text">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="schoolyear" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="studentgradeyear" class="control-label"></label>
+                        <select asp-for="studentgradeyear" asp-items="@ViewBag.GradeYear" class="form-control input-text" id="GradeYear">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="studentgradeyear" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="section" class="control-label"></label>
+                        <select asp-for="section" asp-items="@ViewBag.Section" class="form-control input-text" id="Section">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="section" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="teacher" class="control-label"></label>
+                        <select asp-for="teacher" asp-items="@ViewBag.Teacher" class="form-control input-text" id="Teacher">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="teacher" class="text-danger input-text"></span>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="subjectcode" class="control-label"></label>
+                        <select asp-for="subjectcode" asp-items="@ViewBag.SubjectCode" class="form-control input-text" id="SubjectCode">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="subjectcode" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="subjectname" class="control-label"></label>
+                        @*<select asp-for="subjectname" asp-items="@ViewBag.SubjectName" class="form-control input-text" id="SubjectName">
+                            <option></option>
+                        </select>*@
+                        <input asp-for="subjectname" class="form-control input-text"  id="SubjectName"/>
+                        <span asp-validation-for="subjectname" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="weekday" class="control-label"></label>
+                        <select asp-for="weekday" asp-items="@ViewBag.WeekDay" class="form-control input-text" id="weekday">
+                            <option>Monday</option>
+                            <option>Tuesday</option>
+                            <option>Wednesday</option>
+                            <option>Thursday</option>
+                            <option>Friday</option>
+                            <option>Saturday</option>
+                            <option>Sunday</option>
+                            <option>M-W-F</option>
+                            <option>M-W</option>
+                            <option>T-TH-s</option>
+                            <option>T-TH</option>                            
+                        </select>
+                        <span asp-validation-for="weekday" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="roomno" class="control-label"></label>
+                        <input asp-for="roomno" class="form-control input-text" />
+                        <span asp-validation-for="roomno" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="starttime" class="control-label"></label>
+                        <input asp-for="starttime" class="form-control input-text" />
+                        <span asp-validation-for="starttime" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="endtime" class="control-label"></label>
+                        <input asp-for="endtime" class="form-control input-text" />
+                        <span asp-validation-for="endtime" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                </div>
+
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

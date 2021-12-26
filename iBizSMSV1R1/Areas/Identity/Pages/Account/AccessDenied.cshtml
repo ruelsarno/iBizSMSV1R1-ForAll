@@ -1,0 +1,22 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    ViewData["Title"] = "Access denied";    
+    Layout = "~/Views/Shared/_LayoutWebPages.cshtml";
+}
+
+<div class="container mt-3 text-center">    
+    <div class="text-sm-center">
+        <div class="card text-center">           
+           
+            <div class="card-body text-center">
+                <img src="~/images/AccessDenied.jpg" style="height:300px;width:300px" />                
+            </div>
+            <div class="card-footer">
+                <h4 class="card-title">To do:</h4>
+                <p class="card-text input-text">You do not have access to this resource as of the moment.</p>
+                <p class="text-danger input-text" ">Please inform the System Administrator for more details.</p>
+            </div>
+        </div>
+    </div>    
+</div>

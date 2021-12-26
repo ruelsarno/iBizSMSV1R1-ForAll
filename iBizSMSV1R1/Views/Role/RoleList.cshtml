@@ -1,0 +1,43 @@
+﻿@model IEnumerable<iBizSMSV1R1.ViewModels.ApplicationRole>
+
+@{
+    ViewData["Title"] = "Admin Roles";
+    Layout = "~/Views/Shared/_Layout.cshtml";   
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h6 id="module-views">@ViewData["Title"]</h6>
+        </div>
+        <div class="col-sm-6 text-end">           
+            <a class="btn btn-outline-primary button-medium" asp-action="RoleCreate">Add New</a>
+        </div>
+    </div>
+</div>
+
+<div class="Form-Body">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>              
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>  
+                    <td class="text-end">
+                        <a asp-action="RoleEdit" asp-route-id="@item.Id" class="btn btn-warning button-small">EDIT</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,43 @@
+﻿@model iBizSMSV1R1.Models.WebPageEventDetail
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutWebPage.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>WebPageEventDetail</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.recno)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.recno)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.speakername)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.speakername)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.eventdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.eventdate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.venue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.venue)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.recordno">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

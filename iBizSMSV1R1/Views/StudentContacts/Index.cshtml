@@ -1,0 +1,74 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.StudentContact>
+
+@{
+    ViewData["Title"] = "Student Contacts";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+    var message = ViewBag.Message;
+    var id = ViewBag.ID;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <partial name="_StudentProfileMenu" />
+        </div>
+        <div class="col-sm-12">
+            <partial name="_MessageAlert" />
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h6>@ViewData["Title"]</h6>
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-medium" asp-controller="StudentContacts" asp-action="Create" asp-route-id="@id">Add My Contact Info</a>
+        </div>
+
+    </div>
+</div>
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.id)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.telephoneno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cellphoneno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.emailadd)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.id)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.telephoneno)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cellphoneno)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.emailadd)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning button-small" asp-action="Edit" asp-route-recno="@item.recno" asp-route-id="@item.id">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

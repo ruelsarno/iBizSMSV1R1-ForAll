@@ -1,0 +1,204 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.BillToPay>
+
+@{
+    ViewData["Title"] = "List of Bills to Pay for Payment Update)";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    var message = ViewBag.Message;
+    var idno = ViewBag.IDNO;
+    var id = ViewBag.ID;
+
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 text-center" style="color:red">
+            @{
+                if (@message != null)
+                {
+                    if (@message != "")
+                    {
+                        <span>"@message"</span>
+                    }
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h6>@ViewData["Title"]</h6>
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-medium" asp-controller="AdminPayments" asp-action="Create" asp-route-id="@id">Add New</a>
+        </div>
+    </div>
+</div>
+
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.referenceno)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.schoolyear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.billnames)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.billdate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.paymenttype)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.paymentoffice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.payment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.confirm)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.notified)
+                </th>
+                @*<th>
+            @Html.DisplayNameFor(model => model.paymentupdate)
+        </th>*@
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.referenceno)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.schoolyear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.billnames)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.billdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paymenttype)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paymentoffice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.payment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.confirm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.notified)
+                </td>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.paymentupdate)
+        </td>*@
+                <td>
+                    <a asp-controller="AdminPayments" asp-action="Create" asp-route-recno="@item.recno" asp-route-id="@item.id" class="btn btn-warning button-small">Update Payment Record</a>
+                </td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@*<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>                
+                <th>
+                    @Html.DisplayNameFor(model => model.referenceno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.schoolyear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.billnames)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.billdate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.paymentdate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.paymenttypes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.paymentoffices)
+                </th>               
+                <th>
+                    @Html.DisplayNameFor(model => model.amountpaid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.paymentpostdate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                <tr>
+                
+                    <td>
+                        @Html.DisplayFor(modelItem => item.referenceno)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.schoolyear)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.billnames)
+                    </td>
+                    <td>                      
+                         @Html.DisplayFor(modelItem => item.billdate)                                          
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.paymentdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.paymenttypes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.paymentoffices)
+                    </td>                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.amountpaid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.paymentpostdate)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-recno="@item.recno" asp-route-id="@item.id" asp-route-referenceno="@item.referenceno" class="btn btn-warning button-small">Edit</a>
+                    </td>
+                </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>*@
+

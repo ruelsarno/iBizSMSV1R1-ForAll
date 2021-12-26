@@ -1,0 +1,186 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.ClassSchedule>
+
+@{
+    ViewData["Title"] = "Class Schedule";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+    var SearchString = ViewBag.SearchString;
+    var message = ViewBag.Message;
+    var id = ViewBag.ID;
+}
+<style>
+    p.dotted {
+        border-style: dotted;
+    }
+
+    p.dashed {
+        border-style: dashed;
+    }
+
+    p.solid {
+        border-style: solid;
+    }
+
+    p.double {
+        border-style: double;
+    }
+
+    p.groove {
+        border-style: groove;
+    }
+
+    p.ridge {
+        border-style: ridge;
+    }
+
+    p.inset {
+        border-style: inset;
+    }
+
+    p.outset {
+        border-style: outset;
+    }
+
+    p.none {
+        border-style: none;
+    }
+
+    p.hidden {
+        border-style: hidden;
+    }
+
+    p.mix {
+        border-style: dotted dashed solid double;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <partial name="_ClassroomMenu" />
+        </div>
+        <div class="col-sm-12 text-center">
+            <partial name="_MessageAlert" />
+        </div>
+    </div>
+</div>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h6>@ViewData["Title"]</h6>
+        </div>
+        <div class="col-sm-6 text-end">
+            @*<a class="btn btn-primary button-small" asp-controller="FeeTables" asp-action="Create">Add New</a>*@
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+    <div class="container-fluid" style="border-style:ridge;border-block-color:forestgreen;mask-border-width:1px">
+        <div class="row">
+            <div class="col-sm-2 control-label">
+               <strong><u>@Html.DisplayNameFor(model => model.schoolyear)</u></strong> 
+            </div>
+            <div class="col-sm-2 control-label">
+                <strong><u>@Html.DisplayNameFor(model => model.studentgradeyear)</u></strong> 
+            </div>
+            <div class="col-sm-2 control-label">
+                <strong><u>@Html.DisplayNameFor(model => model.section)</u></strong>
+            </div>
+            <div class="col-sm-6">
+
+            </div>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-sm-2 input-text">
+                    @Html.DisplayFor(modelItem => item.schoolyear)
+                </div>
+                <div class="col-sm-2 input-text">
+                    @Html.DisplayFor(modelItem => item.studentgradeyear)
+                </div>
+                <div class="col-sm-2 input-text">
+                    @Html.DisplayFor(modelItem => item.section)
+                </div>
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+            break;
+        }
+    </div>
+        
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.weekday)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.roomno)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.starttime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.endtime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.subjectcode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.subjectname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.teacher)
+                    </th>
+                    <th>
+
+                    </th>
+                    <th>
+
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.weekday)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.roomno)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.starttime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.endtime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.subjectcode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.subjectname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.teacher)
+                        </td>
+                        <td>
+                            <a asp-controller="ClassVideos" asp-action="Index" asp-route-subjectname="@item.subjectname" class="btn btn-primary button-small disable">Video</a>
+                        </td>
+                        <td>
+                            <a asp-controller="ClassModules" asp-action="Index" asp-route-subjectname="@item.subjectname" class="btn btn-primary button-small disable">Module</a>
+                        </td>
+                        <td>
+                            <a asp-controller="ClassLiveStreams" asp-action="Index" asp-route-subjectname="@item.subjectname" class="btn btn-primary button-small disable">Live Stream</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

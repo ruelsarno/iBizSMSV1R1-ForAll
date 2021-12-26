@@ -1,0 +1,71 @@
+﻿@model iBizSMSV1R1.Models.WebPageCourseDetail
+
+@{
+    ViewData["Title"] = "Add Course Details";
+    Layout = "~/Views/Shared/_LayoutWebPage.cshtml";
+    var recno = ViewBag.RecNo;
+    var coursetitle = ViewBag.CourseTitle;
+}
+
+<div class="container">
+    <h6 id="module-views" class="container">@ViewData["Title"] of <u>@coursetitle</u> </h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create" asp-route-coursetitle="@coursetitle" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @*<input type="hidden" asp-for="imagelink" class="form-control input-text" />*@
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="recno" class="control-label"></label>
+                        <input asp-for="recno" class="form-control input-text" readonly="readonly" value="@recno" />
+                        <span asp-validation-for="recno" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="fees" class="control-label"></label>
+                        <input asp-for="fees" class="form-control" />
+                        <span asp-validation-for="fees" class="text-danger"></span>
+                    </div>
+                    <div class="form-group  col-sm-6">
+                        <label asp-for="image" class="control-label"></label>
+                        <input type="file" id="files" asp-for="image" class="input-text" name="files" multiple>
+                        <span asp-validation-for="image" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-12 required">
+                        <label asp-for="aboutthecourse" class="control-label"></label>
+                        <textarea asp-for="aboutthecourse" class="form-control input-text"></textarea>
+                        <span asp-validation-for="aboutthecourse" class="text-danger input-text"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group  col-sm-12 required">
+                        <label asp-for="requirement" class="control-label"></label>
+                        <textarea asp-for="requirement" class="form-control input-text"></textarea>
+                        <span asp-validation-for="requirement" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-12 required">
+                        <label asp-for="howtoenroll" class="control-label"></label>
+                        <textarea asp-for="howtoenroll" class="form-control input-text"></textarea>
+                        <span asp-validation-for="howtoenroll" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                </div>
+
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Index" asp-route-eventtitle="@coursetitle" asp-route-recno="@recno" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

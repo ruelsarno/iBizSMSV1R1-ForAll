@@ -1,0 +1,81 @@
+﻿@using iBizSMSV1R1.Controllers
+
+@{
+    var webpages = HomeController.getWebPageContact();
+    var webpagetitles = HomeController.getWebPageTitles();
+    var counter = 0;
+}
+
+
+<div class="footer bg-footer section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 mb-5 mb-lg-0">
+                <!-- logo -->
+                @foreach (var item in webpages)
+                {
+                    counter++;
+                    <a class="logo-footer" href="index.html"><img class="img-fluid mb-4" src="~/images/TriumphantLogo256WithName.png" style="height:75px" ;width="800px" alt="logo"></a>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">@item.address</li>
+                        <li class="mb-2">@item.cellphoneno</li>
+                        <li class="mb-2">@item.landlineno</li>
+                        <li class="mb-2">@item.emailadd</li>
+                        <li class="mb-2">@item.website</li>
+                    </ul>
+                    if (counter == 1)
+                    {
+                        break;
+                    }
+                }
+
+            </div>
+            <!-- company -->
+            <div class="col-sm-2 mb-5 mb-md-0 text-left">
+                <h4 class="text-white mb-5">SCHOOL</h4>
+                <ul class="">
+                    @foreach (var item in webpagetitles)
+                    {
+                        counter++;
+                        if (item.action.ToLower() == "index" ||
+                            item.action.ToLower() == "about" ||
+                            item.action.ToLower() == "courses" ||
+                            item.action.ToLower() == "events" ||
+                            //item.action.ToLower() == "blog" ||
+                            item.action.ToLower() == "contact"
+                        )
+                        {
+                            <li>
+                                @item.title
+                            </li>
+                        }
+
+                        if (counter == 6)
+                        {
+                            break;
+                        }
+
+                    }
+                </ul>
+            </div>            
+            <!-- support -->
+            <div class="col-sm-2 mb-5 mb-md-0">
+                <h4 class="text-white mb-5">SUPPORT</h4>
+                <ul class="list-unstyled">
+                    <li class="mb-3"><a class="text-color" href="#">Admission</a></li>
+                    <li class="mb-3"><a class="text-color" href="#">Documentation</a></li>                    
+                </ul>
+            </div>
+            <!-- support -->
+            <div class="col-sm-4  mb-5 mb-md-0">
+                <h4 class="text-white mb-5">RECOMMEND Systems</h4>
+                <ul class="list-unstyled">
+                    <li class="mb-3"><a class="text-color" href="#">Online Enrollment</a></li>
+                    <li class="mb-3"><a class="text-color" href="#">Timekeeping</a></li>
+                    <li class="mb-3"><a class="text-color" href="#">Learning Management</a></li>
+                    <li class="mb-3"><a class="text-color" href="#">Human Resource</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

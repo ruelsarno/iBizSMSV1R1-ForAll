@@ -1,0 +1,154 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.Payment>
+
+@{
+    ViewData["Title"] = "Summary Of Payments";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+    var message = ViewBag.Message;
+    var id = ViewBag.ID;
+    var SearchString = ViewBag.SearchString;
+    var pagedivider = 15;
+    var pageno = ViewBag.Page;
+    var pagemin = 1;
+    var recordcount = ViewBag.RecordCount;
+    var remainder = recordcount % pagedivider;
+    var pagemax = (recordcount / pagedivider) + remainder;
+    var pagenext = pagemax;
+    var pageprev = 1;
+
+    if (pageno == pagemax)
+    {
+        pagenext = pagemax;
+    }
+    else
+    {
+        pagenext = ViewBag.Page + 1; ;
+    }
+
+    if (pageno == pagemin)
+    {
+        pageprev = pagemin;
+    }
+    else
+    {
+        pageprev = ViewBag.Page - 1; ;
+    }
+    int pagecount = 0;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <partial name="_AccountingMenu" />
+        </div>
+        <div class="col-sm-12  text-center" style="color:red">
+            <partial name="_MessageAlert" />
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h6>@ViewData["Title"]</h6>
+        </div>
+        <div class="col-sm-6 text-end">
+            @*<a class="btn btn-primary button-medium" asp-controller="Payments" asp-action="Create" asp-route-id="@id">Add New</a>*@
+        </div>
+    </div>
+</div>
+
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.recordno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.billnames)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.paymentdate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.paymenttypes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.paymentoffices)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.amountpaid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.paymentpostdate)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.recordno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.billnames)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paymentdate)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.paymenttypes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paymentoffices)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amountpaid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paymentpostdate)
+                </td>
+
+                <td>
+                    @*<a asp-action="Edit" asp-route-recno="@item.recno" class="btn btn-warning button-small">Edit</a>*@
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    @if (User.IsInRole("Admin"))
+    {
+        <div>
+            <ul class="pagination" style="margin-top:10px">
+                <li id="nav-first" class="page-item"><a class="page-link" href="~/Payments/Index?page=@pagemin&pagedivider=@pagedivider&SearchString=@SearchString">First</a></li>
+                <li id="nav-previous" class="page-item"><a class="page-link" href="~/Payments/Index?page=@pageprev&pagedivider=@pagedivider&SearchString=@SearchString">Previous</a></li>
+
+
+                @{
+                    pagecount = recordcount / pagedivider;
+                    if (remainder > 0)
+                    {
+                        pagecount = pagecount + 1;
+                    }
+
+                    for (int i = 1; 0 < pagecount; i++)
+                    {
+                        <li class="page-item"><a class="page-link" href="~/Payments/Index?page=@i&pagedivider=@pagedivider&SearchString=@SearchString">@i</a></li>
+                        pagecount--;
+                    }
+                }
+                <li id="nav-Next" class="page-item"><a class="page-link" href="~/Payments/Index?page=@pagenext&pagedivider=@pagedivider&SearchString=@SearchString">Next</a></li>
+                <li id="nav-last" class="page-item"><a class="page-link" href="~/Payments/Index?page=@pagemax&pagedivider=@pagedivider&SearchString=@SearchString">Last</a></li>
+            </ul>
+        </div>
+
+    }
+}

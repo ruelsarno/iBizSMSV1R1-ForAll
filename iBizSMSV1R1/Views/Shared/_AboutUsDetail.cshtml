@@ -1,0 +1,54 @@
+﻿@using iBizSMSV1R1.Controllers
+
+@{
+    //var webpages = AboutController.getWebPageAboutUsDetail(); With Error
+    var webpages = ViewBag.AboutUsDetail;
+    var base64 = "";
+    var imgSrc = "";
+    var title = "";
+    var tagline = "";
+    var description = "";
+    if (webpages != null)
+    {
+        foreach (var item in webpages)
+        {
+            if (item.image != null)
+            {
+                base64 = Convert.ToBase64String(item.image);
+            }
+            imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+            title = item.title;
+            tagline = item.tagline;
+            description = item.description;
+            @*<img src='@imgSrc' style="max-width:300px;" alt="Upload Photo" title="Change Profile Photo" />*@
+            break;
+        }
+    }
+
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in webpages)
+        {
+            if (item.image != null)
+            {
+                base64 = Convert.ToBase64String(item.image);
+            }
+            imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+
+            <div class="col-sm-5 position-relative">
+                <img class="img-fluid w-100 mb-4" src="@imgSrc" alt="about image">
+            </div>
+            <div class="col-sm-7">
+                <div class="bg-white p-5">
+                    <h2 class="section-title">@tagline</h2>
+                    <p>@Html.Raw(description)</p>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+

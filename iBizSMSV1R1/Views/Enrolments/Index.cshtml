@@ -1,0 +1,197 @@
+﻿@*@model IEnumerable<iBizSMSV1R1.Models.Enrolment>*@
+@model ReflectionIT.Mvc.Paging.PagingList<iBizSMSV1R1.Models.Enrolment>
+@using ReflectionIT.Mvc.Paging
+@addTagHelper *, ReflectionIT.Mvc.Paging
+
+@{
+    ViewData["Title"] = "Enrolment History";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+    var SearchString = ViewBag.SearchString;
+    var message = ViewBag.Message;
+    var id = ViewBag.ID;
+
+    var pagedivider = 6;
+    var pageno = ViewBag.Page;
+    var pagemin = 1;
+    var recordcount = ViewBag.RecordCount;
+    var remainder = recordcount % pagedivider;
+    var pagemax = (recordcount / pagedivider) + remainder;
+    var pagenext = pagemax;
+    var pageprev = 1;
+
+    if (pageno == pagemax)
+    {
+        pagenext = pagemax;
+    }
+    else
+    {
+        pagenext = ViewBag.Page + 1; ;
+    }
+
+    if (pageno == pagemin)
+    {
+        pageprev = pagemin;
+    }
+    else
+    {
+        pageprev = ViewBag.Page - 1; ;
+    }
+    int pagecount = 0;
+
+}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <partial name="_AdmissionMenu" />
+            </div>
+            <div class="col-sm-12">
+                <partial name="_MessageAlert" />
+
+            </div>
+        </div>
+    </div>   
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h6>@ViewData["Title"]</h6>
+            </div>
+            <div class="col-sm-6 text-end">
+                <a class="btn btn-primary button-medium" asp-controller="Enrolments" asp-action="Create" asp-route-id="@id">Add New</a>
+            </div>
+
+        </div>
+    </div>
+
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.idno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.schoolyear)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.registrationdate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.studenttype)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.studentlevel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.gradeyear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.confirmed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.notified)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.schoolyear)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.registrationdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.studenttype)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.studentlevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gradeyear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.confirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.notified)
+                </td>
+
+                @{
+                    if (item.confirmed == true)
+                    {
+                        <td>
+                            <a asp-action="Edit" asp-route-recno="@item.recno" asp-route-id="@id" class="btn btn-warning button-small disable">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-controller="BillToPays"
+                               asp-action="Index"
+                               asp-route-identity="@item.id"
+                               asp-route-referenceno="@item.recno"
+                               asp-route-schoolyear="@item.schoolyear"
+                               asp-route-billname="Tuition Fee"
+                               asp-route-billdate="@item.registrationdate"                              
+                               asp-route-modeofpayment="@item.modeofpayment"
+                               asp-route-studentlevel="@item.gradeyear"
+                               class="btn btn-primary button-small">
+                                Pay Now
+                            </a>
+                        </td>
+                    }
+
+                    else
+                    {
+                        <td>
+                            <a asp-action="Edit" asp-route-recno="@item.recno" asp-route-id="@id" class="btn btn-warning button-small">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-action="" asp-route-recno="" class="btn btn-primary button-small">For Confirmation</a>
+                        </td>
+                    }
+                }
+
+
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    @if (User.IsInRole("Admin"))
+    {
+        <div>
+            <ul class="pagination" style="margin-top:10px">
+                <li id="nav-first" class="page-item"><a class="page-link" href="~/Enrolments/Index?page=@pagemin&pagedivider=@pagedivider&SearchString=@SearchString">First</a></li>
+                <li id="nav-previous" class="page-item"><a class="page-link" href="~/Enrolments/Index?page=@pageprev&pagedivider=@pagedivider&SearchString=@SearchString">Previous</a></li>
+
+
+                @{
+                    pagecount = recordcount / pagedivider;
+                    if (remainder > 0)
+                    {
+                        pagecount = pagecount + 1;
+                    }
+
+                    for (int i = 1; 0 < pagecount; i++)
+                    {
+                        <li class="page-item"><a class="page-link" href="~/Enrolments/Index?page=@i&pagedivider=@pagedivider&SearchString=@SearchString">@i</a></li>
+                        pagecount--;
+                    }
+                }
+                <li id="nav-Next" class="page-item"><a class="page-link" href="~/Enrolments/Index?page=@pagenext&pagedivider=@pagedivider&SearchString=@SearchString">Next</a></li>
+                <li id="nav-last" class="page-item"><a class="page-link" href="~/Enrolments/Index?page=@pagemax&pagedivider=@pagedivider&SearchString=@SearchString">Last</a></li>
+            </ul>
+        </div>
+
+    }
+}

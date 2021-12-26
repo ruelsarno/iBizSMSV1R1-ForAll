@@ -1,0 +1,63 @@
+﻿@model iBizSMSV1R1.Models.StudentContact
+
+@{
+    ViewData["Title"] = "Add Contact";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+    var message = ViewBag.Message;
+    var id = ViewBag.ID;
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <partial name="_StudentProfileMenu" />
+        </div>
+        <div class="col-sm-12">
+            <h6>@ViewData["Title"]</h6>            
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="id" value="@id" />
+                @*<div class="form-group">
+                        <label asp-for="id" class="control-label"></label>
+                        <input asp-for="id" class="form-control" />
+                        <span asp-validation-for="id" class="text-danger"></span>
+                    </div>*@
+                <div class="row">
+                    <div class="form-group  col-sm-4 required">
+                        <label asp-for="telephoneno" class="control-label"></label>
+                        <input asp-for="telephoneno" class="form-control input-text" />
+                        <span asp-validation-for="telephoneno" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-4 required">
+                        <label asp-for="cellphoneno" class="control-label"></label>
+                        <input asp-for="cellphoneno" class="form-control input-text" />
+                        <span asp-validation-for="cellphoneno" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group col-sm-4 required">
+                        <label asp-for="emailadd" class="control-label"></label>
+                        <input type="email" asp-for="emailadd" class="form-control input-text" />
+                        <span asp-validation-for="emailadd" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3  form-group">
+                        <input type="submit" value="ADD" class="btn btn-warning button-small" />
+                    </div>
+                    <div class="col-sm-9 form-group text-end">
+                        <a asp-action="Index" class="btn btn-primary button-small" asp-route-id="@id">Cancel</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+

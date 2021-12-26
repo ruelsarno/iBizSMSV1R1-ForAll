@@ -1,0 +1,94 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.WebPageTeacher>
+
+@{
+    ViewData["Title"] = "Faculty Members";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"] ??? <u>See WebPages/Teachers for more details...</u></span>
+        </div>
+        @*<div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-small" asp-controller="FacultyMembers" asp-action="Create">Add New</a>
+
+        </div>*@
+    </div>
+</div>
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tagline)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.specialization)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fullname)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.controller)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.action)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.link)
+                </th>*@
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tagline)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.specialization)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fullname)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.controller)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.action)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.image)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.link)
+                    </td>*@
+                    <td>
+                        <a class="btn btn-warning button-small" asp-action="Edit" asp-route-id="@item.recno">Edit</a>
+                    </td>
+                    @*<td>
+                        <a class="btn btn-primary button-small" asp-controller="WebPageTeacherDetails" asp-action="Index" asp-route-recno="@item.recno" asp-route-name="@item.fullname">Teacher Details</a>
+                    </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

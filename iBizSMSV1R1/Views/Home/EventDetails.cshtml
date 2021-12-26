@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutWebPages.cshtml";
+    var message = ViewBag.Message;
+}
+
+<!-- Event details-->
+<section class="section" style="margin-top:100px">
+    <partial name="_EventDetails" />
+</section>
+<!-- /Event details-->
+<!-- footer -->
+<footer>
+    <!-- newsletter -->
+    <partial name="_NewsLetter" />
+    <!-- newsletter end-->
+    <!-- footer content -->
+    <partial name="_FooterContent" />
+    <!-- footer content end-->
+    <!-- copyright -->
+    <partial name="_CopyRight" />
+    <!-- copyright end-->
+</footer>
+<!-- /footer end-->

@@ -1,0 +1,121 @@
+﻿@model iBizSMSV1R1.Models.Enrolment
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAccounting.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Enrolment</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.idno)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.idno)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.schoolyear)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.schoolyear)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.registrationno)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.registrationno)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.registrationdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.registrationdate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.studenttype)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.studenttype)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.studentlevel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.studentlevel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.trackcode)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.trackcode)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.gradeyear)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.gradeyear)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.section)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.section)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.discountcode)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.discountcode)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.modeofpayment)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.modeofpayment)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.schoollastattended)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.schoollastattended)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.schooltype)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.schooltype)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.confirmed)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.confirmed)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.confirmedby)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.confirmedby)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.notified)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.notified)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.recno">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

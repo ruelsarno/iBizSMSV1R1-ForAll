@@ -1,0 +1,48 @@
+﻿@model IEnumerable<iBizSMSV1R1.ModelsAccounting.BankAccount>
+
+@{
+    ViewData["Title"] = "Bank Account";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+    var message = ViewBag.Message;
+}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <partial name="_AccountingMenu" />
+            </div>
+            <div class="col-sm-12  text-center" style="color:red">
+                @{
+                    if (@message != null)
+                    {
+                        if (@message != "")
+                        {
+                            <span>"@message"</span>
+                        }
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+        </div>        
+    </div>
+</div>
+<div class="Form-Body">
+    <div class="row">
+        @foreach (var item in Model)
+        { 
+            <div class="col-sm-3" style="border-style:outset;border-radius:10px;box-shadow:powderblue 5px 5px;padding:10px;margin:10px">
+                <span style="font-size:25px">@item.bankname</span><br />
+                <span style="font-size:15px">@item.branch</span><br />
+                <span style="font-size:15px">@item.accounttype</span><br />
+                <span style="font-size:15px">@item.accountno</span>
+            </div>
+        }
+        
+       
+    </div>
+</div>

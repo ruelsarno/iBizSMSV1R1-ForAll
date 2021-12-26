@@ -1,0 +1,86 @@
+﻿@model iBizSMSV1R1.Models.WebPageBlog
+
+@{
+    ViewData["Title"] = "Edit Blog";
+    Layout = "~/Views/Shared/_LayoutWebPage.cshtml";
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Edit" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="recno" />
+                <input type="hidden" asp-for="link" class="form-control input-text" />
+                <div class="row">
+                    <div class="form-group  col-sm-3 required">
+                        <label asp-for="title" class="control-label"></label>
+                        <select asp-for="title" asp-items="@ViewBag.WebPageTitle" class="form-control input-text">
+                            <option></option>
+                        </select>
+                        <span asp-validation-for="title" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3">
+                        <label asp-for="blogtitle" class="control-label"></label>
+                        <input asp-for="blogtitle" class="form-control input-text" />
+                        <span asp-validation-for="blogtitle" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3">
+                        <label asp-for="author" class="control-label"></label>
+                        <input asp-for="author" class="form-control input-text" />
+                        <span asp-validation-for="author" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-3">
+                        <label asp-for="postdate" class="control-label"></label>
+                        <input asp-for="postdate" class="form-control input-text" />
+                        <span asp-validation-for="postdate" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-4">
+                        <label asp-for="controller" class="control-label"></label>
+                        <input asp-for="controller" class="form-control input-text" />
+                        <span asp-validation-for="controller" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-4">
+                        <label asp-for="action" class="control-label"></label>
+                        <input asp-for="action" class="form-control input-text" />
+                        <span asp-validation-for="action" class="text-danger input-text"></span>
+                    </div>
+                    <div class="form-group  col-sm-4">
+                        <label asp-for="image" class="control-label  label-text"></label>
+                        <input type="file" id="files" asp-for="image" class="input-text" name="files" multiple>
+                        <span asp-validation-for="image" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-12 required">
+                        <label asp-for="tagline" class="control-label"></label>
+                        <input asp-for="tagline" class="form-control input-text" />
+                        <span asp-validation-for="tagline" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-12 required">
+                        <label asp-for="description" class="control-label"></label>
+                        <textarea asp-for="description" class="form-control input-text" id="Description"></textarea>
+                        <span asp-validation-for="description" class="text-danger input-text"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-warning  button-small" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Delete" asp-route-id="@Model.recno" class="btn btn-danger button-small">Delete</a>
+                <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.ClassVideo>
+
+@{
+    ViewData["Title"] = "Class Videos";
+    Layout = "~/Views/Shared/_LayoutClassroomAdmin.cshtml";
+    var recno = ViewBag.Recno;
+    var subjectname = ViewBag.SubjectName;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+        </div>
+        <div class="col-sm-6 text-end">
+            <a class="btn btn-primary button-small" asp-controller="AdminClassVideos" asp-action="Create" asp-route-recno="@recno" asp-route-subjectname="@subjectname">Add New</a>
+        </div>
+    </div>
+</div>
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.recno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.subjectname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.lessonno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.lessontitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.videolink)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.active)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.recno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.subjectname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lessonno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lessontitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.videolink)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.active)
+                </td>
+                <td>
+                    <a class="btn btn-warning button-small" asp-action="Edit" asp-route-id="@item.recordno" asp-route-recno="@recno" asp-route-subjectname="@subjectname">Edit</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

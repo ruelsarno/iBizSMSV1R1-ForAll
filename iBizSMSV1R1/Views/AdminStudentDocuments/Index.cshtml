@@ -1,0 +1,80 @@
+﻿@model IEnumerable<iBizSMSV1R1.Models.StudentDocument>
+
+@{
+    ViewData["Title"] = "Student Document";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+    var idno = ViewBag.IDNO;
+    var id = ViewBag.ID;
+    var @message = ViewBag.Message;
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12  text-center" style="color:red">
+            @{
+                if (@message != null)
+                {
+                    if (@message != "")
+                    {
+                        <span>"@message"</span>
+                    }
+                }
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <span id="headers" class="container Headers-Reverse">@ViewData["Title"]</span>
+            @*<a class="btn btn-primary button-medium" asp-controller="AdminReservations" asp-action="Create">Add New</a>*@
+        </div>
+        <div class="col-sm-4 text-end">
+            @*<form asp-controller="AdminReservations" asp-action="Index" method="get">
+                    <input type="text" name="SearchString" class="" style="border-radius:5px; margin-bottom:2px" />
+                    <input type="submit" value="Search" class="btn  btn-primary button-medium" style="padding-left:15px;padding-right:15px">
+                </form>*@
+        </div>
+
+    </div>
+</div>
+
+<div class="Form-Body">
+    <table class="table">
+        <thead>
+            <tr>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.id)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.documentname)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.imagedata)
+                    </th>*@
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.documentname)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.imagedata)
+                        </td>*@
+                    <td>
+                        <a asp-action="Edit" asp-route-recno="@item.recno" asp-route-id="@item.id" class="btn btn-warning button-small">Edit</a>
+                    </td>                   
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

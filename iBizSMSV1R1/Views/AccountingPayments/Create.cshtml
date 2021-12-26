@@ -1,0 +1,81 @@
+﻿@model iBizSMSV1R1.Models.Payment
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutWebPage.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Payment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="recno" class="control-label"></label>
+                <input asp-for="recno" class="form-control" />
+                <span asp-validation-for="recno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="referenceno" class="control-label"></label>
+                <input asp-for="referenceno" class="form-control" />
+                <span asp-validation-for="referenceno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="schoolyear" class="control-label"></label>
+                <input asp-for="schoolyear" class="form-control" />
+                <span asp-validation-for="schoolyear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="billnames" class="control-label"></label>
+                <input asp-for="billnames" class="form-control" />
+                <span asp-validation-for="billnames" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="billdate" class="control-label"></label>
+                <input asp-for="billdate" class="form-control" />
+                <span asp-validation-for="billdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="paymentdate" class="control-label"></label>
+                <input asp-for="paymentdate" class="form-control" />
+                <span asp-validation-for="paymentdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="paymenttypes" class="control-label"></label>
+                <input asp-for="paymenttypes" class="form-control" />
+                <span asp-validation-for="paymenttypes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="paymentoffices" class="control-label"></label>
+                <input asp-for="paymentoffices" class="form-control" />
+                <span asp-validation-for="paymentoffices" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="amountpaid" class="control-label"></label>
+                <input asp-for="amountpaid" class="form-control" />
+                <span asp-validation-for="amountpaid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="paymentpostdate" class="control-label"></label>
+                <input asp-for="paymentpostdate" class="form-control" />
+                <span asp-validation-for="paymentpostdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,42 @@
+﻿@model iBizSMSV1R1.Models.Section
+
+@{
+    ViewData["Title"] = "Edit  Section";
+    Layout = "~/Views/Shared/_LayoutOtherEntryRegistrar.cshtml";
+}
+
+<div class="container">
+    <h6 id="module-views">@ViewData["Title"]</h6>
+</div>
+<hr />
+<div class="Form-Body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger input-text"></div>
+                <input type="hidden" asp-for="recno" />
+                <div class="form-group">
+                    <label asp-for="gradeyears" class="control-label"></label>
+                    <select asp-for="gradeyears" asp-items="@ViewBag.GradeYear" class="form-control input-text" required>
+                        <option></option>
+                    </select>
+                    <span asp-validation-for="gradeyears" class="text-dange input-textr"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="sections" class="control-label"></label>
+                    <input asp-for="sections" class="form-control input-text" required/>
+                    <span asp-validation-for="sections" class="text-danger input-text"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-warning  button-small" />
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group text-end">
+                <a asp-action="Delete" asp-route-id="@Model.recno" class="btn btn-danger button-small">Delete</a>
+                <a asp-action="Index" class="btn btn-primary button-small">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

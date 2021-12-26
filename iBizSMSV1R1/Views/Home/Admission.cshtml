@@ -1,0 +1,63 @@
+﻿@using iBizSMSV1R1.Controllers
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutWebPages.cshtml";
+    var message = ViewBag.Message;
+    var webpages = HomeController.getWebPageTitles("Admission");
+    var title = "";
+    var description = "";
+    var base64 = "";
+    var imgSrc = "";
+    foreach (var item in webpages)
+    {
+        if (item.image != null)
+        {
+            base64 = Convert.ToBase64String(item.image);
+        }
+
+        imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+        title = item.title;
+        description = item.description;
+        @*<img src='@imgSrc' style="max-width:300px;" alt="Upload Photo" title="Change Profile Photo" />*@
+        break;
+    }
+}
+
+<!-- page title -->
+<section class="page-title-section overlay" data-background="@imgSrc">
+
+    @*@foreach (var item in webpages)
+        {*@
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="list-inline custom-breadcrumb">
+                    <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="@@page-link">@title</a></li>
+                    <li class="list-inline-item text-white h3 font-secondary @@nasted"></li>
+                </ul>
+                <p class="text-lighten">@Html.Raw(description)</p>
+            </div>
+        </div>
+    </div>
+    @*  *@}
+
+</section>
+<!-- /page title end-->
+<!-- courses -->
+<section class="section-sm">
+    <partial name="_Courses" />
+</section>
+<!-- /courses end-->
+<!-- footer -->
+<footer>
+    <!-- newsletter -->
+    <partial name="_NewsLetter" />
+    <!-- newsletter end-->
+    <!-- footer content -->
+    <partial name="_FooterContent" />
+    <!-- footer content end-->
+    <!-- copyright -->
+    <partial name="_CopyRight" />
+    <!-- copyright end-->
+</footer>
+<!-- /footer end-->
